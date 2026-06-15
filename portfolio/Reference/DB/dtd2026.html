@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<?php if (!isset($link_base)) $link_base = ''; /* 링크 연결 주소: 빈값=현재도메인 상대경로, 설정 시 해당 주소로 연결 (예: 'https://dbinsure.co.kr') */ ?>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+	<link rel="shortcut icon" href="images/favicon.ico">
+
+	<!-- Basic Meta Tags -->
+	<title><?php echo isset($title) ? $title : 'DB손해보험 대한민국 대표 손해보험사 | 운전자·암·건강·종합보험 맞춤설계 및 간편가입'; ?></title>
+	<meta name="description" content="<?php echo isset($description) ? $description : '운전자보험, 암보험, 맞춤건강보험, 종합보험 등 대한민국을 대표하는 고객가치 중심의 종합손해보험사 공식몰입니다.'; ?>">
+	<meta name="title" content="<?php echo isset($title) ? $title : 'DB손해보험 대한민국 대표 손해보험사 | 운전자·암·건강·종합보험 맞춤설계 및 간편가입'; ?>">
+	<meta name="keywords" content="<?php echo isset($keywords) ? $keywords : 'DB손해보험, 디비손해보험, 운전자보험, 암보험, 건강보험, 종합보험, 청춘어람보험, 청년보험,  유병자보험, 실비보험, 자녀보험, 보험료계산, 보험가입, 동부화재'; ?>" />
+	<meta name="image" content="<?php echo isset($og_img) ? $og_img : 'https://dbinsure.co.kr/images/DB_metatag_thum_img_driver.jpg'; ?>">
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="<?php echo isset($og_title) ? $og_title : 'DB손해보험 대한민국 대표 손해보험사 | 운전자·암·건강·종합보험 맞춤설계 및 간편가입'; ?>">
+	<meta property="og:description" content="<?php echo isset($og_desc) ? $og_desc : '운전자보험, 암보험, 맞춤건강보험, 종합보험 등 대한민국을 대표하는 고객가치 중심의 종합손해보험사 공식몰입니다.'; ?>" />
+	<meta property="og:image" content="<?php echo isset($og_img) ? $og_img : 'https://dbinsure.co.kr/images/DB_metatag_thum_img_driver.jpg'; ?>" />
+	<meta property="og:url" content="<?php echo isset($og_url) ? $og_url : 'https://dbinsure.co.kr/'; ?>" />
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="<?php echo isset($tw_title) ? $tw_title : 'DB손해보험 대한민국 대표 손해보험사'; ?>" />
+	<meta name="twitter:description" content="<?php echo isset($tw_desc) ? $tw_desc : '운전자보험, 암보험, 맞춤건강보험, 종합보험 등 대한민국을 대표하는 종합손해보험사 공식몰입니다.'; ?>" />
+	<meta name="twitter:image" content="<?php echo isset($og_img) ? $og_img : 'https://dbinsure.co.kr/images/DB_metatag_thum_img_driver.jpg'; ?>" />
+
+	<?php if (!empty($article_modified_time)): ?>
+	<meta property="article:modified_time" content="<?php echo $article_modified_time; ?>">
+	<?php endif; ?>
+
+	<!-- CSS -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/content_2025.css"> -->
+	<link rel="stylesheet" type="text/css" href="js/swipe/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="common/css/pages.css">
+	<link rel="stylesheet" type="text/css" href="common/css/layout2026.css">
+	<?php if (!empty($page_css)): ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo htmlspecialchars($page_css, ENT_QUOTES, 'UTF-8'); ?>">
+	<?php endif; ?>
+
+	<!-- JS: Libraries -->
+	<script src="js/jquery-1.12.4.min.js"></script>
+	<script src="js/swipe/swiper.min.js"></script>
+
+	<!-- JS: Dev Mock (운영 도메인 자동 비활성화) -->
+	<!-- <script src="common/js/dev_mock.js"></script> -->
+
+	<!-- JS: Custom -->
+	<script src="common/js/common.js"></script>
+	<script src="common/js/untils.js"></script>
+	<!-- <script src="./js/ui.js"></script> -->
+	<script src="common/js/renew_ui.js"></script>
+	<script src="common/js/pages.js"></script>
+	<script src="js/kakaoLogin.js"></script>
+	<script src="common/js/naverLogin.js"></script>
+
+	<!-- Kakao SDK -->
+	<script src="//developers.kakao.com/sdk/js/kakao.js"></script>
+
+	<!-- Chatbot -->
+	<script async src="https://chat.directdb.co.kr/lvchatbot_plugin.js"></script>
+	<script src="js/chatbot_new2023.js"></script>
+
+	<!-- 공통 적용 스크립트 , 모든 페이지에 노출되도록 설치. 단 전환페이지 설정값보다 항상 하단에 위치해야함 -->
+	<script type="text/javascript" src="//wcs.naver.net/wcslog.js"> </script>
+	<script type="text/javascript">
+		if (!wcs_add) var wcs_add={};
+		wcs_add["wa"] = "s_8560e4bb69a";
+		if (!_nasa) var _nasa={};
+		if(window.wcs){
+			wcs.inflow();
+			wcs_do(_nasa);
+		}
+	</script>
+
+	<!-- 모비데이즈 Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134607414-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		window.gtag = gtag;
+		gtag('js', new Date());
+		gtag('config', 'UA-134607414-2');
+	</script>
+
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NNHV79B7');</script>
+	<!-- End Google Tag Manager -->
+
+	<!-- Google tag (gtag.js) - GA4: 구글 광고 전환 학습용 (PC 운전자보험 등 dtd2026 페이지) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=GT-MK5Q93ZG"></script> 
+	<script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());   gtag('config', 'GT-MK5Q93ZG'); </script>
+
+	<!-- Criteo 로더 파일 -->
+	<script type="text/javascript" src="//dynamic.criteo.com/js/ld/ld.js?a=89292" async="true"></script>
+	<!-- END Criteo 로더 파일 -->
+
+	<!-- Adn Tag -->
+	<script async type="text/javascript" defer="" src="//fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-215595915-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		window.gtag = gtag; /* dev_mock 스텁 덮어쓰기 → cancer처럼 GA 인식 */
+		gtag('js', new Date());
+		gtag('config', 'UA-215595915-2');
+
+		var adn_param = adn_param || [];
+		adn_param.push([{
+			ui:'103658',
+			ut:'Home'
+		}]);
+
+		(function(a,g,e,n,t){a.enp=a.enp||function(){(a.enp.q=a.enp.q||[]).push(arguments)};n=g.createElement(e);n.async=!0;n.defer=!0;n.src="https://cdn.megadata.co.kr/dist/prod/enp_tracker_self_hosted.min.js";t=g.getElementsByTagName(e)[0];t.parentNode.insertBefore(n,t)})(window,document,"script");
+		enp('create', 'common', 'dulldauna', { device: 'W' }); // W:웹, M: 모바일, B: 반응형
+		enp('send', 'common', 'dulldauna');
+
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '#contents > div:nth-child(2) > div > div.right > div > div.btns > a.btn1.btn', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '#contents > div:nth-child(2) > div > div.right > div > div.btns > a.btn2.btn', convType: 'etc', productName: 'insutel'});
+			
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '#contents > div.calc2.wrap > div > div.btns > a.btn1.btn', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '#contents > div.calc2.wrap > div > div.btns > a.btn2.btn', convType: 'etc', productName: 'insutel'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.floatCalForm .btns a.btn1.btn', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.floatCalForm .btns a.btn2.btn', convType: 'etc', productName: 'insutel'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.toastPop .formBtns.con .btn.payment', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.toastPop .formBtns.con .btn.consulting', convType: 'etc', productName: 'insutel'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.hero-form .pc-frm-btn[data-mode="cal"]', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.hero-form .pc-frm-btn[data-mode="tel"]', convType: 'etc', productName: 'insutel'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.agreePop .btnCheck', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.insureForm .formBtns.con .btn.payment', convType: 'etc', productName: 'insucalculate'});
+		enp('create', 'conversion', 'dulldauna', { device: 'W', btnSelector: '.insureForm .formBtns.con .btn.consulting', convType: 'etc', productName: 'insutel'});
+
+		/* Criteo 홈페이지 태그 */
+		window.criteo_q = window.criteo_q || [];
+		var deviceType = /iPad/.test(navigator.userAgent) ? "t" : /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Silk/.test(navigator.userAgent) ? "m" : "d";
+		window.criteo_q.push(
+				{ event: "setAccount", account: 89292},
+				{ event: "setSiteType", type: deviceType},
+				{ event: "viewHome"});
+	</script>
+
+
+	
+	<!-- Adn Tag -->
+	<script async defer src="//fin.rainbownine.net/js/adn_tags_2.1.3.js"></script>
+
+	<!-- Structured Data -->
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "InsuranceAgency",
+	  "name": "DB손해보험",
+	  "url": "https://dbinsure.co.kr/",
+	  "logo": "https://dbinsure.co.kr/images/new2023_logo.png",
+	  "description": "DB손해보험은 오랜 역사와 신뢰를 바탕으로, 고객의 안전과 건강을 지키는 다양한 손해보험 상품을 제공하는 대한민국 대표 손해보험사입니다.",
+	  "address": { "@type": "PostalAddress", "addressCountry": "KR", "addressRegion": "서울특별시", "addressLocality": "서울" },
+	  "contactPoint": { "@type": "ContactPoint", "telephone": "1588-0100", "contactType": "customer service" },
+	  "hasOfferCatalog": {
+	    "@type": "OfferCatalog",
+	    "name": "보험 상품 목록",
+	    "itemListElement": [
+	      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "운전자보험" } },
+	      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "암보험" } },
+	      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "건강보험" } },
+	      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "실비보험" } },
+	      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "간병보험" } }
+	    ]
+	  },
+	  "areaServed": { "@type": "Country", "name": "대한민국" },
+	  "openingHoursSpecification": [{
+	    "@type": "OpeningHoursSpecification",
+	    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+	    "opens": "00:00",
+	    "closes": "23:59"
+	  }]
+	}
+	</script>
+</head>
+<body class="<?php echo isset($bodyClass) ? $bodyClass : ''; ?>">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNHV79B7" height="0" width="0"
+		style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+ 
+<? include "topbnr2026.html" ?>

@@ -1,0 +1,669 @@
+@charset "utf-8";
+/* ========================================
+ * DB손해보험 페이지별 공통 CSS
+ * testDoc/css/pages.css
+ * 
+ * 현재 수정된 페이지:
+ * - driver (운전자보험)
+ * - tome 
+ * - care 
+ * - cancer
+ * - dbhappyplus 
+ * - familydementia 
+ * 
+ * 향후 확장:
+ * - young (청춘어람)
+ *
+ * 등 반응형 페이지 추가 가능
+ * 수정일: 2026-03-30
+ * ======================================== */
+
+/* 20260226 A2Z 폰트 */
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-1Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-2Regular.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-3Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-4Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-5Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-6SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-7Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-8ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'A2Z';
+  src: url('./font/A2Z-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
+}
+
+/* driver */
+
+/* ===== main===== */
+body, body * {font-family:'A2Z', 'pretendard', sans-serif !important; letter-spacing:-0.2px !important;}
+body, body .mContents {font-size:16px;}
+
+ .section01 {position:relative; padding:40px 16px; background:#F9FDF5;}
+ .section01-con01 {padding:0 0 24px; text-align:center;}
+ .section01-con01 .lead {color:#333; font-size:18px; font-weight:500; margin:0 0 12px; line-height:1.4;}
+ .section01-con01 .tit {font-size:0; line-height:0;}
+ .section01-con01 .tit .line {display:block; color:#058248; font-size:28px; font-weight:800; line-height:1.5; }
+ .section01-con01 .sub {color:#333; font-size:28px; font-weight:500; margin:0 0 12px; line-height:1.5; }
+ .section01-con01 .sub .opt, .tabContent .vqTitle .opt {color:#949494; font-size:28px; font-weight: 400; line-height: 1.5;}
+ .section01-con01 .note {color:#333; font-size:12px; font-weight:500; margin:0; line-height:1.4; font-family:'Pretendard'; letter-spacing:0px;}
+
+ .section01-con02 {padding:20px 0 28px; text-align:center;}
+ .section01-con02 .visual {position:relative; display:flex; justify-content:center; align-items:center; min-height:140px;}
+ .section01-con02 .visual img {max-width:100%; height:140px; object-fit:contain;}
+
+ .section01-con03 {text-align:center;}
+ .section01-con03 .roundBox {background:#FFF; border:1px solid #E4E4E4; border-radius:10px; padding:25px 16px 14px; text-align:left; overflow:hidden; box-sizing:border-box;}
+ .section01-con03 .RoundSwiper {width:100%; overflow:hidden; transform:translateZ(0);}
+ .section01-con03 .RoundSwiper .swiper-wrapper {width:100%; will-change:transform;}
+ .section01-con03 .RoundSwiper .swiper-slide {width:100% !important; max-width:100%; height:auto; backface-visibility:hidden; -webkit-backface-visibility:hidden;}
+ .section01-con03 .list {margin:0; padding:0; list-style:none;}
+ .section01-con03 .list li {position:relative; padding-left:22px; color:#058248; font-size:16px; font-weight:600; line-height:1.5;}
+ .section01-con03 .list li:last-child {margin-bottom:0;}
+ .section01-con03 .list li .num {position:absolute; left:0; top:5px; display:inline-flex; align-items:center; justify-content:center; width:14px; height:14px; background:#28A745; color:#FFF; font-size:8px; font-family:'Pretendard'; font-weight:600; border-radius:50%;}
+ .section01-con03 .list li .opt {color:#74A790; font-weight:400;}
+ .section01-con03 .RoundSwiper .swiper-pagination {position:static; margin-top:12px; line-height:0; text-align:center;}
+ .section01-con03 .RoundSwiper .swiper-pagination .swiper-pagination-bullet {width:7px; height:7px; margin:0 4px; background:#009658; opacity:.35;}
+ .section01-con03 .RoundSwiper .swiper-pagination .swiper-pagination-bullet-active {background:#009658; opacity:1;}
+
+/* ===== driver subComnWrap ===== */
+ .subComnWrap {position:relative;}
+ .subComnWrap .contTabMenu {display:flex; justify-content:flex-start; align-items:stretch; gap:0; background:#009658; padding-top:14px;}
+ .subComnWrap .contTabMenu a {display:block; width:33.33334%; padding:15px 0; text-align:center; color:#FFF; font-size:16px; font-weight:600; font-family:'A2Z';}
+ .subComnWrap .contTabMenu a.on {background:#FFF; color:#009658; border-radius:10px 10px 0 0;}
+ .subComnWrap .contTabMenu .temp {display:block; width:25%; padding:15px 0; text-align:center; color:#FFF; font-size:14px; font-weight:700;}
+
+ .subComnWrap .tabContent {position:relative; display:none;}
+ .subComnWrap .tabContent[style*="display:block"] {display:block !important;}
+
+ .subComnWrap .vQnaSec {position:relative; padding:50px 16px; background:#EDEDED;}
+ .subComnWrap .vQnaSec .vQnaBox {position:relative; padding:0; border-radius:0; background:transparent; box-shadow:none; display:flex; justify-content:flex-start; align-items:flex-start; flex-direction:column; gap:20px;}
+ .subComnWrap .vQnaSec .vQnaBox .vqTitle {color:#333; font-size:26px; line-height:1.3; font-weight:700; text-align:center; width:100%;}
+ .subComnWrap .vQnaSec .vQnaBox .vqTitle .speTxt { font-size:16px;}
+ .subComnWrap .vQnaSec .vQnaBox .dialogueBox {width:100%; background-color: #f6f6f6; border: 1px solid #E4E4E4; border-radius: 8px; padding: 30px 10px;}
+ .subComnWrap .vQnaSec .vQnaBox .dialogue {position:relative; display:flex; justify-content:flex-start; align-items:flex-start; gap:5px; opacity:0; transform:translateY(50px); transition:all 0.8s ease;}
+ .subComnWrap .vQnaBox .dialogue.fadeLeft {transform:translateY(-50px);}
+ .subComnWrap .vQnaBox .dialogue.show {opacity:1; transform:translateY(0);}
+ .subComnWrap .vQnaSec .vQnaBox .dialogue .ico {display:block; width:32px; flex:0 0 auto;}
+ .subComnWrap .vQnaSec .vQnaBox .dialogue .txt {position:relative;}
+.subComnWrap .vQnaSec .vQnaBox .dialogue .txt .inTxt {color:#333; font-size:14px; font-weight:500; padding:14px 35px 14px 14px; background:#FFF; border-radius:0 10px 10px 10px; margin-top:15px; line-height: 1.5;}
+.subComnWrap .vQnaSec .vQnaBox .dialogue.fadeRight {flex-direction:row-reverse;}
+.subComnWrap .vQnaSec .vQnaBox .dialogue.fadeRight .txt .inTxt {border:1px solid #49AD6A; border-radius:10px 0 10px 10px;}
+ .subComnWrap .vQnaSec .vQnaBox .dialogue:nth-child(even) {flex-direction:row-reverse;}
+ .subComnWrap .vQnaSec .vQnaBox .dialogue:nth-child(even) .txt .inTxt {border:1px solid #49AD6A; border-radius:10px 0 10px 10px;}
+
+ .subComnWrap .nTab {display:flex; justify-content:flex-start; align-items:center;}
+ .subComnWrap .nTab a {display:block; width:50%; padding:14px 0; text-align:center; color:#333; font-size:14px; font-weight:600; position:relative; line-height:1.0; font-family:'Pretendard Variable';}
+ .subComnWrap .nTab a:after {content:''; position:absolute; left:0; bottom:0; width:100%; height:2px; background:#FFF;}
+ .subComnWrap .nTab a.on:after {content:''; position:absolute; left:0; bottom:0; width:100%; height:2px; background:#13956A;}
+
+ .subComnWrap .nCont {position:relative;}
+ .subComnWrap .nCont .gender {position:relative; width:90px; top:10px; left:15px; height:30px; margin:0; display:flex; justify-content:flex-start; align-items:center; overflow:hidden;}
+ .subComnWrap .nCont .gender a {display:block; width:50%; text-align:center; border:1px solid #317645; color:#317645; font-size:10px; font-weight:500; line-height:28px;}
+ .subComnWrap .nCont .gender a:first-child {border-radius:25px 0 0 25px;}
+ .subComnWrap .nCont .gender a:last-child {border-radius:0 25px 25px 0;}
+ .subComnWrap .nCont .gender a.on {background:#317645; color:#FFF;}
+
+
+/* ===== sec01 내용소개 ===== */
+ .subComnWrap .perContWrap { padding:0;}
+ .subComnWrap .perCont.sec01 {background:#F9FDF5; padding:50px 16px;}
+/* sec01/02/03/04 공통: perTitleSec 레이아웃 */
+ .subComnWrap .perCont.sec01 .perTitleSec,
+ .subComnWrap .perCont.sec02 .perTitleSec,
+ .subComnWrap .perCont.sec03 .perTitleSec,
+ .subComnWrap .perCont.sec04 .perTitleSec {display:flex; flex-direction:column; align-items:center; text-align:center; margin-bottom:24px; gap:0;}
+ .subComnWrap .perCont.sec01 .perTitleSec .perDesc,
+ .subComnWrap .perCont.sec02 .perTitleSec .perDesc,
+ .subComnWrap .perCont.sec03 .perTitleSec .perDesc,
+ .subComnWrap .perCont.sec04 .perTitleSec .perDesc {color:#5C5C5C; font-size:16px; font-weight:500; line-height:1.5; margin:5px 0 10px;}
+ .subComnWrap .perCont.sec01 .perTitleSec .perTitle,
+ .subComnWrap .perCont.sec02 .perTitleSec .perTitle,
+ .subComnWrap .perCont.sec03 .perTitleSec .perTitle,
+ .subComnWrap .perCont.sec04 .perTitleSec .perTitle {margin:0 0 6px; font-size:0; line-height:0;}
+ .subComnWrap .perCont.sec01 .perTitleSec .speTxt,
+ .subComnWrap .perCont.sec02 .perTitleSec .speTxt,
+ .subComnWrap .perCont.sec03 .perTitleSec .speTxt,
+ .subComnWrap .perCont.sec04 .perTitleSec .speTxt {color:#949494; font-size:26px; font-weight:400;}
+/* sec01 전용 컬러 */
+ .subComnWrap .perCont.sec01 .perTitleSec .perTitle .line {display:block; color:#00492B; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec01 .perTitleSec .perTitle .line02 {display:block; color:#057943; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec01 .perTitleSec .perNum {width:30px; height:30px; padding-top:3px; background:#13956A; color:#FFF; font-size:20px; font-weight:500; border-radius:50%; margin-bottom:10px; font-family:'Pretendard Variable' !important;}
+
+ .subComnWrap .perCont.sec01 .contList.benefitCards,
+ .subComnWrap .perCont.sec02 .contList.benefitCards,
+ .subComnWrap .perCont.sec03 .contList.benefitCards,
+ .subComnWrap .perCont.sec04 .contList.benefitCards {display:flex; flex-direction:column; gap:8px;}
+ .subComnWrap .perCont.sec01 .imgSec,
+ .subComnWrap .perCont.sec02 .imgSec,
+ .subComnWrap .perCont.sec03 .imgSec,
+ .subComnWrap .perCont.sec04 .imgSec {margin-bottom:28px; padding:0; justify-content:center;}
+ .subComnWrap .perCont.sec01 .imgSec img,
+ .subComnWrap .perCont.sec02 .imgSec img,
+ .subComnWrap .perCont.sec03 .imgSec img,
+ .subComnWrap .perCont.sec04 .imgSec img {max-width:300px; height:auto; object-fit:contain; display:block; margin-left:auto; margin-right:auto;}
+
+/* benefitCard 공통 (클래스만으로 사용 가능) */
+ .cardDetail {color:#949494; font-size:14px; font-weight:400; margin:0; line-height:1.4;}
+
+ .subComnWrap .perCont.sec01 .benefitCard,
+ .subComnWrap .perCont.sec02 .benefitCard,
+ .subComnWrap .perCont.sec03 .benefitCard,
+ .subComnWrap .perCont.sec04 .benefitCard {background:#FFF; border:1px solid #E4E4E4; border-radius:8px; padding:18px 20px; text-align:left; width:100%;}
+ .subComnWrap .perCont.sec01 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec02 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec03 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec04 .benefitCard .cardLead {color:#575757; font-size:14px; font-weight:500; margin:0 0 3px; line-height:1.4;}
+.subComnWrap .perCont.sec01 .benefitCard .cardTitle,
+.subComnWrap .perCont.sec02 .benefitCard .cardTitle,
+.subComnWrap .perCont.sec03 .benefitCard .cardTitle,
+.subComnWrap .perCont.sec04 .benefitCard .cardTitle
+{color:#2A2A2A; font-size:16px; font-weight:600; margin:0 0 4px; line-height:1.3;}
+.subComnWrap .perCont.sec04 .contList.benefitCards .surgeryGrid .surgeryCard .cardTitle {color:#2A2A2A; font-size:16px; font-weight:600; margin:0 0 16px; line-height:1.3;}
+.subComnWrap .perCont.sec04 .surgeryGrid .surgeryCard .surgeryIcon {display:block; margin: 16px auto 6px; max-width:54px;}
+
+ .subComnWrap .perCont.sec01 .btnArea {margin-top:24px; padding:0;}
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal {display:flex; justify-content:center; align-items:center; gap:8px; width:100%; height:48px; background:#009658; color:#FFF; font-size:16px; font-weight:700; border-radius:8px; border:none; box-shadow:none;}
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal:before,
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal:after {display:none;}
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal .ar {display:block; width:24px; height:24px; background:url(../img/common/btn_ar.svg) no-repeat 50% 50%; background-size:contain; flex-shrink:0;}
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal p {position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:4px; color:#FFF; font-size:15px; text-shadow:none; font-family:'A2Z'; font-weight:500 ;}
+ .subComnWrap .perCont.sec01 .btnArea a.btnPopCal p .highlight {font-size:16px; font-weight:700;}
+
+/* sec02 전용 컬러 */
+ .subComnWrap .perCont.sec02 {background:#FCF5EC; padding:50px 16px;}
+ .subComnWrap .perCont.sec02 .perTitleSec .perTitle .line {display:block; color:#A04200; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec02 .perTitleSec .perTitle .line02 {display:block; color:#FE7214; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec02 .perTitleSec .perNum {width:30px; height:30px; padding-top:3px; background:#FF8442; color:#FFF; font-size:20px; font-weight:500; border-radius:50%; margin-bottom:10px; font-family:'Pretendard Variable' !important;}
+
+ .subComnWrap .perCont.sec02 .btnArea {margin-top:24px; padding:0;}
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal {display:flex; justify-content:center; align-items:center; gap:8px; width:100%; height:48px; background:#FE7214; color:#FFF; font-size:16px; font-weight:700; border-radius:8px; border:none; box-shadow:none;}
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal:before,
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal:after {display:none;}
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal .ar {display:block; width:24px; height:24px; background:url(../img/common/btn_ar_orange.svg) no-repeat 50% 50%; background-size:contain; flex-shrink:0;}
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal p {position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:4px; color:#FFF; font-size:15px; text-shadow:none; font-family:'A2Z'; font-weight:500 ;}
+ .subComnWrap .perCont.sec02 .btnArea a.btnPopCal p .highlight {font-size:16px; font-weight:700;}
+
+
+
+/* sec03 전용 컬러 (연한 블루 톤) */
+ .subComnWrap .perCont.sec03 {background:#F1F4F9; padding:50px 16px;}
+ .subComnWrap .perCont.sec03 .perTitleSec .perTitle .line {display:block; color:#0045A0; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec03 .perTitleSec .perTitle .line02 {display:block; color:#005AEA; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec03 .perTitleSec .perNum {width:30px; height:30px; padding-top:3px; background:#005AEA; color:#FFF; font-size:20px; font-weight:500; border-radius:50%; margin-bottom:10px; font-family:'Pretendard Variable' !important;}
+ .subComnWrap .perCont.sec03 .btnArea {margin-top:24px; padding:0;}
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal {display:flex; justify-content:center; align-items:center; gap:8px; width:100%; height:48px; background:#005AEA; color:#FFF; font-size:16px; font-weight:700; border-radius:8px; border:none; box-shadow:none;}
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal:before,
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal:after {display:none;}
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal .ar {display:block; width:24px; height:24px; background:url(../img/common/btn_ar_blue.svg) no-repeat 50% 50%; background-size:contain; flex-shrink:0;}
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal p {position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:4px; color:#FFF; font-size:15px; text-shadow:none; font-family:'A2Z'; font-weight:500;}
+ .subComnWrap .perCont.sec03 .btnArea a.btnPopCal p .highlight {font-size:16px; font-weight:700;}
+
+/* sec04 전용 컬러 (연한 라벤더/퍼플 톤) */
+ .subComnWrap .perCont.sec04 {background:#FCEEFB; padding:50px 16px;}
+ .subComnWrap .perCont.sec04 .perTitleSec .perTitle .line {display:block; color:#730096; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec04 .perTitleSec .perTitle .line02 {display:block; color:#A300D4; font-size:26px; font-weight:700; line-height:1.3; letter-spacing:-0.5px;}
+ .subComnWrap .perCont.sec04 .perTitleSec .perNum {width:30px; height:30px; padding-top:3px; background:#A300D4; color:#FFF; font-size:20px; font-weight:500; border-radius:50%; margin-bottom:10px; font-family:'Pretendard Variable' !important;}
+ .subComnWrap .perCont.sec04 .benefitCard {border-color:#E0E0E0;}
+ .subComnWrap .perCont.sec04 .btnArea {margin-top:24px; padding:0;}
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal {display:flex; justify-content:center; align-items:center; gap:8px; width:100%; height:48px; background:#A300D4; color:#FFF; font-size:16px; font-weight:700; border-radius:8px; border:none; box-shadow:none;}
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal:before,
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal:after {display:none;}
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal .ar {display:block; width:24px; height:24px; background:url(../img/common/btn_ar_purple.svg) no-repeat 50% 50%; background-size:contain; flex-shrink:0;}
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal p {position:relative; z-index:1; display:flex; justify-content:center; align-items:center; gap:4px; color:#FFF; font-size:15px; text-shadow:none; font-family:'A2Z'; font-weight:500;}
+ .subComnWrap .perCont.sec04 .btnArea a.btnPopCal p .highlight {font-size:16px; font-weight:700;}
+
+/* sec01/02/03/04 공통: cardTitle + cardDetail 가로 정렬 */
+ .subComnWrap .perCont.sec01 .benefitCard,
+ .subComnWrap .perCont.sec02 .benefitCard,
+ .subComnWrap .perCont.sec03 .benefitCard,
+ .subComnWrap .perCont.sec04 .benefitCard {display:flex; flex-wrap:wrap; align-items:center; column-gap:6px; row-gap:2px;}
+ .subComnWrap .perCont.sec01 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec02 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec03 .benefitCard .cardLead,
+ .subComnWrap .perCont.sec04 .benefitCard .cardLead {width:100%; margin-bottom:2px;}
+ .subComnWrap .perCont.sec01 .benefitCard .cardTitle,
+ .subComnWrap .perCont.sec02 .benefitCard .cardTitle,
+ .subComnWrap .perCont.sec03 .benefitCard .cardTitle,
+ .subComnWrap .perCont.sec04 .benefitCard .cardTitle,
+ .subComnWrap .perCont.sec01 .benefitCard .cardDetail,
+ .subComnWrap .perCont.sec02 .benefitCard .cardDetail,
+ .subComnWrap .perCont.sec03 .benefitCard .cardDetail,
+ .subComnWrap .perCont.sec04 .benefitCard .cardDetail {margin:0;}
+
+/* ===== plan 하단 추천 콘텐츠 ===== */
+ .subComnWrap .perCont.plan {background:#F5F5F5; padding:50px 16px;}
+ .subComnWrap .perCont.plan .extraTitle {color:#333; font-size:26px; line-height:1.3; font-weight:700; text-align:center; width:100%; margin-bottom: 24px;}
+ .subComnWrap .perCont.plan .extraList {display:flex; flex-direction:column; gap:8px;}
+ .subComnWrap .perCont.plan .extraCard {display:flex; justify-content:flex-start; align-items:center; gap:12px; background:#fff; border-radius:8px; padding:20px 16px; text-align:left;}
+ .subComnWrap .perCont.plan .extraCard .ico {display:flex; justify-content:center; align-items:center; width:42px; flex:0 0 auto;}
+ .subComnWrap .perCont.plan .extraCard .ico img {max-width:40px; max-height:40px;}
+ .subComnWrap .perCont.plan .extraCard .txtSec {display:flex; flex-direction:column; gap:2px; flex:1 1 auto;}
+ .subComnWrap .perCont.plan .extraCard .txtSec .title {color:#333; font-size:16px; font-weight:600; line-height:1.2;}
+ .subComnWrap .perCont.plan .extraCard .txtSec .desc {color:#333; font-size:12px; font-weight:400; line-height:1.5;}
+ .subComnWrap .perCont.plan .extraCard .txtSec .desc em {color:#9B9B9B;}
+ .subComnWrap .perCont.plan .extraCard .ar {position:relative; width:24px; height:24px; border-radius:50%; background:#EFEFEF; flex:0 0 auto;}
+ .subComnWrap .perCont.plan .extraCard .ar:after {content:''; position:absolute; left:5px; top:7px; width:8px; height:8px; border-top:2px solid #007F41; border-right:2px solid #007F41; transform:rotate(45deg);}
+
+/* ===== faq FAQ ===== */
+ .subComnWrap .perCont.faq {background:#fff; padding:50px 16px 0px; gap:22px;}
+ .subComnWrap .perCont.faq .faqHead {display:flex; flex-direction:column; align-items:center; gap:10px; width:100%;}
+ .subComnWrap .perCont.faq .faqBadge { display:inline-flex; align-items:center; justify-content:center; padding:5px 15px; border-radius:999px; background:#058248; color:#fff; font-size:16px; font-weight:500; line-height:1;}
+ .subComnWrap .perCont.faq .faqTitle {font-size:26px; margin:0; color:#333; font-weight:600; line-height:1.5; text-align:center;  margin-bottom: 24px;}
+ .subComnWrap .perCont.faq .faqList {display:flex; flex-direction:column; gap:0; width:100%;}
+ .subComnWrap .perCont.faq .faqItem {background:#F8F8F8;}
+ .subComnWrap .perCont.faq .qRow {display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:14px 20px; cursor:pointer;border-top:1px solid #D8D8D8;}
+ .subComnWrap .perCont.faq .faqItem:first-child .qRow {border-top:0 none;}
+ .subComnWrap .perCont.faq .qRow h3 {margin:0; color:#333; font-size:14px; font-weight:600; line-height:1.5; padding-left:22px; text-indent:-23px;}
+ .subComnWrap .perCont.faq .qRow .qMark {color:#058248; font-size:16px; font-weight: 600; margin-right:4px;}
+ .subComnWrap .perCont.faq .qRow .ar {position:relative; width:14px; height:14px; margin-top:2px; flex:0 0 auto;}
+ .subComnWrap .perCont.faq .qRow .ar.up:before {content:''; position:absolute; left:2px; top:9px; width:8px; height:8px; border-left:2px solid #333; border-top:2px solid #333; transform:rotate(45deg);}
+ .subComnWrap .perCont.faq .qRow .ar.down:before {content:''; position:absolute; left:2px; top:3px; width:8px; height:8px; border-left:2px solid #333; border-top:2px solid #333; transform:rotate(225deg);}
+ .subComnWrap .perCont.faq .aRow {padding:24px 20px; background-color: #fff;}
+ .subComnWrap .perCont.faq .aRow p {margin:0; color:#333; font-size:14px; font-weight:400; word-break:keep-all; line-height:1.5; padding-left:22px; text-indent:-23px;}
+ .subComnWrap .perCont.faq .aRow .aMark {color:#058248; font-size:16px; font-weight: 600; margin-right:4px;}
+
+/* ===== 텍스트 하단 콘텐츠 ===== */
+ .subComnWrap .perContWrap .contRaTxt {color:#949494; font-size:8px; font-weight:400; line-height:1.5; text-align: center; margin:0 ; padding: 30px 16px; font-family: 'Pretendard Variable';}
+
+/* ===== popup ===== */
+.snsCertify {display:none;}
+.renewFall .floatFunc,
+.renewFallTy01 .floatFunc {justify-content:flex-end; align-items:flex-end;}
+.renewFall .goSection,
+.renewFallTy01 .goSection {display:none;}
+.renewFall .floatFunc .chatSection .goChatBot,
+.renewFallTy01 .floatFunc .chatSection .goChatBot {width:54px; height:54px;}
+
+.renewFall .snsCertify {display:flex; justify-content:flex-start; align-items:flex-start; flex-direction:column; gap:10px; margin:0 0 15px; opacity:0; transition:.4s all; transform:translateX(150px);}
+.renewFall .snsCertify.on {opacity:1.0; transform:translateX(0);}
+.renewFall .snsCertify a {display:flex; justify-content:flex-start; align-items:center; gap:4px; font-size:12px; font-weight:500; padding:4px 15px; border-radius:100px; font-family:'Pretendard Variable';}
+.renewFall .snsCertify a.kakao {background:#FDE500; color:#222;}
+.renewFall .snsCertify a.kakao:before {content:''; width:20px; height:20px; background:url(../img/float/ico_kakao.png) no-repeat 50% 50%; background-size:100%;}
+.renewFall .snsCertify a.naver {background: linear-gradient(90deg, #86C340 0%, #19A44A 100%); color:#FFF;}
+.renewFall .snsCertify a.naver:before {content:''; width:20px; height:20px; background:url(../img/float/ico_naver.png) no-repeat 50% 50%; background-size:100%;}
+
+.renewFallTy01 .snsCertify {display:flex; justify-content:flex-start; align-items:flex-start; flex-direction:column; gap:6px; margin:0 0 6px; opacity:0; transition:.4s all; transform:translateX(150px);}
+.renewFallTy01 .snsCertify.on {opacity:1.0; transform:translateX(0);}
+.renewFallTy01 .snsCertify a {display:flex; justify-content:center; align-items:center; font-size:0; font-weight:500; width:50px; height:50px; border-radius:50%; font-family:'Pretendard Variable'; text-indent:-99999px;}
+.renewFallTy01 .snsCertify a.kakao {background:#FDE500 url(../img/float/float_kakao.png) no-repeat 50% 50%; background-size:22px;}
+.renewFallTy01 .snsCertify a.naver {background:#03C75A url(../img/float/float_naver.png) no-repeat 50% 50%; background-size:22px;}
+
+
+/* ========== driver 반응형: 모바일 기준, 1200px+ 웹에서 상단 보험료 간편확인 + 1200px ========== */
+.web-only { display: none; }
+
+/* 탑 영역: 기본(모바일) 설정 */
+/* 탑배너 비노출 */
+.tome-page .driver-top-mo,
+.tome-page .driver-top-pc,
+.care-page .driver-top-pc,
+.care-page .driver-top-mo
+ { display: none !important; }
+
+.driver-top-mo { display: block !important; }
+.driver-top-pc { display: none !important; }
+
+/* driver 모바일 전용 탑 배너 (PC 탑은 layout.css에서 1200px+ 적용) */
+.driver-top-mo .topBnr {height:53px; overflow:hidden; background-color: #EDF3CD;}
+.driver-top-mo .topBnr a {display:flex; justify-content:center; align-items:center; height:100%;}
+.driver-top-mo .topBnr a img {display:block; width:auto; height:53px; margin:0 auto;}
+
+
+/* ========== 각 페이지 별 스타일 ========== */
+
+/*  페이지 공통 스타일 */
+.green {color:#0FB769 !important;}
+.green2 {color:#058248 !important;}
+.weight700{font-weight: 700;}
+.pointbox{background:#FFEADB !important; border:1px solid #FE7214 !important;}
+.tome-page .hero-form.web-only, .care-page .hero-form.web-only,
+.dbhappyplus-page .hero-form.web-only, .familydementia-page .hero-form.web-only {top:calc(var(--comn-header-height));}
+
+/* (benefitCardTxt 박스) */
+.subComnWrap .perCont.sec02 .benefitCardTxt {margin-top: 16px !important; width:100%; margin:0; padding:0; background:#FFEADB; border:1px solid #FE7214; border-radius:8px; overflow:visible; box-sizing:border-box;}
+.subComnWrap .perCont.sec02 .benefitCardTxtInner {position:relative; padding:20px; box-sizing:border-box;}
+.subComnWrap .perCont.sec02 .benefitCardTxtCopy {position:relative; z-index:1;}
+.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line1,
+.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line2,
+.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line3 {margin:0 0 6px; color:#333; font-size:16px; font-weight:600;}
+.subComnWrap .perCont.sec02 .benefitCardTxtCopy .no {color:#FE7214;}
+.subComnWrap .perCont.sec02 .benefitCardTxtChar {position:absolute; right:0px; bottom:0px; width:80px;}
+.subComnWrap .perCont.sec02 .benefitCardTxtChar img {width:100%; height:auto; display:block;}
+.subComnWrap .perCont.sec02 .benefitCardTxtChar-2 {position:absolute; left:15px; top:-15px; width:175px;}
+.subComnWrap .perCont.sec02 .benefitCardTxtChar-2 .bubbleTxt{position:absolute; color: #fff; right:15px; top:3px; font-size:13px; font-weight:500;}
+.subComnWrap .perCont.sec02 .benefitCardTxtChar-2 img {width:100%; height:auto; display:block;}
+
+/* tome sec01 전용 (그래프 + 요약박스) */
+.tome-page .subComnWrap .perCont.sec01 .imgSec {margin-bottom:0;}
+.tome-page .subComnWrap .perCont.sec01 .sec01GraphWrap {background:#FFF; border:1px solid #E4E4E4; border-radius:10px; overflow:visible; margin-bottom:10px; padding:16px; text-align:center;}
+.tome-page .subComnWrap .perCont.sec01 .sec01GraphInner {position:relative; margin-bottom:12px;}
+.tome-page .subComnWrap .perCont.sec01 .sec01GraphImg {width:100%; max-width:700px; height:auto; display:block; margin-left:auto; margin-right:auto;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartBubble {position:absolute; left:40%; bottom:60%; transform:translate(-50%, 50%); min-height:56px; padding:10px 20px 50px; box-sizing:border-box; background:url(../img/tome/sec01_bubble.png) no-repeat 50% 50%; background-size:100% 100%; white-space:nowrap;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartBubble .bubbleTxt {color:#009658; font-size:15px; font-weight:400;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartBubble .icoCal {width:22px; height:22px; vertical-align:middle; margin-bottom: 1px;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartLegend {display:flex; flex-direction:column; align-items:flex-end; gap:6px; margin-top:0; font-size:12px; font-weight:500;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartLegend .legendItem {text-align:left;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartLegend .legendItem.renewable {color:#818181; font-family: 'Pretendard Variable' !important;}
+.tome-page .subComnWrap .perCont.sec01 .sec01ChartLegend .legendItem.nonRenewable {color:#009658; font-family: 'Pretendard Variable' !important;}
+.tome-page .subComnWrap .perCont.sec01 .sec01SummaryBox {display:flex; align-items:center; gap:12px; padding:14px 18px; background:#DBFFE4; border:1px solid #009658; border-radius:10px; margin-bottom:24px; text-align:left; box-sizing:border-box;}
+.tome-page .subComnWrap .perCont.sec01 .sec01SummaryBox .ico {width:40px; height:40px; flex:0 0 auto; background:url(../img/tome/point_ico.png) no-repeat 50% 50%; background-size:contain;}
+.tome-page .subComnWrap .perCont.sec01 .sec01SummaryBox .txtWrap {display:flex; flex-direction:column; gap:2px;}
+.tome-page .subComnWrap .perCont.sec01 .sec01SummaryBox .txtWrap p {margin:0; color:#575757; font-size:13px; font-weight:500; line-height:1.5;}
+.tome-page .subComnWrap .perCont.sec01 .sec01SummaryBox .txtWrap span {font-size:16px; font-weight:700;}
+
+/* tome sec04 전용 (2x2 카드 + 상담 문의 박스) */
+.tome-page .subComnWrap .perCont.sec04 .sec04Cards {margin-top:8px;}
+.tome-page .subComnWrap .perCont.sec04 .surgeryGrid {display:grid; grid-template-columns:repeat(2, 1fr); gap:8px;}
+.tome-page .subComnWrap .perCont.sec04 .surgeryCard {background:#FFF; border-radius:8px; border:1px solid #E4E4E4; min-height:72px; align-items:center; justify-content:center; text-align:center; box-sizing:border-box;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox {display:flex; align-items:center; gap:12px; padding:14px 18px; background:#FFF; border:1px solid #E0E0E0; border-radius:8px;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .qIco {width:40px; height:40px; flex:0 0 auto; background:url(../img/tome/point_ico02.png) no-repeat 50% 50%; background-size:contain;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .txtWrap {display:flex; flex-direction:column; gap:2px;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .qTxt {margin:0; font-size:16px; font-weight:600; color:#2A2A2A; line-height:1.5;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .qTxt .opt {color:#949494; font-weight:400;}
+.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .linkTxt {margin:0; font-size:15px; font-weight:700; color:#A300D4;}
+
+/* young 전용 (체크리스트 노트) */
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistCard {position:relative; width:410px; max-width:100%; aspect-ratio:290 / 280; height:auto; margin:0 auto; background:url(../img/young/note.png) no-repeat 50% 50%; background-size:100% 100%;}
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt {position:absolute; top:14%; left:18%; width:60%; text-align:left; z-index:3;}
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt .tit {margin:0 0 6%; color:#00492B; font-size:16px; font-weight:800; line-height:1.2; text-align:center;}
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt ul {margin:0; padding:0; list-style:none;}
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt li {position:relative; margin:0 0 5%; padding-left:10%; color:#000; font-size:14px; font-weight:600; line-height:1.24; letter-spacing:-0.02em; word-break:keep-all;}
+.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt li:last-child {margin-bottom:0;}
+
+/* young sec02 전용  */
+.young-page .subComnWrap .perCont.sec02 .imgSec.youngSec02BenefitImg {width:100%; max-width:100%; margin-left:auto; margin-right:auto;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitStrip {position:relative; width:100%; max-width:min(100%, 360px); margin:0 auto; aspect-ratio:343 / 355; background:url(../img/young/sec02_content_mo.png) no-repeat 50% 50%; background-size:100% 100%;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList {list-style:none; margin:0; padding:0; position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; box-sizing:border-box;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li {display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; box-sizing:border-box; padding:10% 9%; min-height:0;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(1),
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(3) {padding-right:6%;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(2),
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(4) {padding-left:6%;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .ico {display:block; width:48%; max-width:72px; margin:0 0 6px; flex-shrink:0;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .ico img {width:100%; height:auto; display:block; margin:0 auto; max-width:none;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .tit {margin:0; color:#222; font-size:16px; font-weight:600; line-height:1.28; letter-spacing:-0.04em; word-break:keep-all;}
+.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .sub {margin:2px 0 0; color:#555; font-size:10px; font-weight:500; line-height:1.25; letter-spacing:-0.02em;}
+.young-page .subComnWrap .perCont.sec04 .imgSec {width:100%; max-width:100%; padding:16px; border:1px solid #E4E4E4; border-radius:8px; background:#FDF5FD; box-sizing:border-box;}
+.young-page .subComnWrap .perCont.sec04 .imgSec .youngSec04GraphImg {width:100%;}
+.young-page .subComnWrap .perCont.sec04 .sec04HighlightTxt {position:relative; margin:0 0 5px; padding:10px 12px; border-radius:8px; background:#F5D4FC; color:#2A2A2A; font-size:15px; font-weight:600; line-height:1.35; text-align:center;}
+.young-page .subComnWrap .perCont.sec04 .sec04HighlightTxt::after {content:""; position:absolute; left:50%; top:100%; transform:translateX(-50%); border-left:8px solid transparent; border-right:8px solid transparent; border-top:10px solid #F5D4FC;}
+
+/* 접근성 공통 유틸 */
+.sr-only {position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 0, 0); white-space:nowrap; border:0;}
+
+/* ========================================
+ * footer 스타일은 css/layout.css에서 관리
+ * ======================================== */
+.driverFooterMo {display:block;}
+.driverFooterPc {display:none;}
+
+@media (min-width: 1081px) {
+	.driverFooterMo {display:none;}
+	.driverFooterPc {display:block;}
+}
+
+/* ========================================
+ * driver 페이지 formSec gender 스타일 (모든 화면 크기)
+ * ======================================== */
+/*  .hero-form .formSec .insureForm .formBlock.gender .gender {display:flex !important; align-items:center; gap:0; width:100%; height:60px;}
+ .hero-form .formSec .insureForm .formBlock.gender label.m,
+ .hero-form .formSec .insureForm .formBlock.gender label.f 
+{height: 60px !important; width:auto !important; display:flex !important; align-items:center; justify-content:center; flex:1; line-height:1 !important; text-align:center; border:1px solid #D1D5DC !important; border-radius:0 !important; font-size:16px !important; cursor:pointer; margin:0; color:#9E9E9E !important; background:#fff !important; float:none !important;}
+ .hero-form .formSec .insureForm .formBlock.gender label.m {border-radius:6px 0 0 6px !important; border-right:0 !important;}
+ .hero-form .formSec .insureForm .formBlock.gender label.f {border-radius:0 6px 6px 0 !important; border-left:1px solid #D1D5DC !important;}
+ .hero-form .formSec .insureForm .formBlock.gender input:checked + label {background:#04983F !important; border-color:#04983F !important; color:#fff !important;} */
+
+@media (min-width: 1200px) {
+	html:has(body .mContents) {font-size:19px;}
+	.driver-top-mo { display: none !important; }
+	.driver-top-pc { display: block !important; }
+
+	.br-hide {display: none;}
+
+	body .toastPop.renew { display: none !important; }
+	body .dim { display: none !important; }
+	html,
+	body {height: auto !important;min-height: 0 !important;overflow-y: auto !important;overflow-x: hidden;}
+
+	body.noScroll { position: static !important; overflow-y: auto !important; touch-action: auto !important; }
+	body .toastPop.renew .formBtns.con,
+	body .toastPop.renew .formBtns.forPop { display: none !important; }
+	body .hero-form .formBtns.con { display: flex !important; position: static !important; }
+	body .hero-form .formBtns.con.fixed { position: static !important; left: auto !important; right: auto !important; bottom: auto !important; }
+
+	 .subComnWrap .nCont .gender {position:relative; width:110px; top:15px; left:35px; height:40px; margin:30px 0 0; display:flex; justify-content:flex-start; align-items:center; overflow:hidden;}
+	 .subComnWrap .nCont .gender a {display:block; width:50%; text-align:center; border:1px solid #317645; color:#317645; font-size:15px; font-weight:500; line-height:38px;}
+	 .section01 {padding:60px 16px;}
+	 .section01-con01 .tit .line.green, .section01-con01 .tit .line {white-space:nowrap;}
+
+	 .subComnWrap .vQnaSec .vQnaBox .dialogueBox { padding: 30px;}
+	 .subComnWrap .vQnaSec .vQnaBox .vqTitle,
+	 .subComnWrap .perCont.sec01 .perTitleSec .perTitle .line,
+	 .subComnWrap .perCont.sec01 .perTitleSec .perTitle .line02,
+	 .subComnWrap .perCont.sec01 .perTitleSec .speTxt,
+	 .subComnWrap .perCont.sec02 .perTitleSec .perTitle .line,
+	 .subComnWrap .perCont.sec02 .perTitleSec .perTitle .line02,
+	 .subComnWrap .perCont.sec02 .perTitleSec .speTxt,
+	 .subComnWrap .perCont.plan .extraTitle,
+	 .subComnWrap .perCont.faq .faqTitle {font-size:32px;}
+	 
+
+	 .subComnWrap .vQnaSec .vQnaBox .dialogue .txt .inTxt,
+	 .subComnWrap .perCont.sec01 .benefitCard .cardLead, 
+	 .subComnWrap .perCont.sec02 .benefitCard .cardLead,
+	 .cardDetail,
+	 .subComnWrap .perCont.sec01 .btnArea a.btnPopCal p,
+	 .subComnWrap .perCont.sec02 .btnArea a.btnPopCal p,
+	 .subComnWrap .perCont.plan .extraCard .txtSec .desc,
+	 .subComnWrap .perCont.faq .qRow h3,
+	 .subComnWrap .perCont.faq .aRow p {font-size:16px;}
+
+	 .section01-con01 .tit .line,
+	 .section01-con01 .sub {font-size:36px;}
+
+	 .section01-con01 .note {font-size:14px;}
+	 .section01-con03 .list li .num {font-size:12px; width: 16px; height: 16px;}
+	 .section01-con03 .list li,
+	 .section01-con03 .list li .opt, 
+	 .subComnWrap .contTabMenu a, 
+	 .subComnWrap .perCont.sec01 .perTitleSec .perDesc,
+	 .subComnWrap .perCont.sec02 .perTitleSec .perDesc,
+	 .subComnWrap .perCont.sec03 .perTitleSec .perDesc,
+	 .subComnWrap .perCont.sec04 .perTitleSec .perDesc,
+	 .subComnWrap .perCont.sec01 .benefitCard .cardTitle,
+	 .subComnWrap .perCont.sec02 .benefitCard .cardTitle,
+	 .subComnWrap .perCont.sec03 .benefitCard .cardTitle,
+	 .subComnWrap .perCont.sec04 .benefitCard .cardTitle,
+	 .subComnWrap .perCont.plan .extraCard .txtSec .title {font-size:18px;}
+
+	/*  .subComnWrap .perCont.sec01 .perTitleSec .perNum {padding-top:1px; padding-right: 1px;}
+	 .subComnWrap .perCont.sec02 .perTitleSec .perNum {padding-top:1px;} */
+	 .subComnWrap .perCont.sec01,
+	 .subComnWrap .perCont.sec02,
+	 .subComnWrap .perCont.plan,
+	 .subComnWrap .perCont.faq,
+	 .subComnWrap .vQnaSec {padding-top:100px; padding-bottom:100px;}
+
+	 .mContents { width:100%; margin-left:0; margin-right:0; }
+	 .mContents > .mContents1200 {max-width:1200px; margin-left:auto; margin-right:auto; box-sizing:border-box; position:relative; overflow:visible;}
+	 .mContents .mContents1200 > .section01,
+	 .mContents .mContents1200 > .subComnWrap {max-width:700px; margin-left:0; margin-right:0; box-sizing:border-box;}
+	 .web-only { display: block; }
+	 .mContents .mContents1200 > .section01 {min-width:0; max-width:none; margin:0; padding-left:0; padding-right:0; background-color:#F9FDF5; position:relative; z-index:1; overflow:visible;}
+	 .mContents .mContents1200 > .section01::before {content:''; position:absolute; left:calc(0% - 100dvw); right:calc(0% - 100dvw); top:0; height:100%; background:#F9FDF5; z-index:-1; pointer-events:none;}
+	 .mContents .mContents1200 > .section01 > .section01-con01,
+	 .mContents .mContents1200 > .section01 > .section01-con02,
+	 .mContents .mContents1200 > .section01 > .section01-con03 {max-width:700px; margin-left:0; margin-right:0; text-align:left;}
+	 .mContents .mContents1200 > .section01 > .section01-con01 {min-height: 310px; text-align: center; 
+		display: flex; flex-direction: column; 	align-items: center; justify-content: center; position:relative;  margin-left:0; margin-right:0; padding-left:0; padding-right:300px;}
+	 .mContents .mContents1200 > .section01 > .section01-con02 {position:absolute; top:80px; left:400px; right:auto; width:280px; padding:0; text-align:left;}
+	 .mContents .mContents1200 > .section01 > .section01-con02 .visual {justify-content:flex-start; min-height:auto;}
+	 .mContents .mContents1200 > .section01 > .section01-con02 .visual img {height:160px; margin-top: 60px;}
+	 .mContents .mContents1200 > .section01 > .section01-con03 {max-width:700px; margin-left:0; margin-right:0; padding-top:12px;}
+	 .mContents .subComnWrap .vQnaSec,
+	 .mContents .subComnWrap .perCont.sec01,
+	 .mContents .subComnWrap .perCont.sec02,
+	 .mContents .subComnWrap .perCont.sec03,
+	 .mContents .subComnWrap .perCont.sec04,
+	 .mContents .subComnWrap .perCont.plan,
+	 .mContents .subComnWrap .perCont.faq {position:relative; z-index:1; overflow:visible;}
+	 .mContents .subComnWrap .vQnaSec::before,
+	 .mContents .subComnWrap .perCont.sec01::before,
+	 .mContents .subComnWrap .perCont.sec02::before,
+	 .mContents .subComnWrap .perCont.sec03::before,
+	 .mContents .subComnWrap .perCont.sec04::before,
+	 .mContents .subComnWrap .perCont.plan::before,
+	 .mContents .subComnWrap .perCont.faq::before {content:''; position:absolute; left:calc(0% - 100dvw); right:calc(0% - 100dvw); top:0; height:100%; z-index:-1; pointer-events:none;}
+	 .mContents .subComnWrap .vQnaSec::before {background:#EDEDED;}
+	 .mContents .subComnWrap .perCont.sec01::before {background:#F9FDF5;}
+	 .mContents .subComnWrap .perCont.sec02::before {background:#FCF5EC;}
+	 .mContents .subComnWrap .perCont.sec03::before {background:#F1F4F9;}
+	 .mContents .subComnWrap .perCont.sec04::before {background:#FCEEFB;}
+	 .mContents .subComnWrap .perCont.plan::before {background:#F5F5F5;}
+	 .mContents .subComnWrap .perCont.faq::before {background:#FFF;}
+	 .mContents .subComnWrap .contTabMenu {position:relative; z-index:1;}
+	 .mContents .subComnWrap .contTabMenu::before {content:''; position:absolute; left:calc(0% - 100dvw); right:calc(0% - 100dvw); top:0; height:100%; background:#009658; z-index:-1; pointer-events:none;}
+	 .mContents .mContents1200 .section01 .section01-con03 .roundBox {width:100%; max-width:700px; margin:0;}
+	 .section01-con03 .roundBox .list {display:table; margin:0 auto; text-align:left;}
+	 .mContents .subComnWrap .perCont .imgSec {width:380px; max-width:100%; margin-left:auto; margin-right:auto; text-align:center;}
+	 
+	 	/* 헤더·탑배너 높이를 변수로 (hero-form 등 top 기준용) */
+	:root { --comn-header-height: 90px; --topbnr-height: 100px; }
+	 .hero-form.web-only {flex: 0 0 440px; width:440px; max-width:100%; position:fixed; top:calc(var(--comn-header-height) + var(--topbnr-height)); right:max(0px, calc((100dvw - 1200px) / 2)); z-index:120;}
+	 .hero-form .formSec {background:#fff; border:2px solid #009658; border-radius:22px; box-shadow:0 0px 16px rgba(0,0,0,.22); padding:48px 32px; height:100%; box-sizing:border-box; position:static;}
+	 .hero-form .formTitle {color:#222; font-size:22px; font-weight:700; margin:0 0 20px; text-align:center; line-height:1.2; text-decoration:underline; text-decoration-color:#C0F3D9; text-decoration-thickness:10px; text-underline-offset:-3px;}
+	 .hero-form .formLabel {display:none;}
+
+	
+	
+	/* layout.css 의 .formSec .insureForm 영향 배제: driver 전용 신규 정의 */
+	 .hero-form .formSec .insureForm {padding:0; margin:0; border:0; border-radius:0; background:transparent; box-shadow:none;}
+	 .hero-form .formSec .insureForm form {margin:0; padding:0;}
+	 .hero-form .formSec .insureForm .formBox {position:relative; padding:0; display:grid; grid-template-columns:1fr 128px; grid-template-areas:"name gender" "birth birth" "tel tel"; gap:8px;}
+	 .hero-form .formSec .insureForm .formBlock {position:relative; margin:0;}
+	 .hero-form .formSec .insureForm .formBtns {padding:0; margin-top:10px; gap:8px; display:grid; grid-template-columns:1fr 1fr;}
+
+	/* formSec div 내부 적용 스타일 분리 */
+	 .hero-form .formSec div {box-sizing:border-box;}
+	 .hero-form .formSec .insureForm > div,
+	 .hero-form .formSec .insureForm form > div {width:100%;}
+	 .hero-form .formSec .insureForm .formBlock.name {grid-area:name;  padding-right: 0;}
+	 .hero-form .formSec .insureForm .formBlock.gender {grid-area:gender;}
+	 .hero-form .formSec .insureForm .formBlock.birth {grid-area:birth;}
+	 .hero-form .formSec .insureForm .formBlock.tel {grid-area:tel; display:grid !important; grid-template-columns:1fr 1fr 1fr; gap:0; position:relative; background:#F4F4F4; border:0 none !important; border-radius:6px !important; overflow:hidden; justify-content:normal !important; align-items:normal !important;}
+	 .hero-form .formSec .insureForm .formBlock.tel::before,
+	 .hero-form .formSec .insureForm .formBlock.tel::after {content:'-'; position:absolute; top:50%; transform:translateY(-50%); color:#9E9E9E; font-size:20px; z-index:1;}
+	 .hero-form .formSec .insureForm .formBlock.tel::before {left:33.333% !important;}
+	 .hero-form .formSec .insureForm .formBlock.tel::after {left:66.666% !important; right:auto !important;}
+	 .hero-form .formSec .insureForm .formBtns .btn {display:block; width:100%; text-align:center; border-radius:4px; height: 60px; line-height: 60px; font-size:18px; font-weight:700; border:none; cursor:pointer; padding: 0;}
+	 .hero-form .formSec .insureForm .formBtns .btn:before,
+	 .hero-form .formSec .insureForm .formBtns .btn:after {display:none !important; content:none !important; background:none !important;}
+	 .hero-form .formSec .insureForm .formBtns .btn.payment {background:#0C6A3A; color:#fff; font-family: 'Pretendard Variable', 'Pretendard', sans-serif !important;}
+	 .hero-form .formSec .insureForm .formBtns .btn.consulting {background:#F97316; color:#fff; font-family: 'Pretendard Variable', 'Pretendard', sans-serif !important;}
+	 .hero-form .formSec .insureForm .NaverBtn {margin-top:8px;}
+	 .hero-form .formSec .insureForm .NaverBtn .btn.naver {display:flex; align-items:center; justify-content:center; width:100%; height:60px; border-radius:4px; background:#03C75A; color:#fff; font-size:18px; font-weight:700; font-family:'Pretendard Variable','Pretendard',sans-serif !important;}
+	 .hero-form .formSec .insureForm .NaverBtn .btn.naver:before {content:'N'; display:inline-block; margin-right:6px; font-size:20px; font-weight:800; line-height:1;}
+
+	/* formSec input 전용 분리 스타일 */
+	 .hero-form .formSec .insureForm input[type="text"],
+	 .hero-form .formSec .insureForm input[type="number"],
+	 .hero-form .formSec .insureForm .input {width:100%;height:52px;padding:0 12px;border:0 none !important; border-radius:6px;font-size:16px;line-height:50px;color:#444;background:#F4F4F4;box-sizing:border-box;letter-spacing:0;outline:none; font-family:'Pretendard Variable','Pretendard',sans-serif !important;}
+	 .hero-form .formSec .insureForm .formBox .formBlock input[type="text"],
+	 .hero-form .formSec .insureForm .formBox .formBlock input[type="number"] {display:block; width:100% !important; max-width:none; min-width:0; height:60px; line-height:48px;}
+	 .hero-form .formSec .insureForm input::placeholder {color:#9E9E9E;}
+	 .hero-form .formSec .insureForm .formBlock.tel .input {border:0;border-radius:0;background:transparent;text-align:center;padding:0 8px;}
+
+	 .insureForm .formBox .formBlock .gender{width: auto !important;}
+	 .insureForm .formBox .formBlock .gender label {height: 59px; font-size:18px;}
+	 .insureForm .formBox .formBlock .gender label.m{line-height: 59px; width: 62px;}
+	 .insureForm .formBox .formBlock .gender label.f{line-height: 59px; width: 62px;}
+
+
+	/* tome.html 전용 스타일 */
+	 .tome-page .subComnWrap .perCont.sec01 .sec01GraphWrap {padding: 40px;}
+	/* tome sec04 전용 (2x2 카드 + 상담 문의 박스) */
+	.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .qTxt {font-size:18px;}
+	.tome-page .subComnWrap .perCont.sec04 .sec04AskBox .linkTxt {font-size:18px;}
+	.tome-page .subComnWrap .perCont.sec01 .sec01ChartBubble { bottom:50%; }
+
+	/* young 전용 스타일 */
+	.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt .tit {font-size:16px; margin-bottom:16px;}
+	.young-page .subComnWrap .perCont.sec01 .sec01ChecklistTxt li {font-size:14px; margin-bottom:16px;}
+
+	.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line1,
+	.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line2 {display:inline-block;}
+	.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line1,
+	.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line2,
+	.subComnWrap .perCont.sec02 .benefitCardTxtCopy .line3 {font-size:18px;}
+	.subComnWrap .perCont.sec04 .contList.benefitCards .surgeryGrid .surgeryCard .cardTitle {font-size:18px;}
+
+	.young-page .subComnWrap .perCont.sec01 .sec01ChecklistCard {width:410px; max-width:100%;}
+	.young-page .mContents .subComnWrap .perCont.sec02 .imgSec.youngSec02BenefitImg {width:100%; max-width:100%;}
+	.young-page .subComnWrap .perCont.sec03 .imgSec img{max-width:none;}
+
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitStrip {max-width:640px; aspect-ratio:700 / 185; background-image:url(../img/young/sec02_content.png);}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList {display:flex; flex-direction:row;}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(1),
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(2),
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(3),
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList > li:nth-child(4) {flex:1; padding:2.5% 1% 0 0;}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .ico {width:52%; max-width:80px;}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .ico img {width:80%;}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .tit {font-size:16px; font-weight:600; color:#333;}
+	.young-page .subComnWrap .perCont.sec02 .youngSec02BenefitList .sub {font-size:12px; font-weight:400; color:#333;}
+	
+
+}
+
+

@@ -1,0 +1,683 @@
+<? 
+	$menuCode = "conDriver";
+
+	$title = " DB손해보험 운전자보험 | 참좋은운전자상해보험";
+	$description = "10년 연속 1위, 대한민국 최초의 운전자보험. 교통사고처리지원금, 변호사선임비용, 벌금 등 핵심 보장을 월 1만원대 합리적인 보험료로 준비하세요. 지금 바로 내 보험료를 확인해보세요.";
+	$keywords = " 운전자보험, DB손해보험, 자동차사고벌금, 교통사고처리지원금, 변호사선임비용, 자동차부상치료비, 자부상, 운전자보험비교";
+
+	$og_title = " DB손해보험 운전자보험 | 참좋은운전자상해보험";
+	$og_desc = "10년 연속 1위, 대한민국 최초의 운전자보험. 교통사고처리지원금, 변호사선임비용, 벌금 등 핵심 보장을 월 1만원대 합리적인 보험료로 준비하세요. 지금 바로 내 보험료를 확인해보세요.";
+	$og_img = "https://dbinsure.co.kr/images/DB_metatag_thum_img_driver.jpg";
+	$og_url = "https://dbinsure.co.kr/driver?JEHUSA_CD=C5204";
+
+	$tw_title = " DB손해보험 운전자보험 | 참좋은운전자상해보험";
+	$tw_desc = "10년 연속 1위, 대한민국 최초의 운전자보험. 교통사고처리지원금, 변호사선임비용, 벌금 등 핵심 보장을 월 1만원대 합리적인 보험료로 준비하세요. 지금 바로 내 보험료를 확인해보세요.";
+
+	include "_inc/dtd.html" 
+?>
+<link rel="stylesheet" type="text/css" href="css/content_2025.css">
+<script src="./js/ui.js"></script>
+<body class="fontGmk">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNHV79B7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div class="driver renew" id="wrap">
+
+	<div class="topBnr">
+		<div class="bnrInner">
+			<a href="https://www.directdb.co.kr/product/ltm/custInfoLtm.do?searchPdcCd=30547&pdcDvcd=l_driver&partner_code=L096&utm_medium=banner&utm_source=cm_cross&utm_campaign=cm_pc&utm_content=cm_driver&utm_term={keyword}">
+			<img src="./img/driver_mainSlider1.png" alt="24시간 언제어디서나 운전자보험 가입 가능! 다이렉트 보험료 계산 및 가입" />
+			</a>
+		</div>
+	</div>
+
+	<!-- comnHeader S //-->
+	<? include "_inc/gnb.html" ?>
+	<!-- comnHeader E //-->
+
+	<!-- content S //-->
+	<div class="mContents">
+		<div class="mHeadPr">
+			<div class="mcInner">
+				<div class="txtSec">
+					<p class="subTxt">자동차 사고로 간병인이 필요하다면?</p>
+					<p class="headTxt">
+						DB손해보험 운전자보험 <em>간병인사용 보장담보 신설!</em>
+					</p>
+					<span class="speTxt">(특약)</span>
+					<div class="perObject"><img src="./img/2025/driver_head_img.svg" /></div>
+				</div>
+
+				<div class="headForm">
+					<div class="formSec">
+						<p class="formTitle">내 보험료 간편확인</p>
+						<div class="insureForm">
+							<form name="frm" id="frm">
+								<div class="formBox">
+									<input type="hidden" name="utm_content" value="driver">
+									<input type="hidden" name="JEHUSA_CD" value="C5204">
+									<input type="hidden" name="init_msg" value="운전자">
+									<div class="formBlock name">
+										<input type="text" class="input" name="name" id="name" placeholder="이름">
+										<div class="gender">
+											<input type="radio" name="gender" id="gender_m" value="m">
+											<label for="gender_m" class="m">남</label>
+											<input type="radio" name="gender" id="gender_f" value="f">
+											<label for="gender_f" class="f">여</label>
+										</div>
+									</div>
+									<div class="formBlock birth">
+										<input type="text" pattern="[0-9]*" class="input" name="birth" id="birth" placeholder="생년월일 (예:19990101)" maxlength="8" onkeyup="this.value=this.value.replace(/[^0-9]/g,''); if( this.value.length===8 )document.getElementById('tel1').focus();">
+									</div>
+									<div class="formBlock tel">
+										<input type="text" pattern="[0-9]*" inputmode="numeric" class="input" name="tel1" id="tel1" placeholder="010" maxlength="3" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');checkphonenum(this.value);">
+										<input type="text" pattern="[0-9]*" inputmode="numeric" class="input" name="tel2" id="tel2" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+										<input type="text" pattern="[0-9]*" inputmode="numeric" class="input" name="tel3" id="tel3" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+									</div>
+								</div>
+							</form>
+							<div class="formBtns con">
+								<a href="javascript:void(0);javascript:chkfrm_agree('cal','1');" class="btn payment">내 보험료 확인</a>
+								<a href="javascript:void(0);javascript:chkfrm_agree('tel','1');" class="btn consulting">무료 상담신청</a>
+							</div>
+							<div class="snsLoginBtns">
+								<a href="javascript:naver_check();" class="snsBtn naver">네이버로 보험료 간편 확인</a>
+							</div>
+							<div class="midBnr">
+								<p class="txt">
+									정상 상담 완료 시
+									<em>신세계 상품권 100% 증정</em>
+								</p>
+								<img src="./img/bnr_shinsegye.png" />
+							</div>
+						</div>
+					</div>
+					<p class="raTxt">ⓘ 준법감시인확인필_제2026-10802호(2026.02.09~2027.02.08)<br/>무배당프로미라이프참좋은운전자상해보험(TM)_2601</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="subComnWrap">
+			<div class="conHead">
+				<p class="subDesc">자동차 보험 있으신가요? 이젠 나를 위해 든든하게 준비하세요!</p>
+				<p class="headTxt"><span>비 탑승 중 발생한 사고보장, 운전자 상해치료 보장확대</span></p>
+				<!-- <p class="headTxt"><span>1급부터 10급까지 교통사고 </span>간병인사용 입원일당 확대보장! <span class="speTxt">(특약)</span></p> -->
+			</div>
+
+			<div class="inConWrap">
+				<div class="perConBox driver01">
+					<div class="itemSec">
+						<span class="icoTxt">NEW</span>
+						<p class="txt">
+							<strong>
+								자동차 사고시,<br/>
+								<span>간병인 사용 입원일당 담보보장!</span>
+							</strong>
+						</p>
+						<span class="speTxt">(특약)</p>
+						<div class="inImg">
+							<img src="./img/2025/driver_obj01.svg" />
+						</div>
+					</div>
+					<div class="ipConSec">
+						<div class="titleSec">
+							<p class="pcTitle">
+								피보험자가 자동차사고로 신체 상해 시,<br/>
+								간병인 사용한 경우 1일당 보험가입금액 지급
+							</p>
+							<p class="raTxt">* 180일 한도 / 1~10급에 한함 /  단, 요양병원 및 간호, 간병통합서비스 제외</p>
+						</div>
+						<div class="conTy01">
+							<p class="pcTitle">
+								병원종류별 간병인사용 및 <br/>간호간병통합서비스 입원일당 담보 탑재
+							</p>
+							<ul>
+								<li>
+									<p class="title">간병인사용 상해입원일당</p>
+									<p class="smTxt">(특약, 상급종합병원, 1일 이상 180일 한도)</p>
+								</li>
+								<li>
+									<p class="title">간호·간병통합서비스사용 <br/>상해입원일당</p>
+									<p class="smTxt">(특약, 1일이상, 180일한도)</p>
+								</li>
+								<li>
+									<p class="title">간호·간병통합서비스사용 <br/>상해입원일당</p>
+									<p class="smTxt">(특약, 요양/정신/한방병원제외)(181일이상)</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="perConBox driver02">
+					<div class="itemSec">
+						<p class="txt">
+							자동차보험이 있어도,<br/>
+							<strong>
+								운전자보장으로<br/>형사적 책임대비! <br/><em>(특약)</em>
+							</strong>
+						</p>
+					</div>
+					<div class="ipConSec">
+						<div class="icoTxtBox">
+							<div class="perIcoTxt">
+								<div class="ico"><img src="./img/2025/driver_ico01.svg" /></div>
+								<div class="infoBox">
+									<p class="title">변호사 선임비용</p>
+									<p class="desc">
+										<span class="ty01">경찰조사 단계부터 보장!</span><br/>피보험자가 경찰조사 받을 때 변호사를 선임하는 비용보장
+									</p>
+								</div>
+							</div>
+							<div class="perIcoTxt">
+								<div class="ico"><img src="./img/2025/driver_ico02.svg" /></div>
+								<div class="infoBox">
+									<p class="title">교통사고 처리지원금</p>
+									<p class="desc">
+										<span class="ty02">공탁금 100% 선지급 OK</span><br/>피해자에게 중상해를 입힌 경우에도 교통사고처리 지원금 보장
+									</p>
+								</div>
+							</div>
+							<div class="perIcoTxt">
+								<div class="ico"><img src="./img/2025/driver_ico03.svg" /></div>
+								<div class="infoBox">
+									<p class="title">스쿨존</p>
+									<p class="desc">
+										<span class="ty03">스쿨존 보장확대</span><br/>스쿨존 교통사고 처벌강화로 운전자벌금 (대인) 보장확대
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="perConBox driver03">
+					<div class="itemSec">
+						<p class="txt">
+							교통사고 부상대비,<br/>
+							<strong>
+								운전자 상해치료 보장확대
+							</strong>
+						</p>
+					</div>
+					<div class="ipConSec">
+						<div class="icoTxtBoxTy01">
+							<div class="perTy01">
+								<div class="ico"><img src="./img/2025/comn_ico_oriental.svg" /></div>
+								<p class="title">한방외래 <br/>치료비</p>
+								<p class="desc">(1일1회한, <br/>연간20회한, 특약)</p>
+							</div>
+							<div class="perTy01">
+								<div class="ico"><img src="./img/2025/comn_ico_mri.svg" /></div>
+								<p class="title">MRI, CT <br/>검사지원비</p>
+								<p class="desc">(급여, 1일1회한, 특약)</p>
+							</div>
+							<div class="perTy01">
+								<div class="ico"><img src="./img/2025/comn_ico_accident.svg" /></div>
+								<p class="title">상해재활 <br/>치료비</p>
+								<p class="desc">(급여, 1일1회한, <br/>연간15회한, 특약)</p>
+							</div>
+							<div class="perTy01">
+								<div class="ico"><img src="./img/2025/comn_ico_surgray.svg" /></div>
+								<p class="title">상해수술비, <br/>입원일당</p>
+								<p class="desc">(특약)</p>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div>
+
+			<div class="cont recommend">
+				<div class="conInner">
+					<div class="contTitle">
+						<em>운전자 상해보험</em>만으로<br/>
+						부족하다면?
+					</div>
+					<div class="recommendPrd">
+						<div class="perPrd life">
+							<a href="./house?JEHUSA_CD=C5207&utm_source=naver&utm_medium=cpc&utm_campaign=pc&utm_content=house&utm_term=move">
+							<p class="prdTitle">생활종합보험</p>
+							<div class="ico"><img src="./img/mico_life.png" /></div>
+							<p class="desc">
+								집과 사람을 함께<br/>
+								나에게 맞춘<br/>
+								생활종합보험
+							</p>
+							<p class="goView">자세히보기<em>></em></p>
+							</a>
+						</div>
+						<div class="perPrd medic">
+							<a href="./silbi?JEHUSA_CD=C5216&utm_source=naver&utm_medium=cpc&utm_campaign=pc&utm_content=silbi&utm_term=move">
+							<p class="prdTitle">실손의료비보험</p>
+							<div class="ico"><img src="./img/mico_medic.png" /></div>
+							<p class="desc">
+								아프거나 다칠 때,<br/>
+								부담되는 병원비<br/>
+								꼭 필요한 보험
+							</p>
+							<p class="goView">자세히보기<em>></em></p>
+							</a>
+						</div>
+						<div class="perPrd total">
+							<a href="./dbhappyplus?JEHUSA_CD=C5212&utm_source=naver&utm_medium=cpc&utm_campaign=pc&utm_content=dbhappyplus&utm_term=move">
+							<p class="prdTitle">종합건강보험</p>
+							<div class="ico"><img src="./img/mico_total.png"></div>
+							<p class="desc">
+								맞춤 보장만 쏙!<br>
+								행복플러스<br>
+								종합보험
+							</p>
+							<p class="goView">자세히보기<em>></em></p>
+							</a>
+						</div>
+						<div class="perPrd health">
+							<a href="./tome?JEHUSA_CD=C5450&utm_source=naver&utm_medium=cpc&utm_campaign=pc&utm_content=tome&utm_term=move">
+							<p class="prdTitle">간편건강보험</p>
+							<div class="ico"><img src="./img/mico_health.png"></div>
+							<p class="desc">
+								내 병력에 따라<br>
+								맞춤 보험료!<br>
+								플러스 간편건강보험
+							</p>
+							<p class="goView">자세히보기<em>></em></p>
+							</a>
+						</div>
+					</div>
+					<!-- <p class="raTxt">
+						* 운전자보험 가입 고객: 23년 12월말 운전자보험 가입 고객 수 기준<br/>
+						** 운전자보험 1위 : 14~23년 손해보험협회 신계약건수 기준<br/>
+						*** 암보험: 2022년 통계청 기준
+					</p> -->
+				</div>
+			</div>
+		</div>
+
+		<!-- tab S //-->
+		<div class="conTabSec">
+			<div id="tabContainer">
+				<div id="tab">
+					<div class="wrap">
+						<ul>
+							<li class="active"><a href="javascript:;"><span>가입안내</span></a></li>
+							<li><a href="javascript:;"><span>보장내용</span></a></li>
+							<li><a href="javascript:;"><span>가입예시</span></a></li>
+							<li><a href="javascript:;"><span>참고사항</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="tabContent">
+					<div class="content0 content" style="display:block;">
+						<img src="./img/paper/driver_tab_c0.jpg?v=20260219" alt="">
+					</div>
+					<div class="content1 content">
+						<img src="./img/paper/driver_tab_c1.jpg?v=20260219" alt="">
+					</div>
+					<div class="content2 content">
+						<div class="gender">
+							<input type="radio" name="tab_gender" id="tab_gender_m" value="m">
+							<label for="tab_gender_m" class="m">남</label>
+							<input type="radio" name="tab_gender" id="tab_gender_f" value="f">
+							<label for="tab_gender_f" class="f">여</label>
+						</div>
+						<div class="con1 con">
+							<img src="./img/paper/driver_tab_c2_1.jpg?v=20260219" alt="">
+						</div>
+						<div class="con2 con">
+							<img src="./img/paper/driver_tab_c2_2.jpg?v=20260219" alt="">
+						</div>
+					</div>
+					<div class="content3 content">
+						<img src="./img/paper/driver_tab_c3.jpg?v=20260219" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- tab E //-->
+
+		<div class="myInsureCal">
+			<div class="micInner">
+				<p class="micTitle">내 보험료 바로 확인하기</p>
+				<form name="frm2" id="frm2">
+					<div class="formBox">
+						<input type="hidden" name="utm_content" value="driver">
+						<input type="hidden" name="JEHUSA_CD" value="C5204">
+						<input type="hidden" name="init_msg" value="운전자">
+						<div class="formGroup name">
+							<input type="text" class="input" name="name2" id="name2" placeholder="이름">
+						</div>
+						<div class="formGroup gender">
+							<div>
+								<input type="radio" name="gender2" id="gender2_m" value="m">
+								<label for="gender2_m" class="m">남</label>
+								<input type="radio" name="gender2" id="gender2_f" value="f">
+								<label for="gender2_f" class="f">여</label>
+							</div>
+						</div>
+						<div class="formGroup birth">
+							<input type="text" class="input" name="birth2" id="birth2" placeholder="생년월일 (예:19990101)" maxlength="8" onkeyup="this.value=this.value.replace(/[^0-9]/g,''); if( this.value.length===8 )document.getElementById('tel1_2').focus();">
+						</div>
+						<div class="formGroup tel">
+							<div>
+								<input type="text" class="input" name="tel1_2" id="tel1_2" placeholder="000" maxlength="3" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');checkphonenum(this.value);">
+								<input type="text" class="input" name="tel2_2" id="tel2_2" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+								<input type="text" class="input" name="tel3_2" id="tel3_2" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+							</div>
+						</div>
+					</div>
+					<div class="btns">
+						<a href="javascript:void(0);javascript:chkfrm_agree('cal','2');" class="btn1 btn">내 보험료 확인</a>
+						<a href="javascript:void(0);javascript:chkfrm_agree('tel','2');" class="btn2 btn">무료 상담신청</a>
+						<!-- post 성공하면 $(".result").show(); -->
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<!-- content E //-->
+
+	<!-- footer S //-->
+	<? include "_inc/footer.html" ?>
+	<!-- footer E //-->
+
+	<!--  이탈방지배너 -->
+	<div id="chatbotBanner">
+		<a class="showChat" href="javascript:;">
+			운전자보험 가입하기 전<br/>
+			이건 꼭 알아보세요!
+		</a>
+	</div>
+	<!-- // 이탈방지배너 -->
+
+	<!-- 챗봇 / 보험료계산하기 -->
+	<div class="floatCalForm hide" id="btmCal">
+
+		<div id="chatbot" class="btmCal">
+			<p class="mark"><img src="./img/ico_btm_tel.png"></p>
+			<span class="txt">전화상담이 부담스럽다면?<a href="javascript:;">채팅 상담하기</a></span>
+		</div>
+		
+		<div class="inq">
+			<div class="inbox inqForm">
+				<h3>내보험료, 얼마일까?</h3>
+				<form name="frm3" id="frm3">
+					<div class="formBox">
+						<input type="hidden" name="utm_content" value="driver">
+						<input type="hidden" name="JEHUSA_CD" value="C5204">
+						<input type="hidden" name="init_msg" value="운전자">
+						<div class="formGroup name">
+							<input type="text" class="input" name="name3" id="name3" placeholder="이름">
+						</div>
+						<div class="formGroup gender">
+							<input type="radio" name="gender3" id="gender3_m" value="m">
+							<label for="gender3_m" class="m">남</label>
+							<input type="radio" name="gender3" id="gender3_f" value="f">
+							<label for="gender3_f" class="f">여</label>
+						</div>
+						<div class="formGroup birth">
+							<input type="text" class="input" name="birth3" id="birth3" placeholder="생년월일 (예:19990101)" maxlength="8" onkeyup="this.value=this.value.replace(/[^0-9]/g,''); if( this.value.length===8 )document.getElementById('tel1_3').focus();">
+						</div>
+						<div class="formGroup tel">
+							<input type="text" class="input" name="tel1_3" id="tel1_3" placeholder="000" maxlength="3" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');checkphonenum(this.value);">
+							<input type="text" class="input" name="tel2_3" id="tel2_3" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+							<input type="text" class="input" name="tel3_3" id="tel3_3" placeholder="0000" maxlength="4" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');">
+						</div>
+						<div class="btns">
+							<a href="javascript:void(0);javascript:chkfrm_agree('cal','3');" class="btn1 btn textWave">
+								<div>
+									<span>계</span>
+									<span>산</span>
+									<span>하</span>
+									<span>기</span>
+								</div>
+								<img class="icon" src="./img/ar_tail.svg">
+							</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div> 
+	</div>
+	<!-- // 챗봇 / 보험료계산하기 -->
+
+</div>
+
+<!--1.개인정보수집활용동의 팝업창-->
+<div class="agreePop">
+	<div class="frame">
+		<div class="header">
+			<h2>개인정보 수집 &middot; 활용 동의</h2>
+			<button type="button" class="close">
+				<span class="blind">닫기</span>
+			</button>
+		</div>
+		<div class="cont">
+			<div class="all">
+				<p>
+					DB손해보험은 상품소개 등의 업무를 위해 고객님의
+					<br>
+					개인정보 수집, 이용에 대한 동의를 받고 있습니다.
+				</p>
+				<!--전체동의 기능 js/common.js 파일 120번째 줄에 만들어두었는데 이상있으시면 말씀주세요!-->
+				<button type="button" class="btnAll">
+					전체동의
+				</button>
+			</div>
+			<form name="" action="">
+				<!--개인정보 수집 및 이용 동의-->
+				<div class="contBox">
+					<div class="agreeSet">
+						<!--미동의 체크시 경고문구, 아래 .warn 태그에  addClass("on") 추가하면 화면에 나타납니다.-->
+						<!-- <p class="warn on"></p> -->
+						<p class="warn" id="agreePop_1_warn">
+							이용하시려면 동의가 필요합니다.
+						</p>
+						<div class="radioBox">
+							<label class="lb">
+								<input type="radio" name="agreePop_1" id="y_1" value="y">
+								<span>동의</span>
+							</label>
+							<label class="lb">
+								<input type="radio" name="agreePop_1" id="n_1" value="n">
+								<span>미동의</span>
+							</label>
+						</div>
+					</div>
+					<div class="rollBox" data-mcs-theme="dark">
+						<h3>개인정보 수집 및 이용 동의</h3>
+						<p>
+							귀사가 금융상품 소개 등을 위하여 본인의 개인(신용)정보를 수집, 이용하고자 하는 경우에는 개인정보보호법 등 관련법령에 따라 동의를 얻어야 합니다. 이에 본인은 귀사가 아래의 내용과 같이 본인의 개인(신용)정보를 수집, 이용하는데 동의합니다.
+						</p>
+						<ul>
+							<li>
+								1. 개인정보의 수집 및 이용목적 : 보험상품 소개 및 가입안내, 이벤트 안내 등
+							</li>
+							<li>
+								2. 수집하는 개인정보의 항목 : 성명, 성별, 생년월일, 전화번호
+							</li>
+							<li>
+								3. 보유 및 이용기간 : 동의일로부터 3년
+							</li>
+						</ul>
+						<p>
+							※ 귀하는 본 동의를 거부할 수 있습니다. 다만 이에 동의를 하지 않을 경우 서비스 제공에 제한이 있을 수 있습니다.
+						</p>
+						<p>
+							※ 개인정보 처리에 동의한 이후에도 전화(1588-0100), 서면 등을 통해 동의를 철회할 수 있으며, 연락중지청구시스템(<a href="http://www.donotcall.or.kr" target="_blank">www.donotcall.or.kr</a>)을 통해서도 언제든지 마케팅활동에 대한 중지를 요청할 수 있습니다.
+						</p>
+					</div>
+				</div>
+				<!--개인정보 위탁 및 제공 동의-->
+				<div class="contBox">
+					<div class="agreeSet">
+						<!--미동의 체크시 경고문구, 아래 .warn 태그에  addClass("on") 추가하면 화면에 나타납니다.-->
+						<p class="warn" id="agreePop_2_warn">
+							이용하시려면 동의가 필요합니다.
+						</p>
+						<div class="radioBox">
+							<label class="lb">
+								<input type="radio" name="agreePop_2" id="y_2" value="y">
+									<span>동의</span>
+								</label>
+							<label class="lb">
+								<input type="radio" name="agreePop_2" id="n_2" value="n">
+								<span>미동의</span>
+							</label>
+						</div>
+					</div>
+					<div class="rollBox" data-mcs-theme="dark">
+						<h3>개인정보 위탁 및 제공 동의</h3>
+						<p>
+							귀사가 금융상품 소개 등을 위하여 본인의 개인(신용)정보를 제공하고자 하는 경우에는 개인정보보호법 등 관련법령에 따라 동의를 얻어야 합니다.
+							<br>
+							이에 본인은 귀사가 아래의 내용과 같이 본인의 개인(신용)정보를 위탁, 제공하는데 동의합니다.
+						</p>
+						<ul>
+							<li>
+								1. 개인정보를 위탁·제공 받는 자 : 당사 소속 설계사 및 대리점, 
+							</li>
+							<li>
+								2. 위탁·제공 받는 자의 이용목적
+								<p class="sub">
+									- 당사 소속 설계사 및 대리점 : 보험상품 소개 및 판매, 사은·판촉행사 안내 등
+								</p>
+								<p class="sub">
+									- 혜택 제공 업체 (핀크럭스애드) : 사은품 배송
+								</p>
+							</li>
+							<li>
+								3. 위탁·제공 받는 개인정보의 항목 : 성명, 전화번호, 사은품명, 배송지
+							</li>
+							<li>
+								4. 위탁·제공 받는 자의 보유 및 이용기간
+								<p class="sub">
+									- 당사 소속 설계사 및 대리점 : 동의일로부터 3년
+								</p>
+								<p class="sub">
+									- 혜택 제공 업체 (핀크럭스애드) : 신청접수 월의 다음달 말까지(고객동의 철회 시 즉시 파기)
+								</p>
+							</li>
+						</ul>
+						<p>
+							※ 귀하는 본 동의를 거부할 수 있습니다. 다만 이에 동의를 하지 않을 경우 서비스 제공에 제한이 있을 수 있습니다.
+						</p>
+						<p>
+							※ 개인정보 처리에 동의한 이후에도 전화(1588-0100), 서면 등을 통해 동의를 철회할 수 있으며, 연락중지청구시스템(<a href="http://www.donotcall.or.kr" target="_blank">www.donotcall.or.kr</a>)을 통해서도 언제든지 마케팅활동에 대한 중지를 요청할 수 있습니다.
+						</p>
+					</div>
+				</div>
+				<!--가입권유를 위한 연락방식 동의-->
+				<div class="contBox">
+					<div class="agreeSet">
+						<!--미동의 체크시 경고문구, 아래 .warn 태그에  addClass("on") 추가하면 화면에 나타납니다.-->
+						<p class="warn" id="agreePop_3_warn">
+							이용하시려면 동의가 필요합니다.
+						</p>
+						<div class="radioBox">
+							<label class="lb">
+								<input type="radio" name="agreePop_3" id="y_3" value="y">
+								<span>동의</span>
+							</label>
+							<label class="lb">
+								<input type="radio" name="agreePop_3" id="n_3" value="n">
+								<span>미동의</span>
+							</label>
+						</div>
+					</div>
+					<div class="rollBox small" data-mcs-theme="dark">
+						<h3>가입권유를 위한 연락방식 동의</h3>
+						<p>
+							전화 / 문자를 통해 금융상품을 소개받는 것에 동의합니다.
+						</p>
+					</div>
+				</div>
+			</form>
+			<!--내 보험료 확인하기 버튼-->
+			<button type="submit" onclick="" class="btnCheck">
+				내 보험료 확인하기
+			</button>
+			<!--무료 상담신청 버튼-->
+			<!-- <button type="submit" onclick="" class="btnCheck">무료 상담신청</button> -->
+		</div>
+	</div>
+</div>
+
+<!--2.보험료계산 결과 팝업창-->
+<div class="result">
+	<div class="frame">
+		<div class="header">
+			<h2><span>DB손해보험</span> 공식 운전자보험 사이트</h2>
+			<button type="button" class="close">
+				<span class="blind">닫기</span>
+			</button>
+		</div>
+		<div class="cont">
+			<h3>내 <span>운전자보험료</span>는 얼마?</h3>
+			<div class="boxType1 box">
+				<div class="type">
+					해당 보험은 20-80세까지 가입이 가능합니다.<br/>
+					고객님께 맞는 상품을 추천드리기 위해 <br/>
+					전문상담원이 연락 드리겠습니다.
+				</div>
+			</div>
+			<!-- 조건 충족이 될 때 -->
+			<div class="boxType2 box">
+				<p class="main">
+					<span class="rname">홍길동</span> 님의 예상 보험료는
+				</p>
+				<div class="rst">
+					<div class="type">
+						월 <span class="fee orange">000,000</span><span class="orange">원</span><span class="txt">입니다</span>
+					</div>
+					<p class="cauTxt">
+						위 보험료는 대표플랜에대한 예시보험료이며, <br/>피보험자와 계약내용에 따라달라질 수있습니다.
+					</p>
+				</div>
+				<p class="cf">
+					고객님의 보험료가 인상되는 날은 <span class="yyyy">0000</span>년 <span class="mm">00</span>월 <span class="dd">00</span>일 입니다.
+				</p>
+			</div>
+			<div class="gift">
+				<p>
+					정상 상담 완료시,
+					<br />
+					<strong style="color: #ed620d;">신세계 상품권 5,000원</strong> 증정!
+					<br />
+					<span>(제공주체:DB손해보험)</span>
+				</p>
+			</div>
+			<a href="#" class="btnCall"><span>무료 상담신청</span></a>
+		</div>
+	</div>
+</div>
+
+<div id="periodCont">
+	<div id="popupPeriod">
+		<div class="wrap" style="cursor:pointer">
+			<div class="close"><a href="javascript:;">닫기</a></div>
+			<img src="img/pop_241217.png">
+		</div>
+		<div class="bg"></div>
+	</div>
+</div>
+
+<!--  <div id="expCont">
+	<div id="popup231226">
+		<div class="wrap" style="cursor:pointer">
+			<div class="close"><a href="javascript:;">닫기</a></div>
+			<img src="img/pop_250923.png">
+		</div>
+		<div class="bg"></div>
+	</div>
+</div> -->
+
+<script>
+	$("#popupPeriod").click(function() {
+		$('#popupPeriod').fadeOut();
+	});
+	$("#popup231226").click(function() {
+		$('#popup231226').fadeOut();
+	});
+</script>
+
+</body>
+</html>
