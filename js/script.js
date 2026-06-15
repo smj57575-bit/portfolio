@@ -1,4 +1,4 @@
-// 프로젝트 카드 클릭 이벤트
+// Main: 프로젝트 카드 클릭 이벤트
 document.querySelectorAll('.project').forEach(project => {
     project.style.cursor = 'pointer';
     project.addEventListener('click', function(e) {
@@ -12,4 +12,13 @@ document.querySelectorAll('.project').forEach(project => {
         const projectNum = projectId.split('-')[1];
         window.location.href = `detail-${projectNum}.html`;
     });
+});
+
+// Detail: 코드 하이라이트 및 홈 이동
+if (window.hljs) {
+    hljs.highlightAll();
+}
+
+document.querySelector('.brand')?.addEventListener('click', () => {
+    window.location.href = 'index.html';
 });
