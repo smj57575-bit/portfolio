@@ -78,31 +78,35 @@
 
             <section class="detail-section">
                 <h2 class="section-title">주요 코드 미리보기</h2>
+                <p class="section-content">※ 실제 운영 파일을 그대로 공개하는 대신, 핵심 구현 방식을 일반화한 예시 코드입니다. (사내 식별자·도메인·내부 코드값은 대표 예시로 대체)</p>
                 <div class="code-preview-list">
                     <article class="code-card">
                         <h3>1) 전환 과정에서 유지한 보험료 폼 구조 (PC)</h3>
                         <p>레거시 운영을 유지하면서도 입력 제약, hidden 파라미터, CTA 액션을 분리해 관리한 구간입니다.</p>
-                        <pre><code class="language-html">&lt;form name="frm_pc" id="frm_pc"&gt;
-  &lt;input type="hidden" name="utm_content" value="driver"&gt;
-  &lt;input type="hidden" name="JEHUSA_CD" value="C5204"&gt;
-  &lt;input type="hidden" name="init_msg" value="운전자"&gt;
+                        <pre><code class="language-html">&lt;form name="frm" id="frm"&gt;
+  &lt;!-- 마케팅/상품 식별용 hidden 파라미터 (값은 예시) --&gt;
+  &lt;input type="hidden" name="utm_content" value="product-a"&gt;
+  &lt;input type="hidden" name="product_code" value="A0000"&gt;
+  &lt;input type="hidden" name="init_msg" value="상품 A"&gt;
 
+  &lt;!-- 숫자만 입력 + 8자리 도달 시 다음 필드로 자동 포커스 이동 --&gt;
   &lt;input type="text" name="birth" maxlength="8"
     placeholder="예) 19990101"
     onkeyup="this.value=this.value.replace(/[^0-9]/g,'');
-             if(this.value.length===8) document.getElementById('tel1_pc').focus();"&gt;
+             if(this.value.length===8) document.getElementById('tel1').focus();"&gt;
 
-  &lt;input type="radio" name="gender" id="gender_m_pc" value="m"&gt;
-  &lt;input type="radio" name="gender" id="gender_f_pc" value="f"&gt;
+  &lt;input type="radio" name="gender" id="gender_m" value="m"&gt;
+  &lt;input type="radio" name="gender" id="gender_f" value="f"&gt;
   &lt;input type="text" name="name" class="input" placeholder="이름"&gt;
-  &lt;input type="text" name="tel1" id="tel1_pc" maxlength="3"&gt;
-  &lt;input type="text" name="tel2" id="tel2_pc" maxlength="4"&gt;
-  &lt;input type="text" name="tel3" id="tel3_pc" maxlength="4"&gt;
+  &lt;input type="text" name="tel1" id="tel1" maxlength="3"&gt;
+  &lt;input type="text" name="tel2" id="tel2" maxlength="4"&gt;
+  &lt;input type="text" name="tel3" id="tel3" maxlength="4"&gt;
 &lt;/form&gt;
 
-&lt;a class="btn payment pc-frm-btn" data-mode="cal"&gt;내 보험료 확인&lt;/a&gt;
-&lt;a class="btn consulting pc-frm-btn" data-mode="tel"&gt;무료 상담신청&lt;/a&gt;
-&lt;a class="btn naver" href="javascript:naver_check();"&gt;네이버로 보험료 간편확인&lt;/a&gt;</code></pre>
+&lt;!-- data-mode로 CTA 동작을 분리해 하나의 폼을 다목적으로 재사용 --&gt;
+&lt;a class="btn payment frm-btn" data-mode="cal"&gt;보험료 확인&lt;/a&gt;
+&lt;a class="btn consulting frm-btn" data-mode="tel"&gt;상담 신청&lt;/a&gt;
+&lt;a class="btn external" href="javascript:externalQuote();"&gt;간편 보험료 확인&lt;/a&gt;</code></pre>
                     </article>
 
                     <article class="code-card">
@@ -116,7 +120,7 @@
   &lt;div class="faqList"&gt;
     &lt;div class="faqItem"&gt;
       &lt;div class="qRow"&gt;
-        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 운전자보험이 왜 필요한가요?&lt;/h3&gt;
+        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 이 상품은 왜 필요한가요?&lt;/h3&gt;
       &lt;/div&gt;
       &lt;div class="aRow"&gt;
         &lt;p&gt;&lt;span class="aMark"&gt;A.&lt;/span&gt; ...&lt;/p&gt;
@@ -124,11 +128,11 @@
     &lt;/div&gt;
     &lt;div class="faqItem"&gt;
       &lt;div class="qRow"&gt;
-        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 운전자보험과 자동차보험 차이는?&lt;/h3&gt;
+        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 유사 상품과의 차이는 무엇인가요?&lt;/h3&gt;
         &lt;span class="ar up"&gt;&lt;/span&gt;
       &lt;/div&gt;
       &lt;div class="aRow"&gt;
-        &lt;p&gt;&lt;span class="aMark"&gt;A.&lt;/span&gt; 형사적 책임 보장을 중심으로 설명...&lt;/p&gt;
+        &lt;p&gt;&lt;span class="aMark"&gt;A.&lt;/span&gt; 보장 범위 차이를 중심으로 설명...&lt;/p&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -138,55 +142,55 @@
                     <article class="code-card">
                         <h3>3) 스키마 단일 관리 + 보종별 공통 구조</h3>
                         <p>보종별 변수 맵을 공통으로 관리하고, 페이지 키 기준으로 메타/JSON-LD를 분기 출력하도록 구성해 유지보수 효율을 높인 구조입니다.</p>
-                        <pre><code class="language-php">&lt;!-- pageVar2026.html --&gt;
+                        <pre><code class="language-php">&lt;!-- page-vars.php : 상품(보종)별 변수 맵 단일 관리 --&gt;
 &lt;?php
 if (!isset($page_var_key)) $page_var_key = '';
 
 $page_var_map = [
-  'driver' =&gt; [
-    'utm_content' =&gt; 'driver',
-    'JEHUSA_CD' =&gt; 'C5204',
-    'init_msg' =&gt; '운전자',
+  'product-a' =&gt; [
+    'utm_content'         =&gt; 'product-a',
+    'product_code'        =&gt; 'A0000',
+    'init_msg'            =&gt; '상품 A',
     'show_chatbot_banner' =&gt; true,
     'show_chatbot_widget' =&gt; true,
-    'result_site_name' =&gt; '운전자보험',
+    'result_site_name'    =&gt; '상품 A',
   ],
-  'care' =&gt; [
-    'utm_content' =&gt; 'care',
-    'JEHUSA_CD' =&gt; 'C5987',
-    'init_msg' =&gt; '초경증',
+  'product-b' =&gt; [
+    'utm_content'         =&gt; 'product-b',
+    'product_code'        =&gt; 'B0000',
+    'init_msg'            =&gt; '상품 B',
     'show_chatbot_banner' =&gt; false,
     'show_chatbot_widget' =&gt; false,
-    'result_site_name' =&gt; '간병보험',
+    'result_site_name'    =&gt; '상품 B',
   ],
 ];
 
-$page_var = isset($page_var_map[$page_var_key]) ? $page_var_map[$page_var_key] : [];
-$hero_utm_content = isset($page_var['utm_content']) ? $page_var['utm_content'] : '';
-$hero_JEHUSA_CD = isset($page_var['JEHUSA_CD']) ? $page_var['JEHUSA_CD'] : '';
+$page_var      = isset($page_var_map[$page_var_key]) ? $page_var_map[$page_var_key] : [];
+$hero_utm      = isset($page_var['utm_content']) ? $page_var['utm_content'] : '';
+$hero_code     = isset($page_var['product_code']) ? $page_var['product_code'] : '';
 $hero_init_msg = isset($page_var['init_msg']) ? $page_var['init_msg'] : '';
 ?&gt;
 
-&lt;!-- schema-guide.php --&gt;
+&lt;!-- schema-guide.php : 페이지 키 기준 메타/JSON-LD 분기 출력 --&gt;
 &lt;?php
-if (!function_exists('db_print_guide_geo_meta')) {
-  function db_print_guide_geo_meta($schema_key = '') {
-    if ($schema_key === 'driver-01') {
-      echo "\t&lt;link rel=\"canonical\" href=\"https://dbinsure.co.kr/guide/driver-01\"&gt;\n";
+if (!function_exists('print_guide_geo_meta')) {
+  function print_guide_geo_meta($schema_key = '') {
+    if ($schema_key === 'guide-01') {
+      echo "\t&lt;link rel=\"canonical\" href=\"https://example.com/guide/guide-01\"&gt;\n";
       echo "\t&lt;meta property=\"article:published_time\" content=\"2026-04-06T00:00:00+09:00\"&gt;\n";
       return;
     }
   }
 }
 
-if (!function_exists('db_print_guide_structured_data')) {
-  function db_print_guide_structured_data($schema_key = '') {
-    if ($schema_key === 'driver-01') {
+if (!function_exists('print_guide_structured_data')) {
+  function print_guide_structured_data($schema_key = '') {
+    if ($schema_key === 'guide-01') {
       // [1] Organization, [2] BreadcrumbList, [3] Article, [4] FAQPage, [5] HowTo 출력
       echo '&lt;script type="application/ld+json"&gt;...&lt;/script&gt;';
       return;
     }
-    db_print_insurance_agency_json_ld($schema_key);
+    print_default_json_ld($schema_key);
   }
 }
 ?&gt;</code></pre>
@@ -195,18 +199,18 @@ if (!function_exists('db_print_guide_structured_data')) {
                     <article class="code-card">
                         <h3>4) 보험 가이드 SEO, AEO 작업</h3>
                         <p>가이드 상세 페이지에 AI를 이용해 스키마를 작성·연결하고, 검색/공유/AI 인용까지 고려한 메타 구성을 적용한 사례입니다.</p>
-                        <pre><code class="language-html">&lt;title&gt;운전자보험은 왜 필요할까요? ... | DB손해보험&lt;/title&gt;
-&lt;meta name="description" content="자동차보험만으로는 부족한 ..."&gt;
-&lt;meta name="keywords" content="운전자보험, 자동차보험, 교통사고처리지원금"&gt;
-&lt;link rel="canonical" href="https://dbinsure.co.kr/guide/driver-01"&gt;
-&lt;meta property="og:url" content="https://dbinsure.co.kr/guide/driver-01"&gt;
+                        <pre><code class="language-html">&lt;title&gt;가이드 페이지 제목 ... | ○○보험&lt;/title&gt;
+&lt;meta name="description" content="가이드 페이지 요약 설명 ..."&gt;
+&lt;meta name="keywords" content="키워드1, 키워드2, 키워드3"&gt;
+&lt;link rel="canonical" href="https://example.com/guide/guide-01"&gt;
+&lt;meta property="og:url" content="https://example.com/guide/guide-01"&gt;
 &lt;meta property="article:published_time" content="2026-03-25T00:00:00+09:00"&gt;
 
 &lt;script type="application/ld+json"&gt;
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "운전자보험은 왜 필요할까요? ...",
+  "headline": "가이드 페이지 제목 ...",
   "datePublished": "2026-03-25",
   "dateModified": "2026-04-06"
 }
@@ -217,7 +221,7 @@ if (!function_exists('db_print_guide_structured_data')) {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "position": 1, "name": "홈" },
-    { "position": 2, "name": "보험 가이드" }
+    { "position": 2, "name": "가이드" }
   ]
 }
 &lt;/script&gt;
@@ -264,6 +268,9 @@ if (!function_exists('db_print_guide_structured_data')) {
                     </a>
                     <a href="https://m.dbinsure.co.kr/" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-secondary">
                         📱 모바일 버전 →
+                    </a>
+                    <a href="diagnostic.html" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-secondary">
+                        📊 AI 구조 진단 리포트 →
                     </a>
                 </div>
             </section>

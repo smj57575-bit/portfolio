@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OO손해보험 랜딩페이지 진단 리포트 (2026 리뉴얼)</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.5; }
+  .page { max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+  .subtitle { color: #64748b; font-size: 14px; margin-bottom: 40px; }
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 20px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; gap: 10px; }
+  .section-num { background: #1e293b; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+  .section-desc { font-size: 13px; color: #64748b; margin-bottom: 16px; }
+
+  /* Alert cards */
+  .alerts { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .alert { padding: 16px 20px; border-radius: 10px; border-left: 4px solid; }
+  .alert-critical { background: #fef2f2; border-color: #dc2626; }
+  .alert-warning { background: #fffbeb; border-color: #f59e0b; }
+  .alert-info { background: #eff6ff; border-color: #3b82f6; }
+  .alert-ok { background: #f0fdf4; border-color: #16a34a; }
+  .alert-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .alert-critical .alert-label { color: #dc2626; }
+  .alert-warning .alert-label { color: #f59e0b; }
+  .alert-info .alert-label { color: #3b82f6; }
+  .alert-ok .alert-label { color: #16a34a; }
+  .alert-text { font-size: 14px; font-weight: 600; }
+  .alert-detail { font-size: 12px; color: #64748b; margin-top: 2px; }
+
+  /* Stats row */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; text-align: center; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #1e293b; }
+  .stat-label { font-size: 12px; color: #64748b; }
+
+  /* Diagram */
+  .diagram { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; overflow-x: auto; }
+
+  /* Main matrix table */
+  .matrix { width: 100%; border-collapse: collapse; font-size: 12px; white-space: nowrap; }
+  .matrix th { padding: 8px 6px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: 600; color: #475569; text-align: center; position: sticky; top: 0; z-index: 1; }
+  .matrix th:first-child { text-align: left; min-width: 120px; }
+  .matrix td { padding: 6px; border-bottom: 1px solid #f1f5f9; text-align: center; }
+  .matrix td:first-child { text-align: left; font-weight: 600; font-size: 12px; color: #334155; }
+  .matrix tr:hover { background: #f8fafc; }
+  .matrix .group-header td { background: #f1f5f9; font-weight: 700; font-size: 12px; color: #475569; border-bottom: 2px solid #e2e8f0; }
+
+  /* Badges */
+  .b { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .b-ok { background: #dcfce7; color: #166534; }
+  .b-warn { background: #fef3c7; color: #92400e; }
+  .b-err { background: #fecdd3; color: #9f1239; }
+  .b-info { background: #dbeafe; color: #1e40af; }
+  .b-gray { background: #f1f5f9; color: #64748b; }
+  .b-purple { background: #f3e8ff; color: #7c3aed; }
+
+  /* Expiry colors */
+  .exp-expired { color: #dc2626; font-weight: 700; }
+  .exp-urgent { color: #ea580c; font-weight: 700; }
+  .exp-soon { color: #f59e0b; font-weight: 600; }
+  .exp-ok { color: #16a34a; }
+
+  /* Diff table */
+  .diff-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .diff-table th { padding: 8px 10px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: 600; color: #475569; text-align: left; }
+  .diff-table td { padding: 8px 10px; border-bottom: 1px solid #f1f5f9; font-size: 12px; }
+  .diff-table tr:hover { background: #f8fafc; }
+  .diff-prod { background: #eff6ff; }
+  .diff-dev { background: #f0fdf4; }
+  .diff-gap { background: #fef2f2; }
+
+  /* Recommendation matrix */
+  .rec-matrix { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .rec-matrix th { padding: 6px 4px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: 600; color: #475569; text-align: center; writing-mode: vertical-lr; text-orientation: mixed; height: 80px; white-space: nowrap; }
+  .rec-matrix th:first-child { writing-mode: horizontal-tb; text-align: left; min-width: 100px; height: auto; }
+  .rec-matrix td { padding: 4px; border-bottom: 1px solid #f1f5f9; text-align: center; width: 44px; height: 30px; }
+  .rec-matrix td:first-child { text-align: left; font-weight: 600; font-size: 11px; color: #334155; width: auto; }
+  .rec-matrix tr:hover { background: #f8fafc; }
+  .rec-hit { background: #dcfce7; color: #166534; font-weight: 700; }
+  .rec-self { background: #f1f5f9; color: #cbd5e1; }
+  .rec-none { color: #e2e8f0; }
+
+  /* Connection matrix (section 7): horizontal headers */
+  .conn-matrix th { writing-mode: horizontal-tb; text-orientation: mixed; height: auto; padding: 6px 5px; white-space: nowrap; text-align: center; }
+  .conn-matrix th:first-child { min-width: 220px; }
+  .conn-matrix td { width: auto; min-width: 28px; }
+  .conn-matrix td:first-child { white-space: nowrap; }
+
+  /* Legend */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; margin-bottom: 12px; }
+  .legend span { display: inline-flex; align-items: center; gap: 4px; }
+
+  /* Issue list */
+  .issue-list { list-style: none; }
+  .issue-list li { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; font-size: 13px; display: flex; gap: 10px; align-items: flex-start; }
+  .issue-list li:last-child { border-bottom: none; }
+  .issue-num { background: #e2e8f0; color: #475569; width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 4px; font-size: 11px; color: #be123c; }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { padding: 20px; }
+    .section { page-break-inside: avoid; }
+    .diagram { border: 1px solid #ddd; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>OO손해보험 랜딩페이지 진단 리포트 <span style="font-size:15px;color:#7c3aed;font-weight:700">2026 리뉴얼</span></h1>
+<p class="subtitle">대상: <strong>stg/pc + stg/mobile</strong> (운영 반영 대상) &mdash; 2026 include 아키텍처 전면 적용 &mdash; 기준일: 2026-06-29</p>
+
+<!-- =============================== -->
+<!-- ALERTS -->
+<!-- =============================== -->
+<div class="alerts">
+  <div class="alert alert-ok">
+    <div class="alert-label">정상</div>
+    <div class="alert-text">전 상품 준법번호 정상</div>
+    <div class="alert-detail">활성 16건 모두 2027년 만료 &mdash; 최단 auto D-239 (2027.02.23). 리뉴얼로 만료/임박 0건</div>
+  </div>
+  <div class="alert alert-critical">
+    <div class="alert-label">Critical</div>
+    <div class="alert-text">GNB &rarr; mind 링크 깨짐</div>
+    <div class="alert-detail">nav.inc이 <code>mind?PRODUCT_CD=P16</code> 링크. 그러나 mind.html 미존재 &rarr; 404</div>
+  </div>
+  <div class="alert alert-warning">
+    <div class="alert-label">Warning</div>
+    <div class="alert-text">legacy-a / legacy-b 레거시 준법 (PC+MO)</div>
+    <div class="alert-detail">공통 제2025-####호 D-63 (2026.08.31). + MO에 만료된 제2023-####호(2024.12.03) 잔존</div>
+  </div>
+  <div class="alert alert-info">
+    <div class="alert-label">Info</div>
+    <div class="alert-text">에셋/JS 폴더 다중 잔존</div>
+    <div class="alert-detail">common/img(216, 활성) + img/(32, 레거시) + images/(33, favicon·메타). js/도 레거시 잔존</div>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 1. OVERVIEW STATS -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">1</span> 현황 요약</div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">14</div><div class="stat-label">PC 상품 랜딩 (+index=auto)</div></div>
+    <div class="stat"><div class="stat-num">216</div><div class="stat-label">common/img 이미지</div></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">2026 공통 include</div></div>
+    <div class="stat"><div class="stat-num">4</div><div class="stat-label">공유 CSS</div></div>
+    <div class="stat"><div class="stat-num" style="color:#16a34a">0</div><div class="stat-label">준법 만료/임박 (활성)</div></div>
+    <div class="stat"><div class="stat-num" style="color:#dc2626">1</div><div class="stat-label">GNB 깨진 링크 (mind)</div></div>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 2. COMPLIANCE MATRIX -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">2</span> 준법심의번호 만료 타임라인</div>
+  <p class="section-desc">기준일 2026-06-29. 만료 90일 이내 = 주의, 30일 이내 = 긴급, 만료 = 위험. PC/모바일은 <strong>각각 별도 준법번호</strong>를 받으며(보통 연번 ±1), 만료일·상태는 동일. 활성 준법번호는 PC <code>pc/_inc/page-vars.inc</code>, 모바일 <code>mobile/_inc/page-vars.inc</code>에서 각각 중앙 관리.</p>
+  <div class="diagram">
+    <table class="matrix">
+      <thead>
+        <tr><th>페이지</th><th>PRODUCT_CD</th><th>PC 준법번호</th><th>MO 준법번호</th><th>만료일</th><th>D-Day</th><th>상태</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>auto / index (운전자)</td><td>P01</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.02.23</td><td>D-239</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>wholehealth (종합건강)</td><td>P02</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.05</td><td>D-249</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>circulatory (순환계)</td><td>P03</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.16</td><td>D-260</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>care (간병/초경증)</td><td>P04</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.16</td><td>D-260</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>cancer (암)</td><td>P05</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.17</td><td>D-261</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>dementia (간병치매)</td><td>P06</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.17</td><td>D-261</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>coverage (보장분석)</td><td>P07</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.03.29</td><td>D-273</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>surgery (진단수술)</td><td>P08</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.03</td><td>D-308</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>indemnity (실손)</td><td>P09</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.05</td><td>D-310</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>property (생활종합)</td><td>P10</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.18</td><td>D-323</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>rider (라이더)</td><td>P11</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.18</td><td>D-323</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>dental (치아)</td><td>P12</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.21</td><td>D-326</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>kids (자녀)</td><td>P13</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.27</td><td>D-332</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>chronic (고당지)</td><td>P14</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.27</td><td>D-332</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr><td>livingcost (치료생활비)</td><td>P15</td><td>제2026-####호</td><td>제2026-####호</td><td class="exp-ok">2027.05.31</td><td>D-336</td><td><span class="b b-ok">정상</span></td></tr>
+        <tr style="background:#fffbeb"><td>legacy-a / legacy-b (레거시)</td><td>P01</td><td>제2025-####호</td><td>제2025-####호</td><td class="exp-soon">2026.08.31</td><td class="exp-soon">D-63</td><td><span class="b b-warn">주의</span></td></tr>
+        <tr style="background:#fef2f2"><td>legacy-a / legacy-b <span style="color:#94a3b8">(MO 잔존)</span></td><td>&mdash;</td><td class="exp-ok">&mdash;</td><td>제2023-####호</td><td class="exp-expired">2024.12.03</td><td class="exp-expired">D+938</td><td><span class="b b-err">만료</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="section-desc" style="margin-top:12px">※ 유효기간 시작~만료(예: auto PC 26.02.24~27.02.23, MO 동일). 모바일 legacy-a/legacy-b에는 갱신된 제2025-####호와 함께 <strong>이미 만료된 제2023-####호(2024.12.03)</strong>가 같이 남아 있어 정리 필요(이슈 #2 참조).</p>
+</div>
+
+<!-- =============================== -->
+<!-- 3. BEFORE / AFTER ARCHITECTURE -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">3</span> 리뉴얼 전후 아키텍처 변화</div>
+  <p class="section-desc">구버전(페이지별 인라인) &rarr; 2026 include 기반 중앙화 구조로 전환. 구 진단리포트의 "이미지 경로 불일치 / 준법 만료 / CSS 롤아웃 미완료" 이슈는 대부분 해소됨.</p>
+  <div class="diagram">
+    <table class="diff-table">
+      <thead>
+        <tr><th>항목</th><th>구버전 (~2026.03)</th><th>2026 리뉴얼 (현재)</th><th>효과</th></tr>
+      </thead>
+      <tbody>
+        <tr class="diff-dev">
+          <td><strong>상품 변수</strong> (PRODUCT/utm/init_msg)</td>
+          <td>페이지별 하드코딩</td>
+          <td><code>_inc/page-vars.inc</code> $page_var_map 단일 맵</td>
+          <td><span class="b b-ok">해결</span> 1곳 수정</td>
+        </tr>
+        <tr class="diff-dev">
+          <td><strong>준법심의번호</strong></td>
+          <td>페이지별 footer 인라인. 만료 다수</td>
+          <td>page-vars <code>compliance_text</code> 중앙화. 전 상품 2027 만료</td>
+          <td><span class="b b-ok">해결</span> 만료 0건</td>
+        </tr>
+        <tr class="diff-dev">
+          <td><strong>크로스셀 추천</strong></td>
+          <td>페이지별 수동 HTML, 7개 페이지는 추천 없음</td>
+          <td><code>pages.js</code> CROSS_PRODUCTS + <code>data-plan</code> 자동 렌더. 전 상품 4카드</td>
+          <td><span class="b b-ok">해결</span> 누락 0</td>
+        </tr>
+        <tr class="diff-dev">
+          <td><strong>head / 메타</strong></td>
+          <td>페이지별 메타 작성</td>
+          <td><code>_inc/head.inc</code> 공통 (기본값 + 페이지 override)</td>
+          <td><span class="b b-ok">통합</span></td>
+        </tr>
+        <tr class="diff-dev">
+          <td><strong>폼 / 팝업</strong></td>
+          <td>페이지별 폼 중복</td>
+          <td><code>heroForm</code> + <code>pageCommon</code> 공통 (toast·동의·결과 팝업 포함)</td>
+          <td><span class="b b-ok">통합</span></td>
+        </tr>
+        <tr class="diff-dev">
+          <td><strong>CSS</strong></td>
+          <td>content-old.css + content-2024.css(부분 롤아웃)</td>
+          <td><code>layout-new.css</code> + <code>pages.css</code> (content-old.css 링크 제거 완료)</td>
+          <td><span class="b b-ok">통합</span></td>
+        </tr>
+        <tr>
+          <td><strong>이미지</strong></td>
+          <td>img/ + images/ 분리, 경로 불일치</td>
+          <td><code>common/img/{상품}/</code> 구조화 (216개)</td>
+          <td><span class="b b-warn">일부</span> img/·images/ 잔존</td>
+        </tr>
+        <tr>
+          <td><strong>JS</strong></td>
+          <td>js/ 단일 (common-legacy 등)</td>
+          <td><code>common/js/</code> 신규 (common·untils·pages·renew-ui)</td>
+          <td><span class="b b-warn">일부</span> js/ 레거시 잔존</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 4. PAGE FEATURE MATRIX -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">4</span> 페이지별 기능 매트릭스</div>
+  <p class="section-desc">page-vars 설정값 기준. 전 상품 동일 구조(탭 콘텐츠 + heroForm + RoundSwiper) 공유, 차이는 변수값.</p>
+  <div class="legend">
+    <span><span class="b b-ok">ON</span> = 노출</span>
+    <span><span class="b b-gray">OFF</span> = 비노출</span>
+    <span><span class="b b-purple">크로스셀</span> = data-plan 추천카드</span>
+  </div>
+  <div class="diagram" style="overflow-x:auto">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>페이지</th>
+          <th>상단배너<br><span style="font-weight:400;color:#94a3b8">show_topbnr</span></th>
+          <th>챗봇배너</th>
+          <th>챗봇위젯</th>
+          <th>크로스셀<br><span style="font-weight:400;color:#94a3b8">카드 수</span></th>
+          <th>가입 연령</th>
+          <th>그룹</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="7">운전자/라이더</td></tr>
+        <tr><td>auto / index</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~78세</td><td><span class="b b-ok">운전자</span></td></tr>
+        <tr><td>rider</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~70세</td><td><span class="b b-ok">운전자</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">종합/건강</td></tr>
+        <tr><td>wholehealth (비갱신)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~49세</td><td><span class="b b-info">건강</span></td></tr>
+        <tr><td>circulatory (순환계)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~60세</td><td><span class="b b-info">건강</span></td></tr>
+        <tr><td>surgery (진단수술)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td><span class="b b-info">15~40세</span></td><td><span class="b b-info">건강</span></td></tr>
+        <tr><td>chronic (고당지)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td>4</td><td>20~60세</td><td><span class="b b-info">건강</span></td></tr>
+        <tr><td>livingcost (치료생활비)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td>4</td><td>20~60세</td><td><span class="b b-info">건강</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">암/치아</td></tr>
+        <tr><td>cancer (암)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~60세</td><td><span class="b b-warn">암/치아</span></td></tr>
+        <tr><td>dental (치아)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~60세</td><td><span class="b b-warn">암/치아</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">실손</td></tr>
+        <tr><td>indemnity (실손)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~65세</td><td><span class="b b-purple">실손</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">자녀/간병/생활</td></tr>
+        <tr><td>kids (자녀)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td><span class="b b-info">0~15세</span></td><td><span class="b b-purple">기타</span></td></tr>
+        <tr><td>dementia (간병치매)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>40~70세</td><td><span class="b b-purple">기타</span></td></tr>
+        <tr><td>care (간병/초경증)</td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td><span class="b b-gray">OFF</span></td><td>4</td><td>20~60세</td><td><span class="b b-purple">기타</span></td></tr>
+        <tr><td>property (생활종합)</td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td><span class="b b-ok">ON</span></td><td>4</td><td>20~80세</td><td><span class="b b-purple">기타</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">독립 / 레거시</td></tr>
+        <tr><td>coverage (보장분석)</td><td><span class="b b-gray">&mdash;</span></td><td><span class="b b-gray">&mdash;</span></td><td><span class="b b-gray">&mdash;</span></td><td>0</td><td>&mdash;</td><td><span class="b b-info">허브</span></td></tr>
+        <tr><td>legacy-a / legacy-b</td><td><span class="b b-gray">&mdash;</span></td><td><span class="b b-gray">&mdash;</span></td><td><span class="b b-gray">&mdash;</span></td><td>0</td><td>&mdash;</td><td><span class="b b-err">레거시</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 5. CROSS-SELL MATRIX -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">5</span> 크로스셀 추천 매트릭스</div>
+  <p class="section-desc">각 페이지 하단 <code>.extraList[data-plan]</code>이 노출하는 추천 카드. <span style="color:#16a34a;font-weight:700">&#9679;</span> = 행(from)이 열(to)을 추천, <span style="color:#cbd5e1">&bull;</span> = 자기 자신. 카드 정의는 <code>pages.js</code> CROSS_PRODUCTS(7종). <code>@auto</code> = circulatory·cancer·dementia·care.</p>
+  <div class="diagram" style="overflow-x:auto">
+    <table class="rec-matrix conn-matrix">
+      <thead>
+        <tr>
+          <th></th>
+          <th>auto</th><th>wholehealth</th><th>circulatory</th><th>cancer</th><th>dementia</th><th>care</th><th>indemnity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>auto / index <span class="b b-gray" style="font-size:9px">@auto</span></td><td class="rec-self">&bull;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td></tr>
+        <tr><td>rider</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td></tr>
+        <tr><td>wholehealth</td><td class="rec-hit">&#9679;</td><td class="rec-self">&bull;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>circulatory</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-self">&bull;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>surgery</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>chronic</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>livingcost</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>cancer</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-self">&bull;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>dental</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>indemnity</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-self">&bull;</td></tr>
+        <tr><td>kids</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td></tr>
+        <tr><td>dementia</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-self">&bull;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>care</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-self">&bull;</td><td class="rec-hit">&#9679;</td></tr>
+        <tr><td>property</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-none">&mdash;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="section-desc" style="margin-top:12px">※ 추천 대상은 항상 CROSS_PRODUCTS 7종 내에서만 선택됨. dental·surgery·kids·rider·property·chronic·livingcost는 추천 <strong>대상(to)</strong>으로는 등록되어 있지 않음(추천을 받기만 함). care는 13개 페이지가 추천하는 최다 피추천 상품.</p>
+</div>
+
+<!-- =============================== -->
+<!-- 6. PRODUCT VARIABLE MATRIX -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">6</span> 상품 변수 매트릭스 (page-vars)</div>
+  <p class="section-desc">폼 hidden 필드(utm_content·PRODUCT_CD·init_msg)와 결과 팝업 문구의 단일 소스. 전 페이지 공통: <code>validateAgree()</code> + jQuery 1.12.4, heroForm/toast/inq 3종 폼 공유.</p>
+  <div class="diagram" style="overflow-x:auto">
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>페이지</th>
+          <th>PRODUCT_CD</th>
+          <th>utm_content</th>
+          <th>init_msg<br><span style="font-weight:400;color:#94a3b8">(상담 초기메시지)</span></th>
+          <th>result_site_name</th>
+          <th>가입 연령</th>
+          <th>특이사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="7">운전자/라이더</td></tr>
+        <tr><td>auto / index</td><td><code>P01</code></td><td>auto</td><td>운전자</td><td>운전자보험</td><td>20~78세</td><td>index = auto 동일 콘텐츠</td></tr>
+        <tr><td>rider</td><td><code>P11</code></td><td>rider</td><td>오토바이</td><td>라이더 보험</td><td>20~70세</td><td><span class="b b-gray">기본형</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">종합/건강</td></tr>
+        <tr><td>wholehealth</td><td><code>P02</code></td><td>wholehealth</td><td>종합건강보험</td><td>비갱신보험</td><td>20~49세</td><td>크로스셀 카드 보유(비갱신플랜)</td></tr>
+        <tr><td>circulatory</td><td><code>P03</code></td><td>circulatory</td><td>종합</td><td>순환계보험</td><td>20~60세</td><td>크로스셀 카드 보유(순환계플랜)</td></tr>
+        <tr><td>surgery</td><td><code>P08</code></td><td>surgery</td><td>진단수술비보험</td><td>진단수술비보험</td><td><span class="b b-info">15~40세</span></td><td>최소 가입연령 15세</td></tr>
+        <tr><td>chronic</td><td><code>P14</code></td><td>chronic</td><td>고당지</td><td>고당지보험</td><td>20~60세</td><td><span class="b b-warn">챗봇 OFF</span> 신규 상품</td></tr>
+        <tr><td>livingcost</td><td><code>P15</code></td><td>livingcost</td><td>치료생활비</td><td>치료생활비보험</td><td>20~60세</td><td><span class="b b-warn">챗봇 OFF</span> 신규 상품</td></tr>
+
+        <tr class="group-header"><td colspan="7">암/치아</td></tr>
+        <tr><td>cancer</td><td><code>P05</code></td><td>cancer</td><td>암</td><td>암보험</td><td>20~60세</td><td>크로스셀 카드 보유(암플랜)</td></tr>
+        <tr><td>dental</td><td><code>P12</code></td><td>dental</td><td>치아</td><td>치아보험</td><td>20~60세</td><td><span class="b b-gray">기본형</span></td></tr>
+
+        <tr class="group-header"><td colspan="7">실손</td></tr>
+        <tr><td>indemnity</td><td><code>P09</code></td><td>indemnity</td><td>실손표준</td><td>실손보험</td><td>20~65세</td><td>크로스셀 카드 보유(실손플랜)</td></tr>
+
+        <tr class="group-header"><td colspan="7">자녀/간병/생활</td></tr>
+        <tr><td>kids</td><td><code>P13</code></td><td>kids</td><td>자녀</td><td>자녀보험</td><td><span class="b b-info">0~15세</span></td><td>최소 가입연령 0세</td></tr>
+        <tr><td>dementia</td><td><code>P06</code></td><td>dementia</td><td>간병치매</td><td>치매보험</td><td>40~70세</td><td>크로스셀 카드 보유(치매플랜)</td></tr>
+        <tr><td>care</td><td><code>P04</code></td><td>care</td><td>초경증</td><td>간병보험</td><td>20~60세</td><td><span class="b b-warn">챗봇 OFF</span> 크로스셀 카드 보유(간병플랜)</td></tr>
+        <tr><td>property</td><td><code>P10</code></td><td>property</td><td>주택화재</td><td>생활종합보험</td><td>20~80세</td><td>최대 가입연령 80세</td></tr>
+
+        <tr class="group-header"><td colspan="7">독립 / 레거시</td></tr>
+        <tr><td>coverage</td><td><code>P07</code></td><td>&mdash;</td><td>&mdash;</td><td>보장분석</td><td>&mdash;</td><td>독립 허브(viewport 1200 고정), pageVar 미연동</td></tr>
+        <tr><td>legacy-a / legacy-b</td><td><code>P01</code></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="b b-err">레거시</span> 인라인 준법, nav 미연결</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 7. SHARED INFRASTRUCTURE -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">7</span> 페이지별 연결 구조 (.html 기준)</div>
+  <p class="section-desc">행 = include/CSS/JS 파일, 열 = 전체 페이지. <span style="color:#16a34a;font-weight:700">&#9679;</span> = 연결됨, <span style="color:#cbd5e1">&middot;</span> = 미연결. 상품 15종은 동일 체인 공유 / coverage·legacy-a·legacy-b은 독립·레거시. <sup style="color:#dc2626">M</sup> = 모바일만. PC·MO 공통(파일명 차이는 레거시행 (구) 표기 참조).</p>
+  <div class="diagram" style="overflow-x:auto">
+<table class="rec-matrix conn-matrix" style="font-size:10px">
+<thead><tr><th>파일 \ 페이지</th><th>auto</th><th>index</th><th>cancer</th><th>care</th><th>chronic</th><th>circ</th><th>dementia</th><th>property</th><th>kids</th><th>rider</th><th>indemnity</th><th>wholehealth</th><th>dental</th><th>living</th><th>surgery</th><th style="color:#7c3aed">coverage</th><th style="color:#dc2626">legacy-a</th><th style="color:#dc2626">legacy-b</th></tr></thead><tbody>
+<tr class="group-header"><td colspan="19" style="background:#f1f5f9;font-weight:700;text-align:left">Include (_inc/)</td></tr>
+<tr><td>_inc/page-vars.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/head.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/topbanner.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/nav.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/hero-form.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/content-txt.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/page-common.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/footer.inc</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>_inc/head-legacy.inc <span style="color:#dc2626">(구)</span></td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+<tr><td>_inc/footer-legacy.inc <span style="color:#dc2626">(구·MO)</span></td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit" title="모바일만">&#9679;<sup style="color:#dc2626">M</sup></td><td class="rec-hit" title="모바일만">&#9679;<sup style="color:#dc2626">M</sup></td></tr>
+<tr class="group-header"><td colspan="19" style="background:#f1f5f9;font-weight:700;text-align:left">CSS</td></tr>
+<tr><td>common/css/pages.css</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>common/css/layout-new.css</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>common/css/swiper.min.css</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>common/css/content-old.css</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>css/content-old.css <span style="color:#dc2626">(구)</span></td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+<tr><td>css/layout-old.css <span style="color:#dc2626">(구)</span></td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+<tr class="group-header"><td colspan="19" style="background:#f1f5f9;font-weight:700;text-align:left">JS</td></tr>
+<tr><td>common/js 2026번들 <span style="color:#94a3b8">jquery·common·untils·pages·renew-ui·social-login·swiper</span></td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td></tr>
+<tr><td>js/chatbot-legacy.js <span style="color:#b45309">(레거시·공용)</span></td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+<tr><td>js 레거시번들 <span style="color:#94a3b8">common(-legacy)·untils·time_control</span></td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-none">&middot;</td><td class="rec-hit">&#9679;</td><td class="rec-hit">&#9679;</td></tr>
+</tbody></table>
+  </div>
+  <p class="section-desc" style="margin-top:12px">※ <code>footer.inc</code>·<code>common/css/content-old.css</code>는 상품군 외 <strong>coverage도</strong> 사용. <code>chatbot-legacy.js</code>는 2026·레거시 양쪽에서 로드되는 유일 공용 레거시. (구) 행(head-legacy.inc·footer-legacy.inc·content(s).css·layout.css·레거시JS)은 legacy-a/legacy-b 전용 — legacy-a/legacy-b 정리 시 동반 제거(이슈 #2). 분석/마케팅 태그(GTM·GA4 등)와 외부 챗봇 플러그인은 표에서 제외.</p>
+</div>
+
+<!-- =============================== -->
+<!-- 8. KNOWN ISSUES -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">8</span> 발견된 이슈 목록</div>
+  <div class="diagram">
+    <ul class="issue-list">
+      <li><span class="issue-num" style="background:#fecdd3;color:#9f1239">1</span><div><strong>GNB &rarr; mind 링크 깨짐 (404)</strong><br><span style="color:#64748b">nav.inc이 PC/MO 모두 <code>mind?PRODUCT_CD=P16</code> 링크를 노출하나 stg/pc에 mind.html 없음. 링크 제거 또는 페이지 복원 필요.</span></div></li>
+      <li><span class="issue-num" style="background:#fecdd3;color:#9f1239">2</span><div><strong>legacy-a / legacy-b 레거시 페이지 (PC+MO) — 구조 잔존물 동반</strong><br><span style="color:#64748b">PC/MO 공통 준법 제2025-####호 2026.08.31 만료(D-63), nav 미연결 + page-vars 미연동 + 구버전 <code>_inc/head-legacy.inc</code> head 사용. 이 legacy-a/legacy-b 때문에 양 플랫폼에 아래 레거시 파일이 함께 살아 있음(legacy-a/legacy-b 정리 시 동반 제거 가능, 단독 삭제 시 legacy-a/legacy-b 깨짐).</span>
+        <table class="diff-table" style="margin-top:8px">
+          <thead><tr><th>대상</th><th>PC</th><th>모바일</th></tr></thead>
+          <tbody>
+            <tr><td><strong>구 head</strong> <code>_inc/head-legacy.inc</code></td><td><span class="b b-warn">잔존</span> legacy-a/legacy-b 전용</td><td><span class="b b-warn">잔존</span> legacy-a/legacy-b 전용</td></tr>
+            <tr><td><strong>구 푸터</strong> <code>_inc/footer-legacy.inc</code></td><td><span class="b b-ok">없음</span> (푸터 인라인)</td><td><span class="b b-warn">잔존</span> legacy-a/legacy-b 전용</td></tr>
+            <tr><td><strong>만료 준법번호</strong> 제2023-####호 (2024.12.03)</td><td><span class="b b-ok">없음</span></td><td><span class="b b-err">잔존</span> 만료 후 미삭제</td></tr>
+          </tbody>
+        </table>
+        <span style="color:#64748b;font-size:12px">→ 조치: legacy-a/legacy-b 운영 노출 여부 확인 후 페이지 갱신/삭제. 삭제 시 PC <code>head-legacy.inc</code>, MO <code>head-legacy.inc</code>+<code>footer-legacy.inc</code>+만료번호까지 동반 정리.</span>
+      </div></li>
+      <li><span class="issue-num" style="background:#fef3c7;color:#92400e">3</span><div><strong>에셋 폴더 3중 잔존</strong><br><span style="color:#64748b">common/img(216, 활성) + img/(32, 레거시) + images/(33, favicon·메타태그 썸네일). head-inc가 favicon을 images/에서 참조하므로 images/는 유지, img/ 무참조분은 정리 검토.</span></div></li>
+      <li><span class="issue-num" style="background:#dbeafe;color:#1e40af">4</span><div><strong>JS 폴더 2중 (common/js + js)</strong><br><span style="color:#64748b">신규 로직은 common/js/로 이전 완료. 단 js/chatbot-legacy.js는 head-inc에서 계속 로드 중이므로 js/ 일괄 삭제 금지 — chatbot만 잔류시키고 나머지(common-legacy·ui·time_control 등) 정리 검토.</span></div></li>
+      <li><span class="issue-num" style="background:#dbeafe;color:#1e40af">5</span><div><strong>head.inc 주석 처리 잔재</strong><br><span style="color:#64748b">content-old.css/content-2024.css 링크는 <strong>제거 완료</strong>(PC/MO 모두 pages.css+layout-new.css만 활성). 남은 주석: 공통 메타(meta.inc) include, mock.js &mdash; 메타는 재적용 여부 결정, mock은 의도적 비활성(운영) 확인 필요.</span></div></li>
+      <li><span class="issue-num" style="background:#dbeafe;color:#1e40af">6</span><div><strong>index.html = auto.html 완전 중복</strong><br><span style="color:#64748b">page_var_key·콘텐츠 동일. 홈=운전자 정책이면 의도된 것이나, 이후 auto 수정 시 index 동기화 누락 위험. include 분리 권장.</span></div></li>
+      <li><span class="issue-num" style="background:#f1f5f9;color:#64748b">7</span><div><strong>care/chronic/livingcost 챗봇 비노출</strong><br><span style="color:#64748b">show_chatbot_banner/widget = false. 신규·간병 상품 정책이면 정상이나, 타 상품 대비 이탈방지 수단 부재이므로 의도 확인.</span></div></li>
+      <li><span class="issue-num" style="background:#f1f5f9;color:#64748b">8</span><div><strong>크로스셀 대상 비대칭</strong><br><span style="color:#64748b">CROSS_PRODUCTS 7종(auto·wholehealth·circulatory·cancer·dementia·care·indemnity)만 추천 대상. dental·surgery·kids·rider·property·chronic·livingcost는 추천을 받기만 하고 추천 풀에는 미등록 — 노출 형평성 검토 가능.</span></div></li>
+      <li><span class="issue-num" style="background:#f1f5f9;color:#64748b">9</span><div><strong>coverage 독립 구조</strong><br><span style="color:#64748b">viewport width=1200 고정, page-vars·nav-inc 미연동 독립 페이지. 2026 공통 구조 편입 여부 검토.</span></div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- =============================== -->
+<!-- 9. RENEWAL SUMMARY -->
+<!-- =============================== -->
+<div class="section">
+  <div class="section-title"><span class="section-num">9</span> 리뉴얼 요약 (2026)</div>
+  <div class="diagram">
+    <table class="diff-table">
+      <thead>
+        <tr><th>영역</th><th>내용</th><th>상태</th></tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f0fdf4"><td><strong>준법번호</strong></td><td>활성 16건 전부 2027년 만료로 갱신. 구버전 만료/임박(구버전 상품 등) 페이지 제거</td><td><span class="b b-ok">완료</span></td></tr>
+        <tr style="background:#f0fdf4"><td><strong>변수 중앙화</strong></td><td>PRODUCT·utm·init_msg·준법·가입연령·챗봇 플래그를 page-vars 단일 맵으로 통합</td><td><span class="b b-ok">완료</span></td></tr>
+        <tr style="background:#f0fdf4"><td><strong>크로스셀 자동화</strong></td><td>pages.js CROSS_PRODUCTS + data-plan 자동 렌더. 전 상품 4카드 노출(구버전 7페이지 누락 해소)</td><td><span class="b b-ok">완료</span></td></tr>
+        <tr style="background:#f0fdf4"><td><strong>공통 include</strong></td><td>head-inc·nav-inc·topbanner·heroForm·pageCommon·footer-inc·content-txt 8종으로 head·폼·팝업·푸터 통합</td><td><span class="b b-ok">완료</span></td></tr>
+        <tr style="background:#f0fdf4"><td><strong>CSS/이미지</strong></td><td>layout-new.css+pages.css 통합, common/img/{상품}/ 구조화</td><td><span class="b b-ok">완료</span></td></tr>
+        <tr><td><strong>신규 상품</strong></td><td>chronic(고당지)·livingcost(치료생활비) 추가, surgery 진단수술비로 리포지셔닝</td><td><span class="b b-info">신규</span></td></tr>
+        <tr><td><strong>잔여 정리</strong></td><td>mind 깨진 링크, legacy-a/legacy-b 레거시, img·js 레거시 폴더, head-inc 잔여 주석(meta.inc·mock) &mdash; content-old.css 주석은 제거 완료</td><td><span class="b b-warn">진행필요</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<p style="text-align:center; color:#94a3b8; font-size:12px; margin-top:40px;">Generated 2026-06-29 &mdash; OO손해보험 랜딩페이지 진단 리포트 (2026 리뉴얼 / 대상: stg/pc + stg/mobile)</p>
+</div>
+</body>
+</html>
