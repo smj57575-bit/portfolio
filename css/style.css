@@ -98,6 +98,24 @@ a { color: inherit; text-decoration: none; }
 .link-btn-secondary { background: #111; }
 
 /* ==============================
+   AI Process (Vibe Coding)
+============================== */
+.ai-lead { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: linear-gradient(135deg, rgba(0, 102, 255, 0.12), rgba(255, 0, 153, 0.12)); border: 1px solid rgba(0, 0, 0, 0.06); font-size: 0.82rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 16px; }
+.ai-steps { display: grid; gap: 16px; margin-top: 24px; }
+.ai-step { position: relative; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 14px; background: #fff; padding: 20px 20px 20px 64px; }
+.ai-step::before { content: attr(data-step); position: absolute; left: 16px; top: 20px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: linear-gradient(135deg, #0066ff, #ff0099); color: #fff; font-weight: 800; font-size: 0.95rem; }
+.ai-step h3 { font-size: 1.05rem; margin-bottom: 8px; letter-spacing: -0.01em; }
+.ai-step p { color: rgba(0, 0, 0, 0.7); font-size: 0.95rem; line-height: 1.75; margin: 0; }
+.ai-step .ai-tag { display: inline-block; margin-top: 12px; font-size: 0.78rem; font-weight: 700; color: #0055d4; background: rgba(0, 102, 255, 0.08); border-radius: 6px; padding: 4px 8px; }
+.ai-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 24px; padding: 18px; border-radius: 14px; background: rgba(0, 0, 0, 0.03); }
+.ai-flow__node { padding: 8px 14px; border-radius: 999px; background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); font-size: 0.85rem; font-weight: 700; }
+.ai-flow__arrow { color: rgba(0, 0, 0, 0.35); font-weight: 700; }
+.ai-result { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 24px; }
+.ai-result__item { border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px; padding: 16px; background: #fff; }
+.ai-result__num { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; background: linear-gradient(135deg, #0066ff, #ff0099); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.ai-result__label { display: block; margin-top: 6px; font-size: 0.85rem; color: rgba(0, 0, 0, 0.65); line-height: 1.5; }
+
+/* ==============================
    Detail Responsive
 ============================== */
 @media (max-width: 768px) {
@@ -105,4 +123,6 @@ a { color: inherit; text-decoration: none; }
     .detail-body .container { width: calc(100% - 28px); padding: 32px 0; }
     .detail-title { font-size: 1.5rem; }
     .section-title { font-size: 1.15rem; }
+    .ai-step { padding: 18px 16px 16px 56px; }
+    .ai-step::before { left: 12px; }
 }
