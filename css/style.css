@@ -205,15 +205,16 @@ details.code-card[open] > summary::after { transform: rotate(-135deg); top: 26px
 .filter-chip.is-active { background: #111; border-color: #111; color: #fff; }
 .filter-chip.is-active small { color: rgba(255, 255, 255, 0.55); }
 .design-grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-.design-card { min-width: 0; }
-.design-card a { display: block; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 14px; overflow: hidden; background: #fff; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s, border-color 0.25s; }
+.design-card { min-width: 0; display: flex; }
+.design-card a { display: flex; flex-direction: column; width: 100%; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 14px; overflow: hidden; background: #fff; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s, border-color 0.25s; }
 .design-card a:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1); border-color: rgba(0, 102, 255, 0.25); }
 /* 리스트 썸네일은 분류와 상관없이 전부 같은 크기 (원본은 클릭 시 뷰어에서 확인) */
 .design-card__thumb { display: block; aspect-ratio: 4 / 3; background: #f3f4f6; overflow: hidden; }
 .design-card__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-.design-card__meta { display: block; padding: 12px 14px 14px; }
+.design-card__meta { display: block; flex: 1; padding: 12px 14px 14px; }
 .design-card__cat { display: inline-block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; color: #0055d4; }
-.design-card__title { display: block; margin-top: 5px; font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: rgba(0, 0, 0, 0.82); }
+/* 제목을 2줄로 고정해 모바일에서도 카드 높이가 전부 같도록 맞춤 */
+.design-card__title { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin-top: 5px; min-height: calc(0.9rem * 1.45 * 2); font-size: 0.9rem; font-weight: 600; line-height: 1.45; color: rgba(0, 0, 0, 0.82); }
 .design-card[hidden] { display: none; }
 @media (max-width: 980px) {
     .design-grid { grid-template-columns: repeat(3, 1fr); }
