@@ -23,55 +23,132 @@
         </header>
 
         <main class="container">
-            <div class="detail-header">
-                <h1 class="detail-title">IRC국제구조위원회 가자 캠페인 페이지</h1>
-                <div class="detail-meta">
-                    <span>📅 2026년 1월</span>
-                    <span>👤 역할: UI/UX 퍼블리셔</span>
+            <div class="detail-hero">
+                <div class="hero-kicker">
+                    <span class="status-pill">캠페인 2건</span>
+                    <span>2026년</span>
+                    <span>UI/UX 퍼블리셔</span>
                 </div>
-            </div>
 
-            <section class="detail-section">
-                <h2 class="section-title">프로젝트 개요</h2>
-                <p class="section-content">
-                    국제구조위원회(IRC) 캠페인 후원을 유도하기 위한 랜딩 페이지 구축 프로젝트입니다. 디자인 시안과 동일한 퀄리티로 구현하는 데 중점을 두고 퍼블리싱을 진행했으며, 감정적인 메시지를 효과적으로 전달할 수 있도록 비주얼 완성도를 높이는 방향으로 작업했습니다.
+                <h1 class="detail-title">IRC 국제구조위원회 캠페인 페이지</h1>
+
+                <p class="detail-lead">
+                    국제구조위원회의 모금 캠페인 랜딩 페이지를 두 건 퍼블리싱했습니다. 시안 재현도와 함께 후원 전환까지 끊기지 않는 화면 흐름에 중점을 뒀습니다.
                 </p>
-            </section>
 
-            <section class="detail-section">
-                <h2 class="section-title">주요 역할 및 업무</h2>
-                <p class="section-content">
-                    <strong>• 디자인 시안 고정밀 구현</strong><br>
-                    캠페인 특성에 맞춰 디자인 시안과 동일한 비주얼 퀄리티를 목표로 퍼블리싱하고, 핵심 메시지 전달력이 유지되도록 화면 요소를 정교하게 구현<br><br>
-                    <strong>• 인터랙션 연출</strong><br>
-                    눈 내리는 애니메이션 등 시각적 인터랙션을 추가해 사용자의 몰입감과 체류 경험을 강화<br><br>
-                    <strong>• 반응형 레이아웃 및 이미지 품질 관리</strong><br>
-                    PC/모바일 모든 환경에서 자연스럽게 동작하도록 반응형 구조를 적용하고, 고해상도 이미지 최적화와 일관된 비율 유지를 통해 완성도 높은 화면 구현<br><br>
-                    <strong>• 가독성 중심 타이포그래피 조정</strong><br>
-                    캠페인 메시지가 명확히 전달되도록 폰트, 줄 간격, 텍스트 대비를 조정해 읽기 경험 개선<br><br>
-                    <strong>• 성능 최적화</strong><br>
-                    이미지 지연 로딩(Lazy Loading)과 CSS 최소화를 적용해 로딩 부담을 줄이고 페이지 응답성 향상
-                </p>
-            </section>
+                <dl class="detail-summary">
+                    <div>
+                        <dt>담당 범위</dt>
+                        <dd>반응형 퍼블리싱 · 인터랙션 · 성능</dd>
+                    </div>
+                    <div>
+                        <dt>캠페인</dt>
+                        <dd>가자 겨울 / 케냐 다다브</dd>
+                    </div>
+                    <div>
+                        <dt>공통 구조</dt>
+                        <dd>섹션 네이밍 · 브레이크포인트 규칙</dd>
+                    </div>
+                    <div>
+                        <dt>클라이언트 피드백</dt>
+                        <dd>성과 2배, 예산 2배 확대 예정</dd>
+                    </div>
+                </dl>
 
-            <section class="detail-section">
-                <h2 class="section-title">기술 스택</h2>
                 <div class="tech-stack">
                     <span class="tech-badge">HTML5</span>
                     <span class="tech-badge">CSS3</span>
                     <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">jQuery</span>
                     <span class="tech-badge">Figma</span>
+                </div>
+            </div>
+
+            <section class="detail-section">
+                <div class="section-head">
+                    <span class="section-head__idx">01</span>
+                    <h2 class="section-title">담당한 캠페인</h2>
+                </div>
+                <div class="case-list">
+                    <article class="case">
+                        <a class="case__shot" href="https://help.rescue.or.kr/winter2026/" target="_blank" rel="noopener noreferrer">
+                            <img src="./images/irc-winter.png" alt="가자 겨울 캠페인 페이지 메인 화면" loading="lazy">
+                        </a>
+                        <div class="case__body">
+                            <h3 class="case__name">가자 겨울 캠페인</h3>
+                            <p class="case__meta">2026.01 · winter2026</p>
+                            <p class="case__desc">
+                                분쟁 지역의 겨울을 다룬 모금 캠페인입니다. 눈 내리는 연출과 고해상도 비주얼로 메시지 몰입도를 높이고, 모바일에서는 플로팅 후원 버튼으로 CTA가 항상 보이게 했습니다.
+                            </p>
+                            <div class="case__tags">
+                                <span class="case__tag">인터랙션 연출</span>
+                                <span class="case__tag">이미지 최적화</span>
+                                <span class="case__tag">플로팅 CTA</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="case">
+                        <a class="case__shot" href="https://help.rescue.or.kr/jangminho/" target="_blank" rel="noopener noreferrer">
+                            <img src="./images/irc-jangminho.png" alt="장민호 × 국제구조위원회 케냐 다다브 캠페인 페이지 메인 화면" loading="lazy">
+                        </a>
+                        <div class="case__body">
+                            <h3 class="case__name">장민호 × IRC 케냐 다다브</h3>
+                            <p class="case__meta">2026 · jangminho</p>
+                            <p class="case__desc">
+                                가수 장민호와 협업한 난민캠프 지원 캠페인입니다. 영상 플레이어, FAQ 아코디언, 정기후원 옵션, 재정 투명성 인포그래픽까지 정보 요소가 많아 섹션 단위 구조 설계에 비중을 뒀습니다.
+                            </p>
+                            <div class="case__tags">
+                                <span class="case__tag">영상 플레이어</span>
+                                <span class="case__tag">FAQ 아코디언</span>
+                                <span class="case__tag">인포그래픽</span>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
             <section class="detail-section">
-                <h2 class="section-title">주요 코드 미리보기</h2>
-                <p class="section-content">※ 실제 운영 파일을 그대로 공개하는 대신, 핵심 구현 방식을 일반화한 예시 코드입니다. (기관명·도메인·내부 경로는 대표 예시로 대체)</p>
+                <div class="section-head">
+                    <span class="section-head__idx">02</span>
+                    <h2 class="section-title">담당 업무</h2>
+                </div>
+                <ul class="work-grid">
+                    <li>
+                        <strong>디자인 시안 고정밀 구현</strong>
+                        <p>캠페인은 비주얼 완성도가 곧 메시지 전달력이라, 시안과 동일한 수준으로 화면 요소를 맞췄습니다.</p>
+                    </li>
+                    <li>
+                        <strong>인터랙션 구현</strong>
+                        <p>눈 내리는 연출, 영상 플레이어, FAQ 아코디언을 접근성 상태값(aria-expanded)과 함께 구성했습니다.</p>
+                    </li>
+                    <li>
+                        <strong>반응형과 후원 동선</strong>
+                        <p>1400 / 768 두 지점으로 분기하고, 모바일에서는 플로팅 버튼으로 후원 CTA를 계속 노출했습니다.</p>
+                    </li>
+                    <li>
+                        <strong>성능 최적화</strong>
+                        <p>디바이스별 이미지 전환, 지연 로딩, CSS 최소화로 초기 로딩 부담을 줄였습니다.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="detail-section">
+                <div class="section-head">
+                    <span class="section-head__idx">03</span>
+                    <h2 class="section-title">주요 코드</h2>
+                </div>
+                <p class="section-content">
+                    제목을 누르면 열립니다. 기관명·도메인·내부 경로는 예시 값으로 바꿨습니다.
+                </p>
                 <div class="code-preview-list">
-                    <article class="code-card">
-                        <h3>1) 메인 히어로 HTML 구조 + CTA 배치</h3>
-                        <p>디자인 시안 정합성을 유지하면서 메시지-비주얼-후원 CTA 흐름이 끊기지 않도록 구성한 핵심 마크업입니다.</p>
-                        <pre><code class="language-html">&lt;section class="main_section"&gt;
+                    <details class="code-card" open>
+                        <summary>
+                            <span class="code-card__title">히어로 구조와 CTA 배치 <span class="code-card__lang">HTML</span></span>
+                            <span class="code-card__hint">메시지 → 비주얼 → 후원 버튼 흐름이 끊기지 않도록 구성</span>
+                        </summary>
+                        <div class="code-card__body">
+                            <pre><code class="language-html">&lt;section class="main_section"&gt;
   &lt;img
     class="main_bg_img"
     src="./images/main_bg02.png"
@@ -94,12 +171,16 @@
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/section&gt;</code></pre>
-                    </article>
+                        </div>
+                    </details>
 
-                    <article class="code-card">
-                        <h3>2) 규칙화된 CSS 구조 설계</h3>
-                        <p>섹션 단위 네이밍, 공통 패턴, 브레이크포인트(1400/768) 분기를 일관되게 유지해 확장/유지보수가 쉬운 형태로 작성한 스타일 구조입니다.</p>
-                        <pre><code class="language-css">/* main_section */
+                    <details class="code-card">
+                        <summary>
+                            <span class="code-card__title">두 캠페인에 공통 적용한 CSS 구조 <span class="code-card__lang">CSS</span></span>
+                            <span class="code-card__hint">섹션 단위 네이밍과 1400 / 768 분기를 규칙으로 고정</span>
+                        </summary>
+                        <div class="code-card__body">
+                            <pre><code class="language-css">/* main_section */
 .main_section { ... }
 .main_section .main_bg_img { ... }
 .main_section .main_section_inner { ... }
@@ -130,12 +211,16 @@
 .about_section2 { ... }
 .news_section { ... }
 .content_section { ... }</code></pre>
-                    </article>
+                        </div>
+                    </details>
 
-                    <article class="code-card">
-                        <h3>3) 인터랙션 JS: FAQ 아코디언 + 접근성 상태값</h3>
-                        <p>문답형 콘텐츠를 빠르게 탐색할 수 있도록 아코디언 동작과 <code>aria-expanded</code> 상태를 함께 관리한 스크립트입니다.</p>
-                        <pre><code class="language-javascript">var D = 260;
+                    <details class="code-card">
+                        <summary>
+                            <span class="code-card__title">FAQ 아코디언과 접근성 상태값 <span class="code-card__lang">JavaScript</span></span>
+                            <span class="code-card__hint">열림 상태를 aria-expanded와 함께 관리, 한 번에 하나만 열림</span>
+                        </summary>
+                        <div class="code-card__body">
+                            <pre><code class="language-javascript">var D = 260;
 var $faqRoot = $(".FAQ_section");
 
 if ($faqRoot.length) {
@@ -159,12 +244,16 @@ if ($faqRoot.length) {
     $a.stop(true, true)[isOpen ? "slideUp" : "slideDown"](D);
   });
 }</code></pre>
-                    </article>
+                        </div>
+                    </details>
 
-                    <article class="code-card">
-                        <h3>4) 성능/경험 최적화 JS: 디바이스 대응 + 지연 제어</h3>
-                        <p>디바이스별 이미지 전환, 플로팅 CTA 노출 제어, 인터랙션 지연 처리로 체감 성능과 몰입감을 높인 구간입니다.</p>
-                        <pre><code class="language-javascript">const img = document.querySelector(".main_bg_img");
+                    <details class="code-card">
+                        <summary>
+                            <span class="code-card__title">디바이스 대응과 플로팅 CTA 제어 <span class="code-card__lang">JavaScript</span></span>
+                            <span class="code-card__hint">화면 폭에 따라 배경 이미지를 바꾸고, 후원 섹션에 닿으면 플로팅 버튼을 숨김</span>
+                        </summary>
+                        <div class="code-card__body">
+                            <pre><code class="language-javascript">const img = document.querySelector(".main_bg_img");
 const desktop = img.dataset.srcDesktop || img.getAttribute("src");
 const mobile = img.dataset.srcMobile;
 const mql = window.matchMedia("(max-width: 768px)");
@@ -185,14 +274,18 @@ function updateFloatingBtn() {
 
 window.addEventListener("scroll", () =&gt; requestAnimationFrame(updateFloatingBtn), { passive: true });
 window.addEventListener("resize", () =&gt; requestAnimationFrame(updateFloatingBtn));</code></pre>
-                    </article>
+                        </div>
+                    </details>
                 </div>
             </section>
+
             <section class="detail-section">
-                <h2 class="section-title">성과 자료</h2>
+                <div class="section-head">
+                    <span class="section-head__idx">04</span>
+                    <h2 class="section-title">클라이언트 피드백</h2>
+                </div>
                 <p class="section-content">
-                    캠페인 운영페이지 유입이 크게 늘어나며 기존 대비 성과가 2배 이상으로 확인되고 예산도 약 2배 수준으로 확대 예정이라는 피드백을 받았습니다.
-                    성과와 개선 포인트를 모두 추적한 사례입니다.
+                    겨울 캠페인 운영 이후 받은 회신입니다. 페이지 유입이 크게 늘어 기존 대비 성과가 2배 이상이며, 다음 캠페인 예산도 약 2배 수준으로 확대할 예정이라는 내용입니다.
                 </p>
                 <div class="detail-images evidence-images evidence-images--narrow">
                     <div>
@@ -201,23 +294,43 @@ window.addEventListener("resize", () =&gt; requestAnimationFrame(updateFloatingB
                         </div>
                     </div>
                 </div>
-            </section>
-
-            <section class="detail-section">
-                <h2 class="section-title">주요 성과</h2>
-                <p class="section-content">
-                    ✓ 디자인 완성도와 가독성을 동시에 확보해 캠페인 메시지 전달력 향상<br>
-                    ✓ PC/모바일 전 구간에서 자연스럽게 동작하는 반응형 사용자 경험 구현<br>
-                    ✓ 고해상도 이미지 최적화, 지연 로딩, CSS 최소화로 성능 개선<br>
-                    ✓ 명확한 CTA(후원 버튼) 배치로 캠페인 참여 유도 효율 강화
+                <p class="section-content" style="margin-top:32px;">
+                    이후 전달받은 내용입니다. 경쟁 입찰로 수주한 IRC 건의 올해 성과가 좋아 <strong>내년 연장 계약과 예산 증액</strong>이 논의되고 있으며,
+                    긴급구호 캠페인과 Custom 캠페인 <strong>2건이 추가로 발주</strong>됐습니다. Custom 캠페인은 장민호 페이지를 기준 삼아 제작할 예정이라는 내용입니다.
                 </p>
+                <div class="detail-images evidence-images">
+                    <div>
+                        <div class="image-container">
+                            <img src="./images/irc-contract.png" alt="IRC 연장 계약 논의와 추가 캠페인 2건 발주를 알리는 이메일 캡처 화면">
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section class="detail-section">
-                <h2 class="section-title">프로젝트 링크</h2>
+                <div class="section-head">
+                    <span class="section-head__idx">05</span>
+                    <h2 class="section-title">주요 성과</h2>
+                </div>
+                <div class="result-panel">
+                    <ul class="result-list">
+                        <li>캠페인 페이지 유입·성과가 기존 대비 2배 이상이라는 피드백 수신</li>
+                        <li>다음 캠페인 예산 약 2배 확대 예정 통보</li>
+                        <li>내년 연장 계약 논의 및 예산 증액 전망</li>
+                        <li>긴급구호·Custom 캠페인 2건 추가 발주</li>
+                        <li>장민호 페이지가 후속 캠페인의 제작 기준으로 채택</li>
+                        <li>섹션 네이밍·브레이크포인트 규칙을 두 캠페인에 재사용</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="detail-section">
                 <div class="links-section">
                     <a href="https://help.rescue.or.kr/winter2026/" target="_blank" rel="noopener noreferrer" class="link-btn">
-                        💻 캠페인 페이지 보기 →
+                        💻 가자 겨울 캠페인 →
+                    </a>
+                    <a href="https://help.rescue.or.kr/jangminho/" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-secondary">
+                        💻 장민호 × IRC 캠페인 →
                     </a>
                 </div>
             </section>
