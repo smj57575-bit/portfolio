@@ -253,3 +253,20 @@ body.is-viewer-open { overflow: hidden; }
     .viewer__title { display: none; }
     .viewer__title { font-size: 0.85rem; }
 }
+
+/* ==============================
+   Case List (한 프로젝트 내 복수 건)
+============================== */
+.case-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.case { min-width: 0; display: flex; flex-direction: column; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 16px; overflow: hidden; background: #fff; }
+.case__shot { display: block; aspect-ratio: 16 / 11; overflow: hidden; background: #f3f4f6; }
+.case__shot img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.case__body { flex: 1; padding: 20px 22px 22px; }
+.case__name { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.015em; }
+.case__meta { margin-top: 6px; font-size: 0.8rem; font-weight: 600; color: rgba(0, 0, 0, 0.45); }
+.case__desc { margin: 12px 0 0; font-size: 0.92rem; line-height: 1.7; color: rgba(0, 0, 0, 0.65); }
+.case__tags { margin-top: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+.case__tag { font-size: 0.74rem; font-weight: 700; color: #0055d4; background: rgba(0, 102, 255, 0.08); border-radius: 6px; padding: 4px 8px; }
+@media (max-width: 760px) {
+    .case-list { grid-template-columns: 1fr; gap: 18px; }
+}
