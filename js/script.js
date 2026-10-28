@@ -197,6 +197,8 @@ if (sectionLinks.length) {
         sections.forEach((section, i) => {
             if (section && section.getBoundingClientRect().top <= line) current = i;
         });
+        // 메뉴가 보이는 동안은 아직 첫 영역에 닿기 전이어도 맨 처음 항목을 기본 선택
+        if (current < 0 && sectionNav.classList.contains('is-visible')) current = 0;
         sectionLinks.forEach((link, i) => {
             link.classList.toggle('is-active', i === current);
             if (i === current) link.setAttribute('aria-current', 'true');
@@ -212,4 +214,44 @@ if (sectionLinks.length) {
     }, { passive: true });
     window.addEventListener('resize', markCurrent);
     markCurrent();
+}
+
+// Detail: 같은 분류(메인의 탭) 안에서 이전 · 다음 프로젝트로 이동하는 양옆 버튼
+// 순서와 이름은 메인 카드 순서와 맞춘다
+const PROJECT_GROUPS = [
+    { name: 'Web Publishing', items: [
+        ['7', '찰랑 브랜드 웹사이트 신규 구축'],
+        ['8', '스텔라 아르투아 퓨어 골드 페이지'],
+        ['1', 'DB손해보험 반응형 리뉴얼'],
+        ['2', 'OB맥주 FAQ 페이지'],
+        ['3', 'IRC국제구조위원회 캠페인 페이지'],
+    ] },
+    { name: 'Personal Project', items: [
+        ['9', 'React 관리자 연동 홈페이지'],
+        ['6', 'AI Smart 홈페이지 제작'],
+    ] },
+];
+
+const detailMain = document.querySelector('.detail-body main');
+const detailNum = location.pathname.match(/detail-(\d+)\.html$/)?.[1];
+const detailGroup = PROJECT_GROUPS.find(group => group.items.some(([num]) => num === detailNum));
+
+if (detailMain && detailGroup) {
+    const index = detailGroup.items.findIndex(([num]) => num === detailNum);
+    const pagerLink = (item, dir) => {
+        if (!item) return '';
+        const [num, title] = item;
+        const label = dir === 'prev' ? '이전 프로젝트' : '다음 프로젝트';
+
+        return `<a class="pager__btn pager__btn--${dir}" href="detail-${num}.html" aria-label="${label}: ${title}">
+            <span class="pager__arrow" aria-hidden="true">${dir === 'prev' ? '←' : '→'}</span>
+            <span class="pager__text"><small>${label}</small><strong>${title}</strong></span>
+        </a>`;
+    };
+
+    const pager = document.createElement('nav');
+    pager.className = 'pager';
+    pager.setAttribute('aria-label', `${detailGroup.name} 프로젝트 이동`);
+    pager.innerHTML = pagerLink(detailGroup.items[index - 1], 'prev') + pagerLink(detailGroup.items[index + 1], 'next');
+    detailMain.appendChild(pager);
 }
