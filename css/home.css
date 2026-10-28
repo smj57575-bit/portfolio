@@ -50,14 +50,27 @@ html { scroll-behavior: smooth; }
 .home .contents { display: flex; align-items: flex-end; margin-bottom: 96px; }
 .home .content-card { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 20px; border-radius: 14px 14px 0 0; background: var(--paper); box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.08); font-size: 0.9rem; transition: box-shadow 0.4s var(--ease); }
 .home .content-card:hover { box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.14); }
-.home .content-card + .content-card { z-index: 1; margin-left: -40px; }
-.home .content-card + .content-card:hover { z-index: 3; }
+/* 앞 탭이 뒤 탭을 덮도록 1 → 2 → 3 순서로 쌓고, 마우스를 올린 탭만 맨 앞으로 */
+.home .content-card + .content-card { margin-left: -40px; }
+.home .content-card:nth-child(2) { z-index: 1; }
+.home .content-card:nth-child(3) { z-index: 0; }
+.home .content-card:hover { z-index: 3; }
 .home .content-card__num { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
 .home .content-card__title { font-weight: 600; letter-spacing: -0.01em; }
 .home .content-card__count { min-width: 24px; padding: 2px 8px; border-radius: 999px; background: rgba(10, 10, 10, 0.07); font-size: 0.72rem; font-weight: 600; text-align: center; }
-.home .content-card--dark { background: var(--ink); color: #fff; }
-.home .content-card--dark .content-card__num { color: rgba(255, 255, 255, 0.5); }
-.home .content-card--dark .content-card__count { background: rgba(255, 255, 255, 0.16); }
+/* 선택 모양(검정)은 기본으로 첫 탭(.content-card--dark), 다른 탭에 마우스를 올리면 그 탭으로 옮겨간다 */
+.home .content-card { transition: box-shadow 0.4s var(--ease), background 0.3s, color 0.3s; }
+.home .content-card__num,
+.home .content-card__count { transition: color 0.3s, background 0.3s; }
+.home .content-card--dark,
+.home .content-card:hover { background: var(--ink); color: #fff; }
+.home .content-card--dark .content-card__num,
+.home .content-card:hover .content-card__num { color: rgba(255, 255, 255, 0.5); }
+.home .content-card--dark .content-card__count,
+.home .content-card:hover .content-card__count { background: rgba(255, 255, 255, 0.16); }
+.home .contents:has(.content-card:hover) .content-card--dark:not(:hover) { background: var(--paper); color: var(--ink); }
+.home .contents:has(.content-card:hover) .content-card--dark:not(:hover) .content-card__num { color: var(--muted); }
+.home .contents:has(.content-card:hover) .content-card--dark:not(:hover) .content-card__count { background: rgba(10, 10, 10, 0.07); }
 
 /* Section label · heading */
 .home .section-label { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 0.84rem; font-weight: 500; }
@@ -167,4 +180,18 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .home *, .home *::before, .home *::after { transition: none !important; }
+}
+
+/* 2 · 3번째 탭은 왼쪽이 앞 탭에 가려진다 → 겹치는 폭(40px)만큼 왼쪽 여백을 더 줘서 번호가 가려지지 않게 */
+@media (min-width: 641px) {
+    .home .content-card + .content-card { padding-left: 60px; }
+}
+
+/* Personal Project — 카드 한 장이라 슬라이더 없이 Web Publishing 카드와 같은 모양으로 둔다 */
+.home .personal { padding-bottom: 120px; }
+.home .personal__list { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px; padding: 24px 0 32px; }
+@media (max-width: 640px) {
+    .home .personal { padding-bottom: 100px; }
+    .home .personal__list { margin-top: 28px; padding: 8px 0 20px; }
+    .home .content-card__more { display: none; }   /* 목차 카드 3개가 한 줄에 들어가게 "Personal" 만 */
 }

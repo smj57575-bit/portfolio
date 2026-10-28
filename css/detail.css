@@ -88,3 +88,33 @@
     .detail-body .container { padding: 28px 0 72px; }
     .detail-body .detail-hero { border-radius: 22px; }
 }
+
+/* 같은 분류 안 이전 · 다음 프로젝트 (script.js 가 main 끝에 .pager 를 붙인다)
+   넓은 화면: 화면 양옆에 떠 있는 둥근 버튼, 호버 시 프로젝트 이름이 펼쳐진다
+   좁은 화면: 본문 끝에 좌우 두 칸 버튼 */
+.detail-body .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 64px; }
+.detail-body .pager__btn { display: flex; align-items: center; gap: 14px; min-width: 0; padding: 16px 20px; border-radius: 20px; background: var(--card); box-shadow: var(--shadow); transition: background 0.3s, color 0.3s; }
+.detail-body .pager__btn--next { margin-left: auto; flex-direction: row-reverse; text-align: right; }
+.detail-body .pager__btn:hover { background: var(--ink); color: #fff; }
+.detail-body .pager__arrow { display: grid; flex-shrink: 0; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 1rem; transition: background 0.3s, color 0.3s; }
+.detail-body .pager__btn:hover .pager__arrow { background: #fff; color: var(--ink); }
+.detail-body .pager__text { display: grid; gap: 2px; min-width: 0; }
+.detail-body .pager__text small { color: var(--muted); font-size: 0.74rem; font-weight: 500; transition: color 0.3s; }
+.detail-body .pager__btn:hover .pager__text small { color: rgba(255, 255, 255, 0.6); }
+.detail-body .pager__text strong { overflow: hidden; font-size: 0.92rem; font-weight: 600; letter-spacing: -0.02em; text-overflow: ellipsis; white-space: nowrap; }
+
+@media (min-width: 1360px) {
+    .detail-body .pager { display: contents; }
+    .detail-body .pager__btn { position: fixed; top: 50%; z-index: 20; gap: 0; margin: 0; padding: 6px; border-radius: 999px; transform: translateY(-50%); }
+    .detail-body .pager__btn--prev { left: 24px; }
+    .detail-body .pager__btn--next { right: 24px; }
+    .detail-body .pager__arrow { width: 44px; height: 44px; }
+    /* 이름은 평소 접혀 있다가 호버 · 포커스 시 펼쳐진다 (고정 위치라 본문 레이아웃엔 영향 없음) */
+    .detail-body .pager__text { max-width: 0; overflow: hidden; opacity: 0; transition: max-width 0.45s var(--ease), opacity 0.3s, padding 0.45s var(--ease); }
+    .detail-body .pager__btn:hover .pager__text,
+    .detail-body .pager__btn:focus-visible .pager__text { max-width: 260px; padding: 0 14px; opacity: 1; }
+}
+@media (max-width: 640px) {
+    .detail-body .pager { flex-direction: column; }
+    .detail-body .pager__btn--next { margin-left: 0; }
+}
