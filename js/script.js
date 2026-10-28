@@ -124,17 +124,19 @@ if (viewer) {
     });
 }
 
-// Index: Web Publishing 카드 슬라이더 (마우스 드래그 · 터치 스와이프 · 화살표 버튼)
+// Index: 프로젝트 카드 슬라이더 — Web Publishing · Personal Project 공통 (마우스 드래그 · 터치 스와이프 · 화살표 버튼)
 // 화면 왼쪽에서 세 번째 자리(1200px 미만은 두 번째, 모바일은 첫 번째)에 온 카드를 확대(.is-focus)
-const worksSlider = document.querySelector('.projects.swiper');
+// 카드가 적어 그 자리까지 채울 수 없으면 첫 카드를 확대한다
+const focusShift = () => (window.innerWidth >= 1200 ? 2 : window.innerWidth >= 641 ? 1 : 0);
 
-if (worksSlider && window.Swiper) {
-    const counter = document.querySelector('.works .section-label__count');
-    const total = worksSlider.querySelectorAll('.swiper-slide').length;
-    const focusShift = () => (window.innerWidth >= 1200 ? 2 : window.innerWidth >= 641 ? 1 : 0);
+const initProjectSlider = (slider) => {
+    const section = slider.closest('section');
+    const counter = section.querySelector('.section-label__count');
+    const total = slider.querySelectorAll('.swiper-slide').length;
+    const shiftFor = () => (total > focusShift() + 1 ? focusShift() : 0);
 
     const setFocus = (swiper) => {
-        const index = Math.min(swiper.activeIndex + focusShift(), total - 1);
+        const index = Math.min(swiper.activeIndex + shiftFor(), total - 1);
 
         swiper.slides.forEach((slide, i) => slide.classList.toggle('is-focus', i === index));
         counter?.style.setProperty('--progress', (index + 1) / total);
@@ -142,11 +144,11 @@ if (worksSlider && window.Swiper) {
 
     // 마지막 카드도 확대 자리까지 올 수 있도록 끝에 여백을 둔다
     const setTailSpace = (swiper) => {
-        const shift = focusShift();
+        const shift = shiftFor();
         const [first, second] = swiper.slides;
-        const step = second.offsetLeft - first.offsetLeft;
+        const step = second ? second.offsetLeft - first.offsetLeft : 0;
         const overlap = first.offsetWidth - step;
-        const tail = shift ? Math.max(Math.round(swiper.width - (shift + 1) * step - overlap), 0) : 0;
+        const tail = shift && step ? Math.max(Math.round(swiper.width - (shift + 1) * step - overlap), 0) : 0;
 
         if (swiper.params.slidesOffsetAfter !== tail) {
             swiper.params.slidesOffsetAfter = tail;
@@ -154,15 +156,15 @@ if (worksSlider && window.Swiper) {
         }
     };
 
-    new Swiper(worksSlider, {
+    new Swiper(slider, {
         slidesPerView: 'auto',
         spaceBetween: 12,
         grabCursor: true,
         speed: 600,
         keyboard: { enabled: true, onlyInViewport: true },
         navigation: {
-            prevEl: '.works__btn--prev',
-            nextEl: '.works__btn--next',
+            prevEl: section.querySelector('.works__btn--prev'),
+            nextEl: section.querySelector('.works__btn--next'),
             disabledClass: 'is-disabled',
         },
         a11y: { prevSlideMessage: '이전 프로젝트', nextSlideMessage: '다음 프로젝트' },
@@ -174,6 +176,10 @@ if (worksSlider && window.Swiper) {
             slideChange: setFocus,
         },
     });
+};
+
+if (window.Swiper) {
+    document.querySelectorAll('.projects.swiper').forEach(initProjectSlider);
 }
 
 // Index: 상단 메뉴 노출 시점과 지금 보고 있는 영역 표시 (스크롤 위치 기준)
