@@ -7,7 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body class="detail-body">
@@ -62,6 +61,7 @@
                     <span class="tech-badge">GSAP</span>
                     <span class="tech-badge">ScrollTrigger</span>
                     <span class="tech-badge">Lenis</span>
+                    <span class="tech-badge">Claude</span>
                 </div>
             </div>
 
@@ -154,58 +154,6 @@
                         <p>문구는 미리 숨겨 깜빡임을 막고 한 번만 등장시키며, 모션 축소 설정 사용자에게는 애니메이션 없이 보여줍니다.</p>
                     </li>
                 </ol>
-
-                <div class="code-preview-list" style="margin-top:30px;">
-                    <details class="code-card">
-                        <summary>
-                            <span class="code-card__title">배경 전환 스크롤 인터랙션 <span class="code-card__lang">JavaScript</span></span>
-                            <span class="code-card__hint">CSS sticky 배경 고정 + ScrollTrigger로 스케일·캔↔잔 전환·문구 등장 제어</span>
-                        </summary>
-                        <div class="code-card__body">
-                            <pre><code class="language-javascript">/* CSS: 배경은 sticky로 고정 (JS pin의 도킹감 방지) */
-/* .story__bg-stage { position: sticky; top: 0; height: 100vh; } */
-
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-if (!reduce) {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const can = sec.querySelector('.story__bg--can');
-  const glass = sec.querySelector('.story__bg--glass');
-  const boxes = gsap.utils.toArray(sec.querySelectorAll('.story__box'));
-
-  // 1) 배경 스케일: 섹션을 지나는 동안 1.1 → 1 (scrub으로 스크롤에 연동)
-  gsap.fromTo([can, glass], { scale: 1.1 }, {
-    scale: 1, ease: 'none',
-    scrollTrigger: { trigger: sec, start: 'top top', end: 'bottom bottom', scrub: 0.6 }
-  });
-
-  // 2) 문구: 미리 숨긴 뒤 지정 위치에서 한 번만 등장 (깜빡임 방지)
-  gsap.set(boxes, { autoAlpha: 0, y: 10 });
-  boxes.forEach((box, i) =&gt; {
-    ScrollTrigger.create({
-      trigger: box,
-      start: i === 1 ? 'top 92%' : 'top 78%',
-      once: true,
-      onEnter: () =&gt; gsap.to(box, { autoAlpha: 1, y: 0, duration: 0.9, ease: 'power2.out' })
-    });
-  });
-
-  // 3) 캔 → 잔 전환: 두 번째 문구보다 먼저, 위로 올리면 다시 캔으로
-  ScrollTrigger.create({
-    trigger: boxes[1], start: 'top bottom',
-    onEnter:     () =&gt; gsap.to(glass, { autoAlpha: 1, duration: 0.45 }),
-    onLeaveBack: () =&gt; gsap.to(glass, { autoAlpha: 0, duration: 0.45 })
-  });
-}
-
-// Lenis 관성 스크롤과 ScrollTrigger 동기화
-const lenis = new Lenis({ lerp: 0.1, smoothWheel: true, syncTouch: true });
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) =&gt; lenis.raf(time * 1000));
-gsap.ticker.lagSmoothing(0);</code></pre>
-                        </div>
-                    </details>
-                </div>
             </section>
 
             <section class="detail-section">
@@ -235,7 +183,6 @@ gsap.ticker.lagSmoothing(0);</code></pre>
         </main>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
