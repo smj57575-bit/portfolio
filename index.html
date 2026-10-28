@@ -6,236 +6,341 @@
     <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/home.css">
 </head>
-<body>
+<body class="home">
     <div class="page">
         <header class="topbar">
             <div class="container topbar__inner">
-                <div class="brand">
+                <a href="#top" class="brand">
                     <span class="brand__dot" aria-hidden="true"></span>
                     <span>PORTFOLIO</span>
-                </div>
-                <nav class="nav" aria-label="프로젝트 이동">
-                    <a href="#project-7">01</a>
-                    <a href="#project-8">02</a>
-                    <a href="#project-1">03</a>
-                    <a href="#project-2">04</a>
-                    <a href="#project-3">05</a>
-                    <a href="#project-6">06</a>
-                    <a href="#design">디자인</a>
+                </a>
+                <nav class="nav" aria-label="섹션 이동">
+                    <a href="#works">Web Publishing</a>
+                    <a href="#design">Design</a>
                 </nav>
+                <span class="topbar__role">UI/UX Publisher</span>
             </div>
         </header>
 
-        <section class="hero">
+        <section class="hero" id="top">
             <div class="container">
-                <h1 class="hero__title">Web Portfolio</h1>
+                <p class="hero__year">2026</p>
+                <h1 class="hero__title">PORTFOLIO</h1>
+                <div class="hero__rule">
+                    <span>송민정</span>
+                    <span>UI/UX Publisher</span>
+                </div>
                 <p class="hero__sub">
                     안녕하세요, 경험을 통해 성장하는<strong> UI/UX 퍼블리셔 송민정</strong>입니다.
                 </p>
             </div>
         </section>
 
-        <main class="container projects">
+        <nav class="container contents" aria-label="목차">
+            <a class="content-card" href="#works">
+                <span class="content-card__num">01.</span>
+                <span class="content-card__count">6 Projects</span>
+                <span class="content-card__title">Web Publishing</span>
+                <span class="content-card__desc">신규 구축 · 반응형 퍼블리싱 · 관리자페이지 · 인터랙션 · SEO</span>
+            </a>
+            <a class="content-card content-card--dark" href="#design">
+                <span class="content-card__num">02.</span>
+                <span class="content-card__count">28 Works</span>
+                <span class="content-card__title">Design</span>
+                <span class="content-card__desc">기획·제안 · 랜딩페이지 · 시스템디자인 · 웹디자인 · 배너</span>
+            </a>
+        </nav>
 
-            <section id="project-7" class="project" aria-label="프로젝트 1">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">01</span><span>26/09~26/10</span></div>
-                            <h2 class="project__title">찰랑 브랜드 웹사이트 신규 구축</h2>
-                            <p class="project__desc">찰랑 소주 출시에 맞춰 브랜드 웹사이트를 신규 개설하였으며, 핵심 기능인 '내 주변 찰랑 찾기' 지도의 운영을 위한 관리자페이지를 구축하였습니다. 지도 기능 개발은 백엔드와 협업하였고, 마커 설정, 팝업·배너 등록 및 관리, 지도 관리, 이벤트 관리 기능을 관리자페이지로 구현하였습니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://charlang.co.kr/" target="_blank" rel="noopener noreferrer">
-                                    사이트 보기 <small>↗</small>
-                                </a>
-                                <a class="chip chip--primary" href="https://charlang.co.kr/map/index.php" target="_blank" rel="noopener noreferrer">
-                                    지도 보기 <small>↗</small>
-                                </a>
-                                <span class="chip">신규 구축</span>
-                                <span class="chip">관리자페이지</span>
-                                <span class="chip">지도</span>
-                            </div>
+        <main>
+            <section id="works" class="works" aria-labelledby="works-title">
+                <div class="container">
+                    <div class="section-label">
+                        <span class="section-label__tag"><span aria-hidden="true">◂</span> Web Publishing <span aria-hidden="true">▸</span></span>
+                        <span class="section-label__count">01 <i aria-hidden="true"></i> 06</span>
+                    </div>
+                    <div class="works__head">
+                        <div>
+                            <h2 class="section-heading" id="works-title">Web <strong>Publishing</strong> Projects</h2>
+                            <p class="section-intro">신규 사이트 구축부터 운영 사이트 리뉴얼까지 퍼블리싱한 프로젝트입니다. 카드를 누르면 상세 내용을 볼 수 있습니다.</p>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen"><img src="./images/charlang-pc.png" alt="찰랑 웹사이트 PC 메인 화면"></div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen"><img src="./images/charlang-mobile.png" alt="찰랑 웹사이트 모바일 메인 화면"></div>
-                            </div>
+                        <div class="works__arrows">
+                            <button type="button" class="works__btn works__btn--prev" aria-label="이전 프로젝트">←</button>
+                            <button type="button" class="works__btn works__btn--next" aria-label="다음 프로젝트">→</button>
                         </div>
                     </div>
-                </section>
 
-            <section id="project-8" class="project" aria-label="프로젝트 2">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">02</span><span>26/09~26/10</span></div>
-                            <h2 class="project__title">스텔라 아르투아 퓨어 골드 페이지</h2>
-                            <p class="project__desc">스텔라 아르투아 퓨어 골드 출시에 맞춰 스텔라 아르투아 홈페이지에 Pure Gold 메뉴를 추가하고, 신제품 소개 페이지를 신규 제작하였습니다. 스크롤에 따라 배경이 캔에서 잔으로 전환되는 인터랙션을 구현하였으며, 향후 스텔라 아르투아 매장 찾기 지도에 퓨어 골드 판매 매장 마커를 관리자페이지에서 추가·관리할 수 있도록 확장할 예정입니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://www.stellaartois.co.kr/puregold/" target="_blank" rel="noopener noreferrer">
-                                    사이트 보기 <small>↗</small>
-                                </a>
-                                <span class="chip">페이지 추가</span>
-                                <span class="chip">스크롤 인터랙션</span>
-                                <span class="chip">반응형</span>
-                            </div>
+                    <div class="projects swiper">
+                        <div class="swiper-wrapper">
+                <article id="project-7" class="project swiper-slide" aria-label="프로젝트 1">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/charlang-pc.png" alt="찰랑 웹사이트 PC 메인 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/charlang-mobile.png" alt="찰랑 웹사이트 모바일 메인 화면" loading="lazy">
+                    </div>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">01.</span>
+                            <span class="project__period">26/09~26/10</span>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen"><img src="./images/stella-puregold-pc.png" alt="스텔라 아르투아 퓨어 골드 페이지 PC 화면"></div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen"><img src="./images/stella-puregold-mobile.png" alt="스텔라 아르투아 퓨어 골드 페이지 모바일 화면"></div>
-                            </div>
+                        <h3 class="project__title"><a href="detail-7.html">찰랑 브랜드 웹사이트 신규 구축</a></h3>
+                        <p class="project__desc">찰랑 소주 출시에 맞춰 브랜드 웹사이트를 신규 개설하였으며, 핵심 기능인 '내 주변 찰랑 찾기' 지도의 운영을 위한 관리자페이지를 구축하였습니다. 지도 기능 개발은 백엔드와 협업하였고, 마커 설정, 팝업·배너 등록 및 관리, 지도 관리, 이벤트 관리 기능을 관리자페이지로 구현하였습니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://charlang.co.kr/" target="_blank" rel="noopener noreferrer">
+                            사이트 보기 <small>↗</small>
+                            </a>
+                            <a class="chip chip--primary" href="https://charlang.co.kr/map/index.php" target="_blank" rel="noopener noreferrer">
+                            지도 보기 <small>↗</small>
+                            </a>
+                            <span class="chip">신규 구축</span>
+                            <span class="chip">관리자페이지</span>
+                            <span class="chip">지도</span>
                         </div>
                     </div>
-                </section>
-
-             <section id="project-1" class="project" aria-label="프로젝트 3">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">03</span><span>26/03~26/12</span></div>
-                            <h2 class="project__title">DB손해보험 반응형 리뉴얼</h2>
-                            <p class="project__desc">  DB손해보험 보험료 조회 웹사이트를 적응형에서 반응형 구조로 리뉴얼하고 있으며, 기존 운영 페이지와 분리하여 단계적으로 적용 중입니다. 향후 반응형 구조로 통일을 목표로 하며, SEO를 고려한 구조 설계 및 개발을 수행하고 있습니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://dbinsure.co.kr/" target="_blank" rel="noopener noreferrer">
-                                    웹사이트 보기 <small>↗</small>
-                                </a>
-                                <a class="chip chip--primary" href="https://m.dbinsure.co.kr/" target="_blank" rel="noopener noreferrer">
-                                    모바일 보기 <small>↗</small>
-                                </a>
-                                <span class="chip">반응형</span>
-                                <span class="chip">퍼블리싱</span>
-                                <span class="chip">SEO</span>
-                            </div>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                <article id="project-8" class="project swiper-slide" aria-label="프로젝트 2">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/stella-puregold-pc.png" alt="스텔라 아르투아 퓨어 골드 페이지 PC 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/stella-puregold-mobile.png" alt="스텔라 아르투아 퓨어 골드 페이지 모바일 화면" loading="lazy">
+                    </div>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">02.</span>
+                            <span class="project__period">26/09~26/10</span>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen">
-                                    <img src="./images/p1-pc.png" alt="프로젝트1 PC 화면">
-                                </div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen">
-                                    <img src="./images/p1-mobile.png" alt="프로젝트1 모바일 화면">
-                                </div>
-                            </div>
+                        <h3 class="project__title"><a href="detail-8.html">스텔라 아르투아 퓨어 골드 페이지</a></h3>
+                        <p class="project__desc">스텔라 아르투아 퓨어 골드 출시에 맞춰 스텔라 아르투아 홈페이지에 Pure Gold 메뉴를 추가하고, 신제품 소개 페이지를 신규 제작하였습니다. 스크롤에 따라 배경이 캔에서 잔으로 전환되는 인터랙션을 구현하였으며, 향후 스텔라 아르투아 매장 찾기 지도에 퓨어 골드 판매 매장 마커를 관리자페이지에서 추가·관리할 수 있도록 확장할 예정입니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://www.stellaartois.co.kr/puregold/" target="_blank" rel="noopener noreferrer">
+                            사이트 보기 <small>↗</small>
+                            </a>
+                            <span class="chip">페이지 추가</span>
+                            <span class="chip">스크롤 인터랙션</span>
+                            <span class="chip">반응형</span>
                         </div>
                     </div>
-                </section>
-
-            <section id="project-2" class="project" aria-label="프로젝트 4">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">04</span><span>26/02~26/02</span></div>
-                            <h2 class="project__title">OB맥주 FAQ 페이지</h2>
-                            <p class="project__desc"> OB맥주 웹사이트 퍼블리싱 과정에서 SEO를 고려한 시맨틱 마크업, 접근성 및 검색 친화적 구조 설계를 적용했습니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://www.ob.co.kr/about/faq.php" target="_blank" rel="noopener noreferrer">
-                                    사이트 보기 <small>↗</small>
-                                </a>
-                                <span class="chip">반응형</span>
-                                <span class="chip">퍼블리싱</span>
-                                <span class="chip">SEO</span>
-                            </div>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                <article id="project-1" class="project swiper-slide" aria-label="프로젝트 3">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/p1-pc.png" alt="프로젝트1 PC 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/p1-mobile.png" alt="프로젝트1 모바일 화면" loading="lazy">
+                    </div>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">03.</span>
+                            <span class="project__period">26/03~26/12</span>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역 (이미지 비어있음)">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen">
-                                    <img src="./images/p2-pc.png" alt="프로젝트2 PC 화면">
-                                </div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen">
-                                    <img src="./images/p2-mobile.png" alt="프로젝트2 모바일 화면">
-                                </div>
-                            </div>
+                        <h3 class="project__title"><a href="detail-1.html">DB손해보험 반응형 리뉴얼</a></h3>
+                        <p class="project__desc">DB손해보험 보험료 조회 웹사이트를 적응형에서 반응형 구조로 리뉴얼하고 있으며, 기존 운영 페이지와 분리하여 단계적으로 적용 중입니다. 향후 반응형 구조로 통일을 목표로 하며, SEO를 고려한 구조 설계 및 개발을 수행하고 있습니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://dbinsure.co.kr/" target="_blank" rel="noopener noreferrer">
+                            웹사이트 보기 <small>↗</small>
+                            </a>
+                            <a class="chip chip--primary" href="https://m.dbinsure.co.kr/" target="_blank" rel="noopener noreferrer">
+                            모바일 보기 <small>↗</small>
+                            </a>
+                            <span class="chip">반응형</span>
+                            <span class="chip">퍼블리싱</span>
+                            <span class="chip">SEO</span>
                         </div>
                     </div>
-                </section>
-
-            <section id="project-3" class="project" aria-label="프로젝트 5">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">05</span><span>26/01~26/01</span></div>
-                            <h2 class="project__title">IRC국제구조위원회 캠페인 페이지</h2>
-                            <p class="project__desc">국제구조위원회의 모금 캠페인 랜딩 페이지 2건(가자 겨울 / 장민호 × 케냐 다다브)을 반응형으로 퍼블리싱했습니다. 비주얼 비중이 큰 캠페인 특성에 맞춰 시안 재현도를 유지하면서, 영상·FAQ 아코디언·플로팅 후원 버튼 등 인터랙션과 후원 동선까지 함께 구현했습니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://help.rescue.or.kr/winter2026/" target="_blank" rel="noopener noreferrer">
-                                    겨울 캠페인 <small>↗</small>
-                                </a>
-                                <a class="chip chip--primary" href="https://help.rescue.or.kr/jangminho/" target="_blank" rel="noopener noreferrer">
-                                    장민호 캠페인 <small>↗</small>
-                                </a>
-                                <span class="chip">반응형</span>
-                                <span class="chip">퍼블리싱</span>
-                                <span class="chip">인터랙션</span>
-                            </div>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                <article id="project-2" class="project swiper-slide" aria-label="프로젝트 4">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/p2-pc.png" alt="프로젝트2 PC 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/p2-mobile.png" alt="프로젝트2 모바일 화면" loading="lazy">
+                    </div>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">04.</span>
+                            <span class="project__period">26/02~26/02</span>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역 (이미지 비어있음)">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen"><img src="./images/p3-pc.png" alt="프로젝트3 PC 화면"></div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen"><img src="./images/p3-mobile.png" alt="프로젝트3 모바일 화면"></div>
-                            </div>
+                        <h3 class="project__title"><a href="detail-2.html">OB맥주 FAQ 페이지</a></h3>
+                        <p class="project__desc">OB맥주 웹사이트 퍼블리싱 과정에서 SEO를 고려한 시맨틱 마크업, 접근성 및 검색 친화적 구조 설계를 적용했습니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://www.ob.co.kr/about/faq.php" target="_blank" rel="noopener noreferrer">
+                            사이트 보기 <small>↗</small>
+                            </a>
+                            <span class="chip">반응형</span>
+                            <span class="chip">퍼블리싱</span>
+                            <span class="chip">SEO</span>
                         </div>
                     </div>
-                </section>
-
-            <section id="project-6" class="project" aria-label="프로젝트 6">
-                    <div class="project__inner">
-                        <div class="meta">
-                            <div class="kicker"><span class="num">06</span><span>25/07~25/09</span></div>
-                            <h2 class="project__title">AI Smart 홈페이지 제작 (개인)</h2>
-                            <p class="project__desc">스마트팩토리·공작기계·CAD/CAM 등 산업 자동화 솔루션을 다루는 5인 미만 기업의 홈페이지를 기획, 디자인, 퍼블리싱까지 단독으로 진행하였습니다. 제품 10종과 자료실·다운로드 등 흩어져 있던 정보를 하나의 반응형 사이트로 통합했습니다.</p>
-                            <div class="project__links">
-                                <a class="chip chip--primary" href="https://aismart.kr/" target="_blank" rel="noopener noreferrer">
-                                    사이트 보기 <small>↗</small>
-                                </a>
-                                <span class="chip">기획</span>
-                                <span class="chip">웹디자인</span>
-                                <span class="chip">퍼블리싱</span>
-                            </div>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                <article id="project-3" class="project swiper-slide" aria-label="프로젝트 5">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/p3-pc.png" alt="프로젝트3 PC 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/p3-mobile.png" alt="프로젝트3 모바일 화면" loading="lazy">
+                    </div>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">05.</span>
+                            <span class="project__period">26/01~26/01</span>
                         </div>
-
-                        <div class="mockups" aria-label="목업 영역">
-                            <div class="mockup mockup--pc" aria-label="PC 목업">
-                                <div class="mockup__screen"><img src="./images/p4-pc.png" alt="프로젝트4 PC 화면"></div>
-                            </div>
-                            <div class="mockup mockup--mobile" aria-label="모바일 목업">
-                                <div class="mockup__screen"><img src="./images/p4-mobile.png" alt="프로젝트4 모바일 화면"></div>
-                            </div>
+                        <h3 class="project__title"><a href="detail-3.html">IRC국제구조위원회 캠페인 페이지</a></h3>
+                        <p class="project__desc">국제구조위원회의 모금 캠페인 랜딩 페이지 2건(가자 겨울 / 장민호 × 케냐 다다브)을 반응형으로 퍼블리싱했습니다. 비주얼 비중이 큰 캠페인 특성에 맞춰 시안 재현도를 유지하면서, 영상·FAQ 아코디언·플로팅 후원 버튼 등 인터랙션과 후원 동선까지 함께 구현했습니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://help.rescue.or.kr/winter2026/" target="_blank" rel="noopener noreferrer">
+                            겨울 캠페인 <small>↗</small>
+                            </a>
+                            <a class="chip chip--primary" href="https://help.rescue.or.kr/jangminho/" target="_blank" rel="noopener noreferrer">
+                            장민호 캠페인 <small>↗</small>
+                            </a>
+                            <span class="chip">반응형</span>
+                            <span class="chip">퍼블리싱</span>
+                            <span class="chip">인터랙션</span>
                         </div>
                     </div>
-                </section>
-
-
-            <section id="design" class="design" aria-label="디자인 작업물">
-                <div class="design__head">
-                    <div>
-                        <h2 class="design__title">Design</h2>
-                        <p class="design__desc">퍼블리싱 외에 직접 디자인한 배너와 랜딩페이지, 웹사이트 시안입니다. 이미지를 누르면 원본이 열립니다.</p>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                <article id="project-6" class="project swiper-slide" aria-label="프로젝트 6">
+                    <div class="project__thumb">
+                        <img class="project__thumb-pc" src="./images/p4-pc.png" alt="프로젝트4 PC 화면" loading="lazy">
+                        <img class="project__thumb-mo" src="./images/p4-mobile.png" alt="프로젝트4 모바일 화면" loading="lazy">
                     </div>
-                    <div class="design-filter" role="group" aria-label="분류 필터">
-                        <button type="button" class="filter-chip is-active" data-filter="all">전체 <small>28</small></button>
-                        <button type="button" class="filter-chip" data-filter="banner">배너 <small>18</small></button>
-                        <button type="button" class="filter-chip" data-filter="landing">랜딩페이지 <small>3</small></button>
-                        <button type="button" class="filter-chip" data-filter="web">웹디자인 <small>2</small></button>
-                        <button type="button" class="filter-chip" data-filter="uidesign">시스템디자인 <small>4</small></button>
-                        <button type="button" class="filter-chip" data-filter="proposal">기획·제안 <small>1</small></button>
+                    <div class="project__body">
+                        <div class="project__top">
+                            <span class="project__num">06.</span>
+                            <span class="project__period">25/07~25/09</span>
+                        </div>
+                        <h3 class="project__title"><a href="detail-6.html">AI Smart 홈페이지 제작 (개인)</a></h3>
+                        <p class="project__desc">스마트팩토리·공작기계·CAD/CAM 등 산업 자동화 솔루션을 다루는 5인 미만 기업의 홈페이지를 기획, 디자인, 퍼블리싱까지 단독으로 진행하였습니다. 제품 10종과 자료실·다운로드 등 흩어져 있던 정보를 하나의 반응형 사이트로 통합했습니다.</p>
+                        <div class="project__links">
+                            <a class="chip chip--primary" href="https://aismart.kr/" target="_blank" rel="noopener noreferrer">
+                            사이트 보기 <small>↗</small>
+                            </a>
+                            <span class="chip">기획</span>
+                            <span class="chip">웹디자인</span>
+                            <span class="chip">퍼블리싱</span>
+                        </div>
                     </div>
+                    <span class="project__arrow" aria-hidden="true">→</span>
+                </article>
+                        </div>
+                    </div>
+                    <p class="works__hint">드래그하거나 화살표 버튼으로 넘겨 보세요</p>
                 </div>
-                <ul class="design-grid">
+            </section>
+
+            <section id="design" class="design" aria-labelledby="design-title">
+                <div class="container">
+                    <div class="section-label">
+                        <span class="section-label__tag"><span aria-hidden="true">◂</span> Design <span aria-hidden="true">▸</span></span>
+                        <span class="section-label__count">02 <i aria-hidden="true"></i> 28 Works</span>
+                    </div>
+                    <div class="design__head">
+                        <div>
+                            <h2 class="section-heading" id="design-title">Visual <strong>Design</strong> Works</h2>
+                            <p class="section-intro">퍼블리싱 외에 직접 디자인한 배너와 랜딩페이지, 웹사이트 시안입니다. 이미지를 누르면 원본이 열립니다.</p>
+                        </div>
+                        <div class="design-filter" role="group" aria-label="분류 필터">
+                        <button type="button" class="filter-chip is-active" data-filter="all">전체 <small>28</small></button>
+                        <button type="button" class="filter-chip" data-filter="proposal">기획·제안 <small>1</small></button>
+                        <button type="button" class="filter-chip" data-filter="landing">랜딩페이지 <small>3</small></button>
+                        <button type="button" class="filter-chip" data-filter="uidesign">시스템디자인 <small>4</small></button>
+                        <button type="button" class="filter-chip" data-filter="web">웹디자인 <small>2</small></button>
+                        <button type="button" class="filter-chip" data-filter="banner">배너 <small>18</small></button>
+                    </div>
+                    </div>
+                    <ul class="design-grid">
+                    <li class="design-card" data-cat="proposal">
+                        <a href="./images/proposal01.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/proposal01.png" alt="다이소 계산대 하이패스 도입 제안" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">기획·제안</span>
+                                <span class="design-card__title">다이소 계산대 하이패스 도입 제안</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="landing">
+                        <a href="./images/landing01.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/landing01.png" alt="NH농협은행 × Kurly 퍼플통장" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">랜딩페이지</span>
+                                <span class="design-card__title">NH농협은행 × Kurly 퍼플통장</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="landing">
+                        <a href="./images/landing02.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/landing02.png" alt="NH퍼플통장 모바일" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">랜딩페이지</span>
+                                <span class="design-card__title">NH퍼플통장 모바일</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="landing">
+                        <a href="./images/landing03.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/landing03.png" alt="Budweiser 캠페인" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">랜딩페이지</span>
+                                <span class="design-card__title">Budweiser 캠페인</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="uidesign">
+                        <a href="./images/uidesign01.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/uidesign01.png" alt="IIS 투자정보시스템 메인" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">시스템디자인</span>
+                                <span class="design-card__title">IIS 투자정보시스템 메인</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="uidesign">
+                        <a href="./images/uidesign02.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/uidesign02.png" alt="IIS 투자정보시스템 워크시트" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">시스템디자인</span>
+                                <span class="design-card__title">IIS 투자정보시스템 워크시트</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="uidesign">
+                        <a href="./images/uidesign03.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/uidesign03.png" alt="Columbia POS Type A" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">시스템디자인</span>
+                                <span class="design-card__title">Columbia POS Type A</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="uidesign">
+                        <a href="./images/uidesign04.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/uidesign04.png" alt="Columbia POS Type B" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">시스템디자인</span>
+                                <span class="design-card__title">Columbia POS Type B</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="web">
+                        <a href="./images/webdesign01.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/webdesign01.png" alt="INNODIGM 회사소개서" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">웹디자인</span>
+                                <span class="design-card__title">INNODIGM 회사소개서</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="design-card" data-cat="web">
+                        <a href="./images/webdesign02.png" target="_blank" rel="noopener noreferrer">
+                            <span class="design-card__thumb"><img src="./images/webdesign02.png" alt="AI Smart 웹사이트" loading="lazy"></span>
+                            <span class="design-card__meta">
+                                <span class="design-card__cat">웹디자인</span>
+                                <span class="design-card__title">AI Smart 웹사이트</span>
+                            </span>
+                        </a>
+                    </li>
                     <li class="design-card" data-cat="banner">
                         <a href="./images/banner01.png" target="_blank" rel="noopener noreferrer">
                             <span class="design-card__thumb"><img src="./images/banner01.png" alt="2024학년도 전기 학위수여식 안내" loading="lazy"></span>
@@ -398,99 +503,17 @@
                             </span>
                         </a>
                     </li>
-                    <li class="design-card" data-cat="landing">
-                        <a href="./images/landing01.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/landing01.png" alt="NH농협은행 × Kurly 퍼플통장" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">랜딩페이지</span>
-                                <span class="design-card__title">NH농협은행 × Kurly 퍼플통장</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="landing">
-                        <a href="./images/landing02.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/landing02.png" alt="NH퍼플통장 모바일" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">랜딩페이지</span>
-                                <span class="design-card__title">NH퍼플통장 모바일</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="landing">
-                        <a href="./images/landing03.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/landing03.png" alt="Budweiser 캠페인" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">랜딩페이지</span>
-                                <span class="design-card__title">Budweiser 캠페인</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="web">
-                        <a href="./images/webdesign01.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/webdesign01.png" alt="INNODIGM 회사소개서" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">웹디자인</span>
-                                <span class="design-card__title">INNODIGM 회사소개서</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="web">
-                        <a href="./images/webdesign02.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/webdesign02.png" alt="AI Smart 웹사이트" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">웹디자인</span>
-                                <span class="design-card__title">AI Smart 웹사이트</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="uidesign">
-                        <a href="./images/uidesign01.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/uidesign01.png" alt="IIS 투자정보시스템 메인" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">시스템디자인</span>
-                                <span class="design-card__title">IIS 투자정보시스템 메인</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="uidesign">
-                        <a href="./images/uidesign02.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/uidesign02.png" alt="IIS 투자정보시스템 워크시트" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">시스템디자인</span>
-                                <span class="design-card__title">IIS 투자정보시스템 워크시트</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="uidesign">
-                        <a href="./images/uidesign03.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/uidesign03.png" alt="Columbia POS Type A" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">시스템디자인</span>
-                                <span class="design-card__title">Columbia POS Type A</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="uidesign">
-                        <a href="./images/uidesign04.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/uidesign04.png" alt="Columbia POS Type B" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">시스템디자인</span>
-                                <span class="design-card__title">Columbia POS Type B</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="design-card" data-cat="proposal">
-                        <a href="./images/proposal01.png" target="_blank" rel="noopener noreferrer">
-                            <span class="design-card__thumb"><img src="./images/proposal01.png" alt="다이소 계산대 하이패스 도입 제안" loading="lazy"></span>
-                            <span class="design-card__meta">
-                                <span class="design-card__cat">기획·제안</span>
-                                <span class="design-card__title">다이소 계산대 하이패스 도입 제안</span>
-                            </span>
-                        </a>
-                    </li>
                 </ul>
+                </div>
             </section>
         </main>
+
+        <footer class="footer">
+            <div class="container footer__inner">
+                <span>© 2026 송민정</span>
+                <span>UI/UX Publisher Portfolio</span>
+            </div>
+        </footer>
     </div>
 
     <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="이미지 보기" hidden>
@@ -508,6 +531,7 @@
         <div class="viewer__body"><div class="viewer__stage"><img class="viewer__img" src="" alt=""></div></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
     <script src="./js/script.js"></script>
 
 </body></html>
