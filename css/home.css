@@ -89,6 +89,9 @@ html { scroll-behavior: smooth; }
 .home .works__btn { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid var(--ink); border-radius: 50%; background: var(--ink); color: #fff; font: inherit; font-size: 1.1rem; cursor: pointer; transition: background 0.25s, color 0.25s, opacity 0.25s; }
 .home .works__btn:hover { background: #fff; color: var(--ink); }
 .home .works__btn.is-disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+/* 카드가 화면에 다 들어가 넘길 게 없으면(Swiper 가 lock 클래스를 붙인다) 화살표와 안내 문구를 숨긴다 */
+.home .works__btn.swiper-button-lock { display: none; }
+.home .works:has(.swiper-button-lock) .works__hint { display: none; }
 .home .works__hint { margin-top: 8px; color: var(--muted); font-size: 0.8rem; }
 .home .works .section-label__count i { background: linear-gradient(90deg, currentColor calc(var(--progress, 0.06) * 100%), var(--line) 0); }
 
@@ -189,14 +192,7 @@ html { scroll-behavior: smooth; }
     .home .content-card + .content-card { padding-left: 60px; }
 }
 
-/* Personal Project — 카드 한 장이라 슬라이더 없이 Web Publishing 카드와 같은 모양으로 둔다 */
-.home .personal { padding-bottom: 120px; }
-.home .personal__list { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px; padding: 24px 0 32px; }
+/* Personal Project — Web Publishing 과 같은 슬라이더(.works · .projects.swiper)를 그대로 쓴다 */
 @media (max-width: 640px) {
-    .home .personal { padding-bottom: 100px; }
-    /* 모바일은 Web Publishing 처럼 옆으로 밀어 넘기기 (카드가 화면 끝까지 흐르도록 좌우 여백만큼 바깥으로 펼침) */
-    .home .personal__list { flex-wrap: nowrap; gap: 12px; margin: 28px -16px 0; padding: 8px 16px 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; scrollbar-width: none; }
-    .home .personal__list::-webkit-scrollbar { display: none; }
-    .home .personal__list .project { flex-shrink: 0; scroll-snap-align: start; }
     .home .content-card__more { display: none; }   /* 목차 카드 3개가 한 줄에 들어가게 "Personal" 만 */
 }
