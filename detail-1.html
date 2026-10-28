@@ -26,7 +26,7 @@
             <div class="detail-hero">
                 <div class="hero-kicker">
                     <span class="status-pill">진행중</span>
-                    <span>2026년 3월 ~</span>
+                    <span>2026년 3월 ~ 2026년 12월</span>
                     <span>UI/UX 퍼블리셔</span>
                 </div>
 
@@ -158,73 +158,6 @@
                     제목을 누르면 열립니다. 사내 식별자·도메인·내부 코드값은 예시 값으로 바꿨습니다.
                 </p>
                 <div class="code-preview-list">
-                    <details class="code-card" open>
-                        <summary>
-                            <span class="code-card__title">보험료 폼 구조 <span class="code-card__lang">HTML</span></span>
-                            <span class="code-card__hint">입력 제약, hidden 파라미터, CTA 동작을 분리해 하나의 폼을 재사용</span>
-                        </summary>
-                        <div class="code-card__body">
-                            <pre><code class="language-html">&lt;form name="frm" id="frm"&gt;
-  &lt;!-- 마케팅/상품 식별용 hidden 파라미터 (값은 예시) --&gt;
-  &lt;input type="hidden" name="utm_content" value="product-a"&gt;
-  &lt;input type="hidden" name="product_code" value="A0000"&gt;
-  &lt;input type="hidden" name="init_msg" value="상품 A"&gt;
-
-  &lt;!-- 숫자만 입력 + 8자리 도달 시 다음 필드로 자동 포커스 이동 --&gt;
-  &lt;input type="text" name="birth" maxlength="8"
-    placeholder="예) 19990101"
-    onkeyup="this.value=this.value.replace(/[^0-9]/g,'');
-             if(this.value.length===8) document.getElementById('tel1').focus();"&gt;
-
-  &lt;input type="radio" name="gender" id="gender_m" value="m"&gt;
-  &lt;input type="radio" name="gender" id="gender_f" value="f"&gt;
-  &lt;input type="text" name="name" class="input" placeholder="이름"&gt;
-  &lt;input type="text" name="tel1" id="tel1" maxlength="3"&gt;
-  &lt;input type="text" name="tel2" id="tel2" maxlength="4"&gt;
-  &lt;input type="text" name="tel3" id="tel3" maxlength="4"&gt;
-&lt;/form&gt;
-
-&lt;!-- data-mode로 CTA 동작을 분리해 하나의 폼을 다목적으로 재사용 --&gt;
-&lt;a class="btn payment frm-btn" data-mode="cal"&gt;보험료 확인&lt;/a&gt;
-&lt;a class="btn consulting frm-btn" data-mode="tel"&gt;상담 신청&lt;/a&gt;
-&lt;a class="btn external" href="javascript:externalQuote();"&gt;간편 보험료 확인&lt;/a&gt;</code></pre>
-                        </div>
-                    </details>
-
-                    <details class="code-card">
-                        <summary>
-                            <span class="code-card__title">FAQ 시맨틱 마크업 <span class="code-card__lang">HTML</span></span>
-                            <span class="code-card__hint">h2 → h3 헤딩 계층으로 Q/A 문맥을 구분</span>
-                        </summary>
-                        <div class="code-card__body">
-                            <pre><code class="language-html">&lt;div class="perCont faq"&gt;
-  &lt;div class="faqHead"&gt;
-    &lt;span class="faqBadge"&gt;FAQ&lt;/span&gt;
-    &lt;h2 class="faqTitle"&gt;자주 찾는 질문&lt;/h2&gt;
-  &lt;/div&gt;
-  &lt;div class="faqList"&gt;
-    &lt;div class="faqItem"&gt;
-      &lt;div class="qRow"&gt;
-        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 이 상품은 왜 필요한가요?&lt;/h3&gt;
-      &lt;/div&gt;
-      &lt;div class="aRow"&gt;
-        &lt;p&gt;&lt;span class="aMark"&gt;A.&lt;/span&gt; ...&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="faqItem"&gt;
-      &lt;div class="qRow"&gt;
-        &lt;h3&gt;&lt;span class="qMark"&gt;Q.&lt;/span&gt; 유사 상품과의 차이는 무엇인가요?&lt;/h3&gt;
-        &lt;span class="ar up"&gt;&lt;/span&gt;
-      &lt;/div&gt;
-      &lt;div class="aRow"&gt;
-        &lt;p&gt;&lt;span class="aMark"&gt;A.&lt;/span&gt; 보장 범위 차이를 중심으로 설명...&lt;/p&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                        </div>
-                    </details>
-
                     <details class="code-card">
                         <summary>
                             <span class="code-card__title">보종별 변수 맵 단일 관리 <span class="code-card__lang">PHP</span></span>
