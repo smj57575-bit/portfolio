@@ -93,21 +93,21 @@
 .home .chip--primary { border-color: var(--ink); background: var(--ink); color: #fff; }
 .home .project__arrow { position: absolute; top: 22px; left: 22px; z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14); font-size: 1rem; transform: rotate(-45deg); transition: transform 0.5s var(--ease), background 0.3s, color 0.3s; }
 
-/* 현재 슬라이드(화면 맨 앞 카드) · 마우스 오버 · 키보드 포커스 카드는 앞으로 나오며 커진다 — transform 만 사용 */
-.home .project.swiper-slide-active,
+/* 확대 자리(화면 왼쪽 세 번째)의 카드 · 마우스 오버 · 키보드 포커스 카드는 앞으로 나오며 커진다 — transform 만 사용 */
+.home .project.is-focus,
 .home .project:focus-within { z-index: 5; transform: translateY(-8px) scale(1.06); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18); }
-.home .project.swiper-slide-active .project__thumb-mo,
+.home .project.is-focus .project__thumb-mo,
 .home .project:focus-within .project__thumb-mo { opacity: 1; transform: none; }
-.home .project.swiper-slide-active .project__arrow { background: var(--ink); color: #fff; transform: rotate(0); }
+.home .project.is-focus .project__arrow { background: var(--ink); color: #fff; transform: rotate(0); }
 @media (hover: hover) {
     .home .project:hover { z-index: 5; transform: translateY(-8px) scale(1.06); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.18); }
     .home .project:hover .project__thumb-pc { transform: scale(1.05); }
     .home .project:hover .project__thumb-mo { opacity: 1; transform: none; }
     .home .project:hover .project__arrow { background: var(--ink); color: #fff; transform: rotate(0); }
-    /* 다른 카드에 마우스를 올리면 현재 슬라이드는 제자리로 — 두 장이 동시에 커지지 않게 */
-    .home .projects:has(.project:hover) .project.swiper-slide-active:not(:hover) { z-index: auto; transform: none; box-shadow: -18px 0 40px rgba(0, 0, 0, 0.07); }
-    .home .projects:has(.project:hover) .project.swiper-slide-active:not(:hover) .project__thumb-mo { opacity: 0; transform: translateY(24px); }
-    .home .projects:has(.project:hover) .project.swiper-slide-active:not(:hover) .project__arrow { background: #fff; color: inherit; transform: rotate(-45deg); }
+    /* 다른 카드에 마우스를 올리면 확대 카드는 제자리로 — 두 장이 동시에 커지지 않게 */
+    .home .projects:has(.project:hover) .project.is-focus:not(:hover) { z-index: auto; transform: none; box-shadow: -18px 0 40px rgba(0, 0, 0, 0.07); }
+    .home .projects:has(.project:hover) .project.is-focus:not(:hover) .project__thumb-mo { opacity: 0; transform: translateY(24px); }
+    .home .projects:has(.project:hover) .project.is-focus:not(:hover) .project__arrow { background: #fff; color: inherit; transform: rotate(-45deg); }
 }
 
 /* Design (다크 영역) */
@@ -155,7 +155,7 @@
     .home .project { min-height: 0; border-radius: 22px; box-shadow: none; }
     .home .project__thumb { height: 190px; }
     .home .project__thumb-mo { opacity: 1; transform: none; width: 56px; }
-    .home .project.swiper-slide-active { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+    .home .project.is-focus { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
     .home .project__body { padding: 18px 20px 22px; }
     .home .project__arrow { top: 18px; left: 18px; width: 36px; height: 36px; }
     .home .design { padding: 80px 0 64px; border-radius: 28px 28px 0 0; }
