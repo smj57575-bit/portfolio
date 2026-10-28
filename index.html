@@ -225,17 +225,22 @@
                 <div class="container">
                     <div class="section-label">
                         <span class="section-label__tag"><span aria-hidden="true">◂</span> Personal Project <span aria-hidden="true">▸</span></span>
-                        <span class="section-label__count" style="--progress: 1;">01 <i aria-hidden="true"></i> 02</span>
+                        <span class="section-label__count">01 <i aria-hidden="true"></i> 02</span>
                     </div>
                     <div class="works__head">
                         <div>
                             <h2 class="section-heading" id="personal-title">Personal <strong>Project</strong></h2>
                             <p class="section-intro">회사 업무 밖에서 직접 기획하고 만든 프로젝트입니다. 카드를 누르면 상세 내용을 볼 수 있습니다.</p>
                         </div>
+                        <div class="works__arrows">
+                            <button type="button" class="works__btn works__btn--prev" aria-label="이전 프로젝트">←</button>
+                            <button type="button" class="works__btn works__btn--next" aria-label="다음 프로젝트">→</button>
+                        </div>
                     </div>
 
-                    <div class="personal__list">
-                        <article id="project-9" class="project" aria-label="개인 프로젝트 1">
+                    <div class="projects swiper">
+                        <div class="swiper-wrapper">
+                        <article id="project-9" class="project swiper-slide" aria-label="개인 프로젝트 1">
                             <div class="project__thumb">
                                 <img class="project__thumb-pc" src="./images/react-admin-pc.png" alt="React 관리자 연동 홈페이지 PC 메인 화면" loading="lazy">
                                 <img class="project__thumb-mo" src="./images/react-admin-mobile.png" alt="React 관리자 연동 홈페이지 모바일 메인 화면" loading="lazy">
@@ -261,7 +266,7 @@
                             </div>
                             <span class="project__arrow" aria-hidden="true">→</span>
                         </article>
-                        <article id="project-6" class="project" aria-label="개인 프로젝트 2">
+                        <article id="project-6" class="project swiper-slide" aria-label="개인 프로젝트 2">
                             <div class="project__thumb">
                                 <img class="project__thumb-pc" src="./images/p4-pc.png" alt="AI Smart 홈페이지 PC 메인 화면" loading="lazy">
                                 <img class="project__thumb-mo" src="./images/p4-mobile.png" alt="AI Smart 홈페이지 모바일 메인 화면" loading="lazy">
@@ -284,7 +289,9 @@
                             </div>
                             <span class="project__arrow" aria-hidden="true">→</span>
                         </article>
+                        </div>
                     </div>
+                    <p class="works__hint">드래그하거나 화살표 버튼으로 넘겨 보세요</p>
                 </div>
             </section>
 
