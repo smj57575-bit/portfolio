@@ -22,6 +22,7 @@
                 </a>
                 <nav class="nav" aria-label="섹션 이동">
                     <a href="#works">Web Publishing</a>
+                    <a href="#personal">Personal</a>
                     <a href="#design">Design</a>
                 </nav>
                 <span class="topbar__role">UI/UX Publisher</span>
@@ -43,13 +44,18 @@
         </section>
 
         <nav class="container contents" aria-label="목차">
-            <a class="content-card" href="#works">
+            <a class="content-card content-card--dark" href="#works">
                 <span class="content-card__num">01</span>
                 <span class="content-card__title">Web Publishing</span>
-                <span class="content-card__count">6</span>
+                <span class="content-card__count">5</span>
             </a>
-            <a class="content-card content-card--dark" href="#design">
+            <a class="content-card" href="#personal">
                 <span class="content-card__num">02</span>
+                <span class="content-card__title">Personal<span class="content-card__more"> Project</span></span>
+                <span class="content-card__count">2</span>
+            </a>
+            <a class="content-card" href="#design">
+                <span class="content-card__num">03</span>
                 <span class="content-card__title">Design</span>
                 <span class="content-card__count">28</span>
             </a>
@@ -60,7 +66,7 @@
                 <div class="container">
                     <div class="section-label">
                         <span class="section-label__tag"><span aria-hidden="true">◂</span> Web Publishing <span aria-hidden="true">▸</span></span>
-                        <span class="section-label__count">01 <i aria-hidden="true"></i> 06</span>
+                        <span class="section-label__count">01 <i aria-hidden="true"></i> 05</span>
                     </div>
                     <div class="works__head">
                         <div>
@@ -199,32 +205,76 @@
                     </div>
                     <span class="project__arrow" aria-hidden="true">→</span>
                 </article>
-                <article id="project-6" class="project swiper-slide" aria-label="프로젝트 6">
-                    <div class="project__thumb">
-                        <img class="project__thumb-pc" src="./images/p4-pc.png" alt="프로젝트4 PC 화면" loading="lazy">
-                        <img class="project__thumb-mo" src="./images/p4-mobile.png" alt="프로젝트4 모바일 화면" loading="lazy">
-                    </div>
-                    <div class="project__body">
-                        <div class="project__top">
-                            <span class="project__num">06.</span>
-                            <span class="project__period">25/07~25/09</span>
-                        </div>
-                        <h3 class="project__title"><a href="detail-6.html">AI Smart 홈페이지 제작 (개인)</a></h3>
-                        <p class="project__desc">스마트팩토리·공작기계·CAD/CAM 등 산업 자동화 솔루션을 다루는 5인 미만 기업의 홈페이지를 기획, 디자인, 퍼블리싱까지 단독으로 진행하였습니다. 제품 10종과 자료실·다운로드 등 흩어져 있던 정보를 하나의 반응형 사이트로 통합했습니다.</p>
-                        <div class="project__links">
-                            <a class="chip chip--primary" href="https://aismart.kr/" target="_blank" rel="noopener noreferrer">
-                            사이트 보기 <small>↗</small>
-                            </a>
-                            <span class="chip">기획</span>
-                            <span class="chip">웹디자인</span>
-                            <span class="chip">퍼블리싱</span>
-                        </div>
-                    </div>
-                    <span class="project__arrow" aria-hidden="true">→</span>
-                </article>
                         </div>
                     </div>
                     <p class="works__hint">드래그하거나 화살표 버튼으로 넘겨 보세요</p>
+                </div>
+            </section>
+
+            <section id="personal" class="works personal" aria-labelledby="personal-title">
+                <div class="container">
+                    <div class="section-label">
+                        <span class="section-label__tag"><span aria-hidden="true">◂</span> Personal Project <span aria-hidden="true">▸</span></span>
+                        <span class="section-label__count" style="--progress: 1;">01 <i aria-hidden="true"></i> 02</span>
+                    </div>
+                    <div class="works__head">
+                        <div>
+                            <h2 class="section-heading" id="personal-title">Personal <strong>Project</strong></h2>
+                            <p class="section-intro">회사 업무 밖에서 직접 기획하고 만든 프로젝트입니다. React 관리자 연동 홈페이지는 React를 손에 익히기 위한 연습 프로젝트로, Claude와 함께 코딩하고 검수하며 완성했습니다. 데모사이트에서 관리자 기능을 직접 써 볼 수 있습니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="personal__list">
+                        <article id="project-9" class="project" aria-label="개인 프로젝트 1">
+                            <div class="project__thumb">
+                                <img class="project__thumb-pc" src="./images/react-admin-pc.png" alt="React 관리자 연동 홈페이지 PC 메인 화면" loading="lazy">
+                                <img class="project__thumb-mo" src="./images/react-admin-mobile.png" alt="React 관리자 연동 홈페이지 모바일 메인 화면" loading="lazy">
+                            </div>
+                            <div class="project__body">
+                                <div class="project__top">
+                                    <span class="project__num">01.</span>
+                                    <span class="project__period">26/09~26/10</span>
+                                </div>
+                                <h3 class="project__title"><a href="detail-9.html">React 관리자 연동 홈페이지</a></h3>
+                                <p class="project__desc">React 연습용으로, PHP로 만든 사이트를 React + TypeScript 화면과 JSON API로 나눠 다시 구현해 본 프로젝트입니다. 관리자 페이지에서 팝업·배너·띠배너·FAQ·게시글을 등록하면 홈페이지에 바로 반영되며, Claude와 함께 코딩하고 검수했습니다.</p>
+                                <div class="project__links">
+                                    <a class="chip chip--primary" href="https://smj57575-bit.github.io/react-admin/" target="_blank" rel="noopener noreferrer">
+                                    데모사이트 보기 <small>↗</small>
+                                    </a>
+                                    <a class="chip chip--primary" href="https://github.com/smj57575-bit/react-admin" target="_blank" rel="noopener noreferrer">
+                                    코드 보기 <small>↗</small>
+                                    </a>
+                                    <span class="chip">Claude</span>
+                                    <span class="chip">React</span>
+                                    <span class="chip">TypeScript</span>
+                                </div>
+                            </div>
+                            <span class="project__arrow" aria-hidden="true">→</span>
+                        </article>
+                        <article id="project-6" class="project" aria-label="개인 프로젝트 2">
+                            <div class="project__thumb">
+                                <img class="project__thumb-pc" src="./images/p4-pc.png" alt="AI Smart 홈페이지 PC 메인 화면" loading="lazy">
+                                <img class="project__thumb-mo" src="./images/p4-mobile.png" alt="AI Smart 홈페이지 모바일 메인 화면" loading="lazy">
+                            </div>
+                            <div class="project__body">
+                                <div class="project__top">
+                                    <span class="project__num">02.</span>
+                                    <span class="project__period">25/07~25/09</span>
+                                </div>
+                                <h3 class="project__title"><a href="detail-6.html">AI Smart 홈페이지 제작</a></h3>
+                                <p class="project__desc">스마트팩토리·공작기계·CAD/CAM 등 산업 자동화 솔루션을 다루는 5인 미만 기업의 홈페이지를 기획, 디자인, 퍼블리싱까지 단독으로 진행하였습니다. 제품 10종과 자료실·다운로드 등 흩어져 있던 정보를 하나의 반응형 사이트로 통합했습니다.</p>
+                                <div class="project__links">
+                                    <a class="chip chip--primary" href="https://aismart.kr/" target="_blank" rel="noopener noreferrer">
+                                    사이트 보기 <small>↗</small>
+                                    </a>
+                                    <span class="chip">기획</span>
+                                    <span class="chip">웹디자인</span>
+                                    <span class="chip">퍼블리싱</span>
+                                </div>
+                            </div>
+                            <span class="project__arrow" aria-hidden="true">→</span>
+                        </article>
+                    </div>
                 </div>
             </section>
 
@@ -232,7 +282,7 @@
                 <div class="container">
                     <div class="section-label">
                         <span class="section-label__tag"><span aria-hidden="true">◂</span> Design <span aria-hidden="true">▸</span></span>
-                        <span class="section-label__count">02 <i aria-hidden="true"></i> 28 Works</span>
+                        <span class="section-label__count">03 <i aria-hidden="true"></i> 28 Works</span>
                     </div>
                     <div class="design__head">
                         <div>
