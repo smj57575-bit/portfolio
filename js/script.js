@@ -175,3 +175,41 @@ if (worksSlider && window.Swiper) {
         },
     });
 }
+
+// Index: 상단 메뉴 노출 시점과 지금 보고 있는 영역 표시 (스크롤 위치 기준)
+const sectionLinks = document.querySelectorAll('.home .nav a[href^="#"]');
+
+if (sectionLinks.length) {
+    const sections = [...sectionLinks].map(link => document.querySelector(link.getAttribute('href')));
+    const sectionNav = sectionLinks[0].closest('.nav');
+    const contentTabs = document.querySelector('.contents');
+    let navTicking = false;
+
+    const markCurrent = () => {
+        navTicking = false;
+        // 첫 화면의 목차 탭과 기능이 겹치므로, 탭이 상단 메뉴 뒤로 지나간 뒤에만 메뉴를 보여준다
+        if (contentTabs) sectionNav.classList.toggle('is-visible', contentTabs.getBoundingClientRect().bottom <= 72);
+
+        // 상단 메뉴 아래 화면 30% 지점을 지난 마지막 영역을 현재 영역으로 본다
+        const line = 72 + window.innerHeight * 0.3;
+        let current = -1;
+
+        sections.forEach((section, i) => {
+            if (section && section.getBoundingClientRect().top <= line) current = i;
+        });
+        sectionLinks.forEach((link, i) => {
+            link.classList.toggle('is-active', i === current);
+            if (i === current) link.setAttribute('aria-current', 'true');
+            else link.removeAttribute('aria-current');
+        });
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!navTicking) {
+            navTicking = true;
+            requestAnimationFrame(markCurrent);
+        }
+    }, { passive: true });
+    window.addEventListener('resize', markCurrent);
+    markCurrent();
+}
