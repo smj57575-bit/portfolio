@@ -1,17 +1,17 @@
-// Main: 프로젝트 카드 클릭 이벤트
-document.querySelectorAll('.project').forEach(project => {
-    project.style.cursor = 'pointer';
-    project.addEventListener('click', function(e) {
-        // 내부 링크(chip)를 클릭한 경우는 무시
-        if (e.target.closest('.chip') || e.target.closest('.project__links a')) {
-            return;
-        }
+// Main: 프로젝트 카드 클릭 이벤트 (슬라이더가 복제한 카드도 받도록 위임)
+document.addEventListener('click', e => {
+    const project = e.target.closest('.project');
+    if (!project) return;
 
-        // 프로젝트 번호 가져오기
-        const projectId = this.id; // project-1, project-2 등
-        const projectNum = projectId.split('-')[1];
-        window.location.href = `detail-${projectNum}.html`;
-    });
+    // 내부 링크(chip)를 클릭한 경우는 무시
+    if (e.target.closest('.chip') || e.target.closest('.project__links a')) {
+        return;
+    }
+
+    // 프로젝트 번호 가져오기 (복제 카드는 data-project 에 원본 id 보관)
+    const projectId = project.dataset.project || project.id; // project-1, project-2 등
+    const projectNum = projectId.split('-')[1];
+    window.location.href = `detail-${projectNum}.html`;
 });
 
 // Detail: 코드 하이라이트 및 홈 이동
@@ -125,11 +125,34 @@ if (viewer) {
 }
 
 // Index: Web Publishing 카드 슬라이더 (마우스 드래그 · 터치 스와이프 · 화살표 버튼)
+// 화면 왼쪽에서 세 번째 자리(1200px 미만은 두 번째, 모바일은 첫 번째)에 온 카드를 확대(.is-focus)
 const worksSlider = document.querySelector('.projects.swiper');
 
 if (worksSlider && window.Swiper) {
     const counter = document.querySelector('.works .section-label__count');
-    const setProgress = (swiper) => counter?.style.setProperty('--progress', Math.max(swiper.progress, 0.06));
+    const total = worksSlider.querySelectorAll('.swiper-slide').length;
+    const focusShift = () => (window.innerWidth >= 1200 ? 2 : window.innerWidth >= 641 ? 1 : 0);
+
+    const setFocus = (swiper) => {
+        const index = Math.min(swiper.activeIndex + focusShift(), total - 1);
+
+        swiper.slides.forEach((slide, i) => slide.classList.toggle('is-focus', i === index));
+        counter?.style.setProperty('--progress', (index + 1) / total);
+    };
+
+    // 마지막 카드도 확대 자리까지 올 수 있도록 끝에 여백을 둔다
+    const setTailSpace = (swiper) => {
+        const shift = focusShift();
+        const [first, second] = swiper.slides;
+        const step = second.offsetLeft - first.offsetLeft;
+        const overlap = first.offsetWidth - step;
+        const tail = shift ? Math.max(Math.round(swiper.width - (shift + 1) * step - overlap), 0) : 0;
+
+        if (swiper.params.slidesOffsetAfter !== tail) {
+            swiper.params.slidesOffsetAfter = tail;
+            swiper.update();
+        }
+    };
 
     new Swiper(worksSlider, {
         slidesPerView: 'auto',
@@ -145,6 +168,10 @@ if (worksSlider && window.Swiper) {
         a11y: { prevSlideMessage: '이전 프로젝트', nextSlideMessage: '다음 프로젝트' },
         // PC에서는 카드가 겹쳐 보이도록 간격을 음수로
         breakpoints: { 641: { spaceBetween: -56 } },
-        on: { init: setProgress, progress: setProgress },
+        on: {
+            afterInit(swiper) { setTailSpace(swiper); setFocus(swiper); },
+            resize(swiper) { setTailSpace(swiper); setFocus(swiper); },
+            slideChange: setFocus,
+        },
     });
 }
