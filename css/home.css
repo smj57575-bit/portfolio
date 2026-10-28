@@ -155,10 +155,12 @@ html { scroll-behavior: smooth; }
 
 @media (max-width: 640px) {
     .home .container { width: calc(100% - 32px); }
-    .home .topbar__inner { grid-template-columns: auto 1fr; height: 64px; padding: 0; }
+    .home .topbar__inner { grid-template-columns: auto 1fr; align-items: center; height: 64px; padding: 0; }
     .home .topbar__role { display: none; }
     .home .nav { justify-self: end; }
-    .home .nav a { height: 32px; padding: 0 12px; font-size: 0.76rem; }
+    .home .nav a { height: 32px; padding: 0 11px; font-size: 0.74rem; white-space: nowrap; }
+    /* 메뉴가 3개라 좁은 화면에선 로고 글자를 빼고 점만 남긴다 (첫 화면에 큰 PORTFOLIO 가 있음) */
+    .home .brand span:last-child { display: none; }
     .home .hero { padding: 48px 0 40px; }
     .home .hero__rule { font-size: 0.68rem; letter-spacing: 0.12em; }
     .home .contents { margin-bottom: 72px; }
@@ -192,6 +194,9 @@ html { scroll-behavior: smooth; }
 .home .personal__list { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 48px; padding: 24px 0 32px; }
 @media (max-width: 640px) {
     .home .personal { padding-bottom: 100px; }
-    .home .personal__list { margin-top: 28px; padding: 8px 0 20px; }
+    /* 모바일은 Web Publishing 처럼 옆으로 밀어 넘기기 (카드가 화면 끝까지 흐르도록 좌우 여백만큼 바깥으로 펼침) */
+    .home .personal__list { flex-wrap: nowrap; gap: 12px; margin: 28px -16px 0; padding: 8px 16px 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; scrollbar-width: none; }
+    .home .personal__list::-webkit-scrollbar { display: none; }
+    .home .personal__list .project { flex-shrink: 0; scroll-snap-align: start; }
     .home .content-card__more { display: none; }   /* 목차 카드 3개가 한 줄에 들어가게 "Personal" 만 */
 }
