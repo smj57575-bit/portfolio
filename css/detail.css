@@ -1,0 +1,90 @@
+/* ==============================
+   Detail (detail-*.html 전용) — 메인(home.css)과 같은 블랙 & 화이트 톤
+   style.css 위에 덮어쓰므로 모든 규칙을 .detail-body 아래로 한정
+============================== */
+.detail-body {
+    --ink: #0a0a0a;
+    --paper: #f3f3f1;
+    --card: #fff;
+    --line: rgba(10, 10, 10, 0.1);
+    --muted: rgba(10, 10, 10, 0.56);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 24px 60px rgba(0, 0, 0, 0.06);
+    font-family: 'DM Sans', 'Pretendard', -apple-system, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    word-break: keep-all;
+}
+.detail-body .page { background: var(--paper); }
+
+/* Topbar */
+.detail-body .topbar { background: rgba(243, 243, 241, 0.8); border-bottom: 0; }
+.detail-body .topbar__inner { height: 72px; max-width: 1168px; }
+.detail-body .brand { font-size: 0.9rem; letter-spacing: 0.06em; }
+.detail-body .brand__dot { background: var(--ink); }
+.detail-body .back-btn { padding: 9px 16px; border: 0; background: var(--ink); color: #fff; font-size: 0.82rem; font-weight: 500; transition: background 0.25s; }
+.detail-body .back-btn:hover { background: #333; }
+
+/* Layout · 공통 제목 */
+.detail-body .container { padding: 48px 0 96px; }
+.detail-body .detail-title { font-weight: 700; letter-spacing: -0.035em; }
+.detail-body .detail-meta { color: var(--muted); }
+.detail-body .section-title { font-weight: 700; letter-spacing: -0.03em; }
+.detail-body .section-content { color: rgba(10, 10, 10, 0.68); }
+
+/* Hero */
+.detail-body .detail-hero { border: 0; border-radius: 28px; background: var(--card); box-shadow: var(--shadow); }
+.detail-body .hero-kicker { color: var(--muted); }
+.detail-body .status-pill { background: var(--ink); color: #fff; font-weight: 600; }
+.detail-body .status-pill::before { background: #fff; }
+.detail-body .detail-lead { color: rgba(10, 10, 10, 0.7); }
+.detail-body .detail-summary { border-top-color: var(--line); }
+.detail-body .detail-summary dt { color: var(--muted); font-weight: 600; }
+.detail-body .detail-summary dd { color: var(--ink); }
+.detail-body .tech-badge { border: 1px solid var(--line); background: transparent; color: var(--ink); font-weight: 500; }
+.detail-body .detail-hero .tech-stack { border-top-color: var(--line); }
+.detail-body .detail-hero .tech-badge { border-color: transparent; background: var(--paper); color: rgba(10, 10, 10, 0.72); }
+
+/* Section head */
+.detail-body .section-head { border-bottom-color: var(--ink); }
+.detail-body .section-head__idx { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; font-size: 0.8rem; font-weight: 600; color: var(--ink); }
+
+/* Work grid */
+.detail-body .work-grid { border: 0; border-radius: 22px; background: var(--line); box-shadow: var(--shadow); }
+.detail-body .work-grid > li { background: var(--card); }
+.detail-body .work-grid > li:hover { background: #fafaf8; }
+.detail-body .work-grid p { color: var(--muted); }
+
+/* Flow */
+.detail-body .flow__item::before { background: var(--ink); }
+.detail-body .flow__item::after { background: var(--line); }
+.detail-body .flow__item p { color: var(--muted); }
+
+/* Result — 메인 디자인 영역처럼 검은 패널 */
+.detail-body .result-panel { border: 0; border-radius: 24px; background: var(--ink); }
+.detail-body .result-list > li { color: rgba(255, 255, 255, 0.86); }
+.detail-body .result-list > li::before { background: #fff; color: var(--ink); }
+
+/* Images · 사례 카드 */
+.detail-body .image-container { border-color: var(--line); border-radius: 18px; background: var(--card); }
+.detail-body .case { border-color: var(--line); border-radius: 22px; background: var(--card); box-shadow: var(--shadow); }
+.detail-body .case__shot { background: #e8e8e5; }
+.detail-body .case__meta { color: var(--muted); }
+.detail-body .case__tag { background: var(--paper); color: var(--ink); font-weight: 600; }
+
+/* Code */
+.detail-body .code-card { border-color: var(--line); border-radius: 18px; background: var(--card); }
+.detail-body .code-card p,
+.detail-body .code-card__hint { color: var(--muted); }
+
+/* Links — 메인의 알약형 버튼과 같은 모양 */
+.detail-body .link-btn { padding: 13px 22px; border: 1px solid var(--ink); border-radius: 999px; background: var(--ink); color: #fff; font-weight: 500; transition: background 0.25s, color 0.25s; }
+.detail-body .link-btn:hover { transform: none; background: #333; }
+.detail-body .link-btn-secondary { background: transparent; color: var(--ink); }
+.detail-body .link-btn-secondary:hover { background: var(--ink); color: #fff; }
+
+@media (max-width: 768px) {
+    .detail-body .topbar__inner { height: 64px; }
+    .detail-body .container { padding: 28px 0 72px; }
+    .detail-body .detail-hero { border-radius: 22px; }
+}

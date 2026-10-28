@@ -14,6 +14,8 @@
     color: var(--ink);
     word-break: keep-all;
 }
+/* 목차 탭 · 상단 메뉴로 이동할 때 부드럽게 스크롤 (home.css 는 index 에서만 불러온다) */
+html { scroll-behavior: smooth; }
 .home .page { background: var(--paper); }
 .home .container { width: min(1240px, calc(100% - 48px)); }
 
@@ -22,35 +24,40 @@
 .home .topbar__inner { height: 72px; display: grid; grid-template-columns: 1fr auto 1fr; }
 .home .brand { font-size: 0.9rem; letter-spacing: 0.06em; }
 .home .brand__dot { background: var(--ink); }
-.home .nav { gap: 2px; padding: 4px; border-radius: 999px; background: var(--ink); flex-wrap: nowrap; }
+.home .nav { gap: 2px; padding: 4px; border-radius: 999px; background: var(--ink); flex-wrap: nowrap; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), visibility 0.35s; }
+/* 첫 화면에서는 숨기고, 목차 탭이 지나가면 나타난다 (script.js 가 .is-visible 을 붙인다) */
+.home .nav.is-visible { opacity: 1; visibility: visible; transform: none; }
 .home .nav a { width: auto; height: 36px; padding: 0 18px; border: 0; background: transparent; color: rgba(255, 255, 255, 0.72); font-size: 0.84rem; font-weight: 500; transition: background 0.25s, color 0.25s; }
-.home .nav a:hover { background: #fff; color: var(--ink); }
+.home .nav a:hover { color: #fff; }
+/* 지금 보고 있는 영역 (script.js 가 .is-active 를 붙인다) */
+.home .nav a.is-active { background: #fff; color: var(--ink); }
 .home .topbar__role { justify-self: end; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
 
 /* Hero */
 .home .hero { padding: 80px 0 64px; }
 .home .hero__year,
 .home .hero__title,
-.home .content-card__num,
 .home .project__num { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; }
-.home .hero__year { font-size: clamp(1.3rem, 2.6vw, 2.2rem); font-weight: 800; line-height: 1; }
-.home .hero__title { margin-top: 10px; font-size: clamp(2.6rem, 11.4vw, 10.6rem); font-weight: 800; line-height: 0.88; letter-spacing: -0.02em; }
+.home .hero__year { font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-weight: 800; line-height: 1; }
+.home .hero__title { margin-top: 10px; font-size: clamp(2.2rem, 7vw, 6.4rem); font-weight: 800; line-height: 0.88; letter-spacing: -0.02em; }
 .home .hero__rule { display: flex; justify-content: space-between; gap: 16px; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--ink); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
 .home .hero__sub { margin-top: 28px; max-width: none; color: var(--muted); font-size: 1rem; }
 .home .hero__sub strong { color: var(--ink); }
 
-/* Contents (목차 카드) */
-.home .contents { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: 120px; }
-.home .content-card { position: relative; display: flex; flex-direction: column; min-height: 280px; padding: 30px; border: 1px solid var(--line); border-radius: 28px; background: var(--card); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
-.home .content-card:hover { transform: translateY(-6px); box-shadow: 0 28px 60px rgba(0, 0, 0, 0.08); }
-.home .content-card__num { font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 300; line-height: 1; color: rgba(10, 10, 10, 0.14); }
-.home .content-card__count { position: absolute; top: 30px; right: 30px; padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.78rem; font-weight: 500; }
-.home .content-card__title { margin-top: auto; font-size: clamp(1.7rem, 3.4vw, 2.6rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; }
-.home .content-card__desc { margin-top: 10px; color: var(--muted); font-size: 0.9rem; }
-.home .content-card--dark { border-color: var(--ink); background: var(--ink); color: #fff; }
-.home .content-card--dark .content-card__num { color: rgba(255, 255, 255, 0.2); }
-.home .content-card--dark .content-card__count { border-color: rgba(255, 255, 255, 0.22); }
-.home .content-card--dark .content-card__desc { color: rgba(255, 255, 255, 0.6); }
+/* Contents — 파일 탭 형태의 목차 (선 대신 위쪽 그림자로 구분)
+   첫 탭은 배경색과 같은 톤으로 앞에, 두 번째 탭은 그 뒤로 겹쳐 두고 호버 시 앞으로 꺼낸다.
+   탭 아래선이 어긋나지 않도록 위치는 움직이지 않고 겹침 순서(z-index)와 그림자만 바꾼다 */
+.home .contents { display: flex; align-items: flex-end; margin-bottom: 96px; }
+.home .content-card { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 20px; border-radius: 14px 14px 0 0; background: var(--paper); box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.08); font-size: 0.9rem; transition: box-shadow 0.4s var(--ease); }
+.home .content-card:hover { box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.14); }
+.home .content-card + .content-card { z-index: 1; margin-left: -40px; }
+.home .content-card + .content-card:hover { z-index: 3; }
+.home .content-card__num { font-size: 0.78rem; font-weight: 500; color: var(--muted); }
+.home .content-card__title { font-weight: 600; letter-spacing: -0.01em; }
+.home .content-card__count { min-width: 24px; padding: 2px 8px; border-radius: 999px; background: rgba(10, 10, 10, 0.07); font-size: 0.72rem; font-weight: 600; text-align: center; }
+.home .content-card--dark { background: var(--ink); color: #fff; }
+.home .content-card--dark .content-card__num { color: rgba(255, 255, 255, 0.5); }
+.home .content-card--dark .content-card__count { background: rgba(255, 255, 255, 0.16); }
 
 /* Section label · heading */
 .home .section-label { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 0.84rem; font-weight: 500; }
@@ -133,9 +140,6 @@
 .home .footer { padding: 0 0 40px; background: var(--ink); color: rgba(255, 255, 255, 0.45); font-size: 0.8rem; }
 .home .footer__inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
 
-@media (max-width: 900px) {
-    .home .contents { grid-template-columns: 1fr; }
-}
 @media (max-width: 640px) {
     .home .container { width: calc(100% - 32px); }
     .home .topbar__inner { grid-template-columns: auto 1fr; height: 64px; padding: 0; }
@@ -144,9 +148,9 @@
     .home .nav a { height: 32px; padding: 0 12px; font-size: 0.76rem; }
     .home .hero { padding: 48px 0 40px; }
     .home .hero__rule { font-size: 0.68rem; letter-spacing: 0.12em; }
-    .home .contents { padding-bottom: 80px; }
-    .home .content-card { min-height: 200px; padding: 22px; border-radius: 22px; }
-    .home .content-card__count { top: 22px; right: 22px; }
+    .home .contents { margin-bottom: 72px; }
+    .home .content-card { flex: 1; justify-content: center; gap: 8px; padding: 11px 10px; white-space: nowrap; }
+    .home .content-card__num { display: none; }
     .home .section-label__count i { width: 40px; }
     .home .works { --card-w: 82vw; padding-bottom: 100px; }
     .home .works__head { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -161,5 +165,6 @@
     .home .design { padding: 80px 0 64px; border-radius: 28px 28px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     .home *, .home *::before, .home *::after { transition: none !important; }
 }
