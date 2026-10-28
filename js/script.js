@@ -123,3 +123,28 @@ if (viewer) {
         else if (e.key === '0') setZoom(zoomSteps.indexOf(100));
     });
 }
+
+// Index: Web Publishing 카드 슬라이더 (마우스 드래그 · 터치 스와이프 · 화살표 버튼)
+const worksSlider = document.querySelector('.projects.swiper');
+
+if (worksSlider && window.Swiper) {
+    const counter = document.querySelector('.works .section-label__count');
+    const setProgress = (swiper) => counter?.style.setProperty('--progress', Math.max(swiper.progress, 0.06));
+
+    new Swiper(worksSlider, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        grabCursor: true,
+        speed: 600,
+        keyboard: { enabled: true, onlyInViewport: true },
+        navigation: {
+            prevEl: '.works__btn--prev',
+            nextEl: '.works__btn--next',
+            disabledClass: 'is-disabled',
+        },
+        a11y: { prevSlideMessage: '이전 프로젝트', nextSlideMessage: '다음 프로젝트' },
+        // PC에서는 카드가 겹쳐 보이도록 간격을 음수로
+        breakpoints: { 641: { spaceBetween: -56 } },
+        on: { init: setProgress, progress: setProgress },
+    });
+}
