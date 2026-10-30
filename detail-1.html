@@ -61,6 +61,7 @@
                     <span class="tech-badge">Claude</span>
                     <span class="tech-badge">HTML5</span>
                     <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">PHP</span>
                     <span class="tech-badge">Schema</span>
                     <span class="tech-badge">SEO</span>
                     <span class="tech-badge">Figma</span>
@@ -70,6 +71,63 @@
             <section class="detail-section">
                 <div class="section-head">
                     <span class="section-head__idx">01</span>
+                    <h2 class="section-title">프로젝트 개요</h2>
+                </div>
+                <dl class="overview">
+                    <div>
+                        <dt>기존 상황</dt>
+                        <dd>PC와 모바일이 디바이스별로 URL이 나뉜 적응형 구조로 운영되고 있었고, 페이지마다 header · footer · 폼 코드가 복사돼 있었습니다.</dd>
+                    </div>
+                    <div>
+                        <dt>목표</dt>
+                        <dd>모든 페이지를 반응형으로 바꿔 단일 URL로 통합하고, 검색엔진과 AI 검색이 이해하기 쉬운 구조로 정비하는 것</dd>
+                    </div>
+                    <div>
+                        <dt>작업 범위</dt>
+                        <dd>페이지 단위 반응형 전환, 공통 폼 · header · footer 분리, 보험 가이드 페이지 신규 제작, 웹 접근성 점검, 크로스 브라우징 대응</dd>
+                    </div>
+                    <div>
+                        <dt>적용 기술</dt>
+                        <dd>HTML5 · CSS3 · PHP · JSON-LD (FAQPage · BreadcrumbList · Service) · Meta · Canonical</dd>
+                    </div>
+                    <div>
+                        <dt>결과</dt>
+                        <dd>공통 include 8개 · 공유 CSS 4개로 중앙화, 가이드 페이지 SEO 분석 점수 42점 → 92점, 네이버 검색 AI 요약 영역에 출처로 노출</dd>
+                    </div>
+                </dl>
+            </section>
+
+            <section class="detail-section">
+                <div class="section-head">
+                    <span class="section-head__idx">02</span>
+                    <h2 class="section-title">리뉴얼 진단 리포트</h2>
+                </div>
+                <p class="section-content">
+                    반응형으로 전환하면서 공통으로 바뀐 파일과 구조를 한 페이지 리포트로 정리했습니다. 페이지마다 따로 있던 상품 변수 · 메타 · 폼 · CSS를 공통 include와 공유 파일로 모은 전후 비교, 상품별 준법심의번호 만료 현황, 깨진 링크 · 레거시 파일 같은 남은 이슈까지 한눈에 볼 수 있습니다.
+                </p>
+                <ul class="report-stats">
+                    <li><strong>14</strong><span>상품 랜딩 페이지</span></li>
+                    <li><strong>8</strong><span>공통 include</span></li>
+                    <li><strong>4</strong><span>공유 CSS</span></li>
+                    <li><strong>216</strong><span>상품별로 구조화한 이미지</span></li>
+                </ul>
+                <figure class="shot">
+                    <a class="shot__img" href="./images/db-diagnostic-architecture.png" target="_blank" rel="noopener noreferrer"><img src="./images/db-diagnostic-architecture.png" alt="리뉴얼 전후 아키텍처 변화 표: 상품 변수, 준법심의번호, 크로스셀, head·메타, 폼·팝업, CSS, 이미지, JS 항목의 구버전과 2026 리뉴얼 비교" loading="lazy"></a>
+                    <figcaption>리뉴얼 전후 아키텍처 변화 — 페이지별 하드코딩 · 인라인 코드를 공통 include · 공유 파일로 전환</figcaption>
+                </figure>
+                <figure class="shot">
+                    <a class="shot__img" href="./images/db-diagnostic-report.png" target="_blank" rel="noopener noreferrer"><img src="./images/db-diagnostic-report.png" alt="진단 리포트 첫 화면: 상태 알림 카드와 현황 요약 수치, 준법심의번호 만료 타임라인" loading="lazy"></a>
+                    <figcaption>리포트 첫 화면 — 상태 알림 · 현황 요약 · 준법심의번호 만료 타임라인</figcaption>
+                </figure>
+                <p class="report-note">※ 포트폴리오용 일반화 문서로, 회사명 · 파일명 · 경로 · 코드값 등 식별 정보는 예시값으로 바꿨습니다.</p>
+                <div class="links-section">
+                    <a href="diagnostic.html" target="_blank" rel="noopener noreferrer" class="link-btn">📊 진단 리포트 전체 보기 →</a>
+                </div>
+            </section>
+
+            <section class="detail-section">
+                <div class="section-head">
+                    <span class="section-head__idx">03</span>
                     <h2 class="section-title">담당 업무</h2>
                 </div>
                 <ul class="work-grid">
@@ -89,12 +147,20 @@
                         <strong>보험 가이드 신규 제작</strong>
                         <p>검색 노출을 염두에 두고 스키마(JSON-LD)와 메타·canonical을 함께 구성했습니다.</p>
                     </li>
+                    <li>
+                        <strong>웹 접근성 점검</strong>
+                        <p>반응형으로 전환한 페이지의 웹 접근성을 점검하고 시맨틱 마크업 기준에 맞춰 정리했습니다.</p>
+                    </li>
+                    <li>
+                        <strong>크로스 브라우징 대응</strong>
+                        <p>전환한 페이지가 브라우저마다 같은 화면과 동작을 보이도록 확인하고 대응했습니다.</p>
+                    </li>
                 </ul>
             </section>
 
             <section class="detail-section">
                 <div class="section-head">
-                    <span class="section-head__idx">02</span>
+                    <span class="section-head__idx">04</span>
                     <h2 class="section-title">작업 방식</h2>
                 </div>
                 <p class="section-content">
@@ -154,7 +220,7 @@
 
             <section class="detail-section">
                 <div class="section-head">
-                    <span class="section-head__idx">03</span>
+                    <span class="section-head__idx">05</span>
                     <h2 class="section-title">주요 코드</h2>
                 </div>
                 <p class="section-content">
@@ -267,7 +333,7 @@ if (!function_exists('print_guide_structured_data')) {
 
             <section class="detail-section">
                 <div class="section-head">
-                    <span class="section-head__idx">04</span>
+                    <span class="section-head__idx">06</span>
                     <h2 class="section-title">검색 최적화 결과</h2>
                 </div>
                 <p class="section-content">
@@ -295,7 +361,7 @@ if (!function_exists('print_guide_structured_data')) {
 
             <section class="detail-section">
                 <div class="section-head">
-                    <span class="section-head__idx">05</span>
+                    <span class="section-head__idx">07</span>
                     <h2 class="section-title">주요 성과</h2>
                 </div>
                 <div class="result-panel">
@@ -318,7 +384,7 @@ if (!function_exists('print_guide_structured_data')) {
                         📱 모바일 버전 →
                     </a>
                     <a href="diagnostic.html" target="_blank" rel="noopener noreferrer" class="link-btn link-btn-secondary">
-                        📊 AI 구조 진단 리포트 →
+                        📊 진단 리포트 →
                     </a>
                 </div>
             </section>
