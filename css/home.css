@@ -45,6 +45,8 @@ html { scroll-behavior: smooth; }
 .home .hero__intro { margin-top: 32px; }
 .home .hero__lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; letter-spacing: -0.03em; }
 .home .hero__sub { margin-top: 12px; max-width: 64ch; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+.home .hero__keywords { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.home .hero__keywords li { padding: 7px 14px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.84rem; font-weight: 500; }
 .home .hero__stats { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 36px; }
 .home .hero__stats li { display: grid; gap: 6px; padding: 22px 24px; border-radius: 20px; background: var(--card); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 16px 40px rgba(0, 0, 0, 0.05); }
 .home .hero__stats strong { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1; }

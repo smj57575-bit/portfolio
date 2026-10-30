@@ -144,3 +144,16 @@
     .detail-body .shot-grid { grid-template-columns: 1fr; }
     .detail-body .report-stats { grid-template-columns: 1fr 1fr; }
 }
+
+/* 기술 태그를 '기술'과 '작업 도구(Figma · Git · Claude 등)' 두 줄로 구분 */
+.detail-body .tech-stack { align-items: center; }
+.detail-body .tech-stack__label { width: 72px; flex-shrink: 0; color: var(--muted); font-size: 0.74rem; font-weight: 600; }
+.detail-body .detail-hero .tech-stack--tools { margin-top: 10px; padding-top: 0; border-top: 0; }
+.detail-body .detail-hero .tech-stack--tools .tech-badge { border-color: var(--line); background: transparent; }
+
+/* 성과 측정 정보 (측정 대상 · 시점 · 기준) */
+.detail-body .measure { display: grid; gap: 0; margin-top: 20px; border-top: 1px solid var(--line); }
+.detail-body .measure > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.detail-body .measure dt { color: var(--muted); font-size: 0.82rem; font-weight: 600; }
+.detail-body .measure dd { font-size: 0.9rem; }
+@media (max-width: 640px) { .detail-body .measure > div { grid-template-columns: 1fr; gap: 2px; } }
