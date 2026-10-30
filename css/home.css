@@ -34,7 +34,7 @@ html { scroll-behavior: smooth; }
 .home .topbar__role { justify-self: end; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
 
 /* Hero */
-.home .hero { padding: 80px 0 64px; }
+.home .hero { padding: 0 0 64px; }
 .home .hero__year,
 .home .hero__title,
 .home .project__num { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; }
@@ -59,7 +59,8 @@ html { scroll-behavior: smooth; }
 .home .skill-group__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .home .skill-group__tags li { padding: 4px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.84rem; font-weight: 500; }
 .home .skill-group__note { grid-column: 2; color: var(--muted); font-size: 0.74rem; }
-.home .skill-group--dark .skill-group__tags li { border-color: var(--ink); background: var(--ink); color: #fff; }
+/* 강조 그룹은 위 성과 카드처럼 흰 바탕 + 옅은 그림자로 띄워 검정 키워드 칩과 겹쳐 보이지 않게 */
+.home .skill-group--dark .skill-group__tags li { border-color: transparent; background: #fff; color: var(--ink); font-weight: 600; box-shadow: 0 1px 2px rgba(10, 10, 10, 0.06), 0 4px 12px rgba(10, 10, 10, 0.06); }
 
 /* Contents — 파일 탭 형태의 목차 (선 대신 위쪽 그림자로 구분)
    첫 탭은 배경색과 같은 톤으로 앞에, 두 번째 탭은 그 뒤로 겹쳐 두고 호버 시 앞으로 꺼낸다.
@@ -217,7 +218,7 @@ html { scroll-behavior: smooth; }
     .home .nav a { height: 32px; padding: 0 9px; font-size: 0.72rem; white-space: nowrap; }
     /* 메뉴가 3개라 좁은 화면에선 로고 글자를 빼고 점만 남긴다 (첫 화면에 큰 PORTFOLIO 가 있음) */
     .home .brand span:last-child { display: none; }
-    .home .hero { padding: 48px 0 40px; }
+    .home .hero { padding: 0 0 40px; }
     .home .hero__rule { font-size: 0.68rem; letter-spacing: 0.12em; }
     .home .contents { margin-bottom: 72px; }
     /* 탭 4개는 한 줄에 다 들어가지 않아 겹친 채로 옆으로 밀어 보게 한다 */
