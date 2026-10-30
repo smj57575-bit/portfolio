@@ -92,7 +92,11 @@
                     </div>
                     <div>
                         <dt>적용 기술</dt>
-                        <dd>HTML5 · CSS3 · PHP · JSON-LD (FAQPage · BreadcrumbList · Service) · Meta · Canonical</dd>
+                        <dd>HTML5 · CSS3 · PHP · JSON-LD · Meta · Canonical</dd>
+                    </div>
+                    <div>
+                        <dt>구조화 데이터</dt>
+                        <dd>상품 페이지: InsuranceAgency(Service 목록 포함) · WebPage · BreadcrumbList · FAQPage<br>가이드 페이지: InsuranceAgency · BreadcrumbList · Article · FAQPage · HowTo</dd>
                     </div>
                     <div>
                         <dt>결과</dt>
@@ -228,7 +232,7 @@
                     <h2 class="section-title">주요 코드</h2>
                 </div>
                 <p class="section-content">
-                    제목을 누르면 열립니다. 사내 식별자·도메인·내부 코드값은 예시 값으로 바꿨습니다.
+                    제목을 누르면 열립니다. 실제 적용한 코드를 요약한 예시이며, 사내 식별자·도메인·내부 코드값은 예시 값으로 바꿨습니다.
                 </p>
                 <div class="code-preview-list">
                     <details class="code-card">
@@ -281,7 +285,7 @@ if (!function_exists('print_guide_geo_meta')) {
 if (!function_exists('print_guide_structured_data')) {
   function print_guide_structured_data($schema_key = '') {
     if ($schema_key === 'guide-01') {
-      // [1] Organization, [2] BreadcrumbList, [3] Article, [4] FAQPage, [5] HowTo 출력
+      // [1] InsuranceAgency, [2] BreadcrumbList, [3] Article, [4] FAQPage, [5] HowTo 출력
       echo '&lt;script type="application/ld+json"&gt;...&lt;/script&gt;';
       return;
     }
@@ -295,7 +299,7 @@ if (!function_exists('print_guide_structured_data')) {
                     <details class="code-card">
                         <summary>
                             <span class="code-card__title">가이드 페이지 메타 · 스키마 <span class="code-card__lang">JSON-LD</span></span>
-                            <span class="code-card__hint">canonical, Open Graph, Article · BreadcrumbList · FAQPage · HowTo</span>
+                            <span class="code-card__hint">가이드 페이지에 적용한 canonical, Open Graph, Article · BreadcrumbList · FAQPage · HowTo (예시 값)</span>
                         </summary>
                         <div class="code-card__body">
                             <pre><code class="language-html">&lt;title&gt;가이드 페이지 제목 ... | ○○보험&lt;/title&gt;
