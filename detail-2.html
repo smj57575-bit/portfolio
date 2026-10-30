@@ -53,16 +53,20 @@
                     </div>
                     <div>
                         <dt>성과</dt>
-                        <dd>SEO 품질 점수 95점 이상</dd>
+                        <dd>AI 검색 최적화 분석 종합 97.2점</dd>
                     </div>
                 </dl>
 
                 <div class="tech-stack">
+                    <span class="tech-stack__label">기술</span>
                     <span class="tech-badge">HTML5</span>
                     <span class="tech-badge">CSS3</span>
                     <span class="tech-badge">PHP</span>
                     <span class="tech-badge">Schema</span>
                     <span class="tech-badge">SEO</span>
+                </div>
+                <div class="tech-stack tech-stack--tools">
+                    <span class="tech-stack__label">작업 도구</span>
                     <span class="tech-badge">Figma</span>
                 </div>
             </div>
@@ -91,7 +95,7 @@
                     </div>
                     <div>
                         <dt>결과</dt>
-                        <dd>SEO 품질 점수 95점 이상, AI 검색 결과 노출 확인</dd>
+                        <dd>AI 검색 최적화 분석 종합 97.2점 (BM25 키워드 40/40 · 시맨틱 유사도 47/48 · FAQ 구조 18/20)</dd>
                     </div>
                 </dl>
             </section>
@@ -127,7 +131,7 @@
                     </li>
                     <li>
                         <strong>검색 성과 검증</strong>
-                        <p>SEO 품질 점검을 통해 95점 이상의 평가 점수를 달성하고, 실제 AI 검색 결과 노출까지 확인했습니다.</p>
+                        <p>사내 AI 검색 최적화 분석 도구로 질문 기준 점수를 측정해 종합 97.2점을 받았습니다.</p>
                     </li>
                 </ul>
             </section>
@@ -218,6 +222,50 @@
 
                     <details class="code-card">
                         <summary>
+                            <span class="code-card__title">FAQ 아코디언 · 키보드 접근성 <span class="code-card__lang">JavaScript</span></span>
+                            <span class="code-card__hint">aria-expanded 로 열림 상태를 알리고, 질문 버튼에서 Enter · Space 키로도 열고 닫을 수 있게 처리</span>
+                        </summary>
+                        <div class="code-card__body">
+                            <pre><code class="language-javascript">// 질문 클릭 시: 다른 FAQ는 닫고, 선택한 FAQ만 열며 aria-expanded 로 상태를 알린다
+function toggleFaq(element) {
+  const faqItem = element.parentElement;
+  const answer = element.nextElementSibling;
+  const isExpanded = element.getAttribute('aria-expanded') === 'true';
+
+  // 모든 FAQ 닫기
+  document.querySelectorAll('.faq-question').forEach(q =&gt; {
+    q.setAttribute('aria-expanded', 'false');
+    if (q.nextElementSibling) q.nextElementSibling.style.maxHeight = '0';
+  });
+
+  // 클릭한 FAQ 열기
+  if (!isExpanded) {
+    element.setAttribute('aria-expanded', 'true');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+
+  // transition이 끝난 뒤 열린 질문 위치로 스크롤
+  setTimeout(() =&gt; {
+    const headerOffset = 120;
+    const top = faqItem.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }, 600);
+}
+
+// 키보드 접근성: role="button" 인 질문에서 Enter · Space 로도 열고 닫기
+document.querySelectorAll('.faq-question').forEach(question =&gt; {
+  question.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();   // Space 로 페이지가 스크롤되지 않게
+      this.click();         // 마우스 클릭과 같은 toggleFaq 실행
+    }
+  });
+});</code></pre>
+                        </div>
+                    </details>
+
+                    <details class="code-card">
+                        <summary>
                             <span class="code-card__title">질문/답변형 시맨틱 마크업 구조 <span class="code-card__lang">HTML</span></span>
                             <span class="code-card__hint">h2 → h3 헤딩 계층과 Question · Answer 스키마를 함께 적용해 AI 엔진이 콘텐츠 맥락을 정확히 파악하도록 구성</span>
                         </summary>
@@ -279,11 +327,19 @@
             <section class="detail-section">
                 <div class="section-head">
                     <span class="section-head__idx">04</span>
-                    <h2 class="section-title">AI 최적화 점수 자료</h2>
+                    <h2 class="section-title">AI 검색 최적화 분석</h2>
                 </div>
                 <p class="section-content">
-                    FAQ 콘텐츠 구조 개선 및 SEO/AEO 적용 이후 AI 최적화 분석 도구 기준 점수 결과입니다.
+                    FAQ 콘텐츠 구조 개선 및 SEO/AEO 적용 이후, 사용자가 실제로 물어볼 질문을 넣어 페이지가 그 질문에 얼마나 잘 답하는지 측정한 결과입니다.
                 </p>
+                <dl class="measure">
+                    <div><dt>측정 도구</dt><dd>사내 AI 검색 최적화 분석 도구</dd></div>
+                    <div><dt>측정 대상</dt><dd>지속가능경영(ESG) FAQ 페이지 (오픈 전 검수 서버)</dd></div>
+                    <div><dt>측정 시점</dt><dd>2026.02.05</dd></div>
+                    <div><dt>검색 질문</dt><dd>"카스 ESG에 대해서 알려줘"</dd></div>
+                    <div><dt>진단 기준</dt><dd>BM25 키워드 40점 · 시맨틱 유사도 48점 · FAQ 구조 20점</dd></div>
+                    <div><dt>결과</dt><dd>BM25 키워드 40/40 · 시맨틱 유사도 47/48 · FAQ 구조 18/20 → 종합 97.2점</dd></div>
+                </dl>
                 <div class="detail-images evidence-images">
                     <div>
                         <div class="image-container">
@@ -308,8 +364,7 @@
                         <li>SEO 및 AEO를 고려한 FAQ 콘텐츠 구조 설계 및 신규 페이지 구축</li>
                         <li>검색 의도 기반 Q&amp;A 구성과 검색 친화적 마크업 적용</li>
                         <li>이미지 WebP 변환 및 설명형 파일명 적용으로 성능 · 검색 친화성 강화</li>
-                        <li>SEO 평가 점수 95점 이상 달성</li>
-                        <li>AI 검색 결과 노출 사례 확보로 SEO · AEO 최적화 성공 사례 도출</li>
+                        <li>AI 검색 최적화 분석 종합 97.2점</li>
                     </ul>
                 </div>
             </section>
