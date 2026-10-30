@@ -118,3 +118,29 @@
     .detail-body .pager { flex-direction: column; }
     .detail-body .pager__btn--next { margin-left: 0; }
 }
+
+/* 프로젝트 개요 — 기존 상황 · 목표 · 작업 범위 · 적용 기술 · 결과를 한 줄씩 */
+.detail-body .overview { border-radius: 22px; background: var(--card); box-shadow: var(--shadow); overflow: hidden; }
+.detail-body .overview > div { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 20px 28px; }
+.detail-body .overview > div + div { border-top: 1px solid var(--line); }
+.detail-body .overview dt { font-size: 0.84rem; font-weight: 600; color: var(--muted); }
+.detail-body .overview dd { font-size: 0.95rem; line-height: 1.7; }
+@media (max-width: 640px) {
+    .detail-body .overview > div { grid-template-columns: 1fr; gap: 4px; padding: 16px 20px; }
+}
+
+/* 캡처 이미지 + 설명 (진단 리포트 · SEO 관리 화면) */
+.detail-body .shot { margin-top: 24px; }
+.detail-body .shot__img { display: block; border-radius: 18px; background: var(--card); box-shadow: var(--shadow); overflow: hidden; }
+.detail-body .shot__img img { display: block; width: 100%; height: auto; }
+.detail-body .shot figcaption { margin-top: 10px; color: var(--muted); font-size: 0.84rem; }
+.detail-body .shot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+.detail-body .report-stats { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+.detail-body .report-stats li { display: grid; gap: 4px; padding: 18px 20px; border-radius: 18px; background: var(--ink); color: #fff; }
+.detail-body .report-stats strong { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; font-size: 1.8rem; font-weight: 700; line-height: 1; }
+.detail-body .report-stats span { color: rgba(255, 255, 255, 0.65); font-size: 0.82rem; }
+.detail-body .report-note { margin-top: 16px; color: var(--muted); font-size: 0.8rem; }
+@media (max-width: 768px) {
+    .detail-body .shot-grid { grid-template-columns: 1fr; }
+    .detail-body .report-stats { grid-template-columns: 1fr 1fr; }
+}
