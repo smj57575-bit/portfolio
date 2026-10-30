@@ -125,9 +125,9 @@ if (viewer) {
 }
 
 // Index: 프로젝트 카드 슬라이더 — Web Publishing · Personal Project 공통 (마우스 드래그 · 터치 스와이프 · 화살표 버튼)
-// 화면 왼쪽에서 세 번째 자리(1200px 미만은 두 번째, 모바일은 첫 번째)에 온 카드를 확대(.is-focus)
+// 화면 왼쪽에서 두 번째 자리(모바일은 첫 번째)에 온 카드를 확대(.is-focus) — 처음엔 DB손해보험
 // 카드가 적어 그 자리까지 채울 수 없으면 첫 카드를 확대한다
-const focusShift = () => (window.innerWidth >= 1200 ? 2 : window.innerWidth >= 641 ? 1 : 0);
+const focusShift = () => (window.innerWidth >= 641 ? 1 : 0);
 
 const initProjectSlider = (slider) => {
     const section = slider.closest('section');
@@ -227,8 +227,8 @@ if (sectionLinks.length) {
 const PROJECT_GROUPS = [
     { name: 'Web Publishing', items: [
         ['7', '찰랑 브랜드 웹사이트 신규 구축'],
-        ['8', '스텔라 아르투아 퓨어 골드 페이지'],
         ['1', 'DB손해보험 반응형 리뉴얼'],
+        ['8', '스텔라 아르투아 퓨어 골드 페이지'],
         ['2', 'OB맥주 FAQ 페이지'],
         ['3', 'IRC국제구조위원회 캠페인 페이지'],
     ] },
