@@ -157,3 +157,10 @@
 .detail-body .measure dt { color: var(--muted); font-size: 0.82rem; font-weight: 600; }
 .detail-body .measure dd { font-size: 0.9rem; }
 @media (max-width: 640px) { .detail-body .measure > div { grid-template-columns: 1fr; gap: 2px; } }
+
+/* 퓨어 골드 상세 — PC · 모바일 캡처 나란히 / 캡처 + 설명 2단 (좁은 화면은 1단) */
+.detail-body .shot-grid--pcmo { grid-template-columns: 3fr 1fr; align-items: start; }
+.detail-body .shot-grid--split { grid-template-columns: 1fr 1fr; align-items: start; }
+@media (max-width: 640px) {
+    .detail-body .shot-grid--split { grid-template-columns: 1fr; }
+}
