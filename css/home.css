@@ -31,11 +31,11 @@ html { scroll-behavior: smooth; }
 .home .nav a:hover { color: #fff; }
 /* 지금 보고 있는 영역 (script.js 가 .is-active 를 붙인다) */
 .home .nav a.is-active { background: #fff; color: var(--ink); }
-.home .topbar__role { justify-self: end; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
+.home .topbar__role { justify-self: end; white-space: nowrap; padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
 
 /* Hero */
 /* 첫 화면만 흰 배경 띠로 깔아 아래 회색 영역과 구분 (성과 카드는 반대로 회색) */
-.home .hero { padding: 0 0 64px; background: #fff; }
+.home .hero { padding: 0 0 40px; background: #fff; }
 .home .topbar { background: rgba(255, 255, 255, 0.94); }
 .home .hero__year,
 .home .hero__title,
@@ -47,27 +47,30 @@ html { scroll-behavior: smooth; }
 .home .hero__intro { margin-top: 32px; }
 .home .hero__lead { font-size: clamp(1.15rem, 2vw, 1.5rem); font-weight: 600; letter-spacing: -0.03em; }
 .home .hero__sub { margin-top: 12px; max-width: 64ch; color: var(--muted); font-size: 1rem; line-height: 1.75; }
-.home .hero__keywords { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-.home .hero__keywords li { padding: 7px 14px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.84rem; font-weight: 500; }
 .home .hero__stats { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 36px; }
 .home .hero__stats li { display: grid; gap: 6px; padding: 22px 24px; border-radius: 20px; background: var(--paper); }
 .home .hero__stats strong { font-family: 'Archivo', 'DM Sans', sans-serif; font-stretch: 125%; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; line-height: 1; }
 .home .hero__stats strong small { font-size: 0.55em; }
 .home .hero__stats span { color: var(--muted); font-size: 0.84rem; }
-/* 사용 기술 — 상자 없이 가는 구분선 목록: 왼쪽 분야명 · 오른쪽 테두리 태그 */
-.home .skill-groups { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; margin-top: 28px; }
-.home .skill-group { display: grid; grid-template-columns: 170px 1fr; align-items: center; gap: 4px 16px; padding: 14px 0; border-top: 1px solid var(--line); }
-.home .skill-group__title { font-size: 0.92rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
-.home .skill-group__tags { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
-.home .skill-group__tags li { padding: 4px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 0.84rem; font-weight: 500; }
-.home .skill-group__note { grid-column: 2; color: var(--muted); font-size: 0.74rem; }
+/* 사용 기술 — 칩 대신 6칸 표처럼: 칸마다 분야명 아래로 기술을 한 줄씩 (위아래 가는 선으로만 묶음) */
+.home .hero__label { margin-top: 48px; color: var(--muted); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.home .skill-groups { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 14px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.home .skill-group { display: flex; flex-direction: column; gap: 12px; padding: 20px 16px 22px; }
+.home .skill-group + .skill-group { border-left: 1px solid var(--line); }
+.home .skill-group:first-child { padding-left: 0; }
+.home .skill-group__title { font-size: 0.82rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+.home .skill-group__tags { list-style: none; display: grid; gap: 6px; }
+.home .skill-group__tags li { color: rgba(10, 10, 10, 0.72); font-size: 0.9rem; font-weight: 500; line-height: 1.35; }
+.home .skill-group__title { order: 0; }
+.home .skill-group__note { order: 1; margin-top: -8px; color: var(--muted); font-size: 0.72rem; }
+.home .skill-group__tags { order: 2; }
 
 /* Contents — 파일 탭 형태의 목차 (선 대신 위쪽 그림자로 구분)
    첫 탭은 배경색과 같은 톤으로 앞에, 두 번째 탭은 그 뒤로 겹쳐 두고 호버 시 앞으로 꺼낸다.
    탭 아래선이 어긋나지 않도록 위치는 움직이지 않고 겹침 순서(z-index)와 그림자만 바꾼다 */
 .home .contents { display: flex; align-items: flex-end; margin-bottom: 96px; }
 /* 탭 줄까지 흰 배경을 화면 끝까지 이어, 회색 섹션이 탭 바로 아래에서 시작하게 (clip-path 로 위아래는 자르고 좌우만 넓힘) */
-.home .contents { padding-top: 24px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(0 -100vmax); }
+.home .contents { padding-top: 24px; background: #fff; box-shadow: 0 0 0 100vmax #fff; clip-path: inset(-1px -100vmax 0); margin-top: -1px; }
 .home .content-card { position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px 12px 20px; border-radius: 14px 14px 0 0; background: var(--paper); box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.08); font-size: 0.9rem; transition: box-shadow 0.4s var(--ease); }
 .home .content-card:hover { box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.14); }
 /* 앞 탭이 뒤 탭을 덮도록 1 → 2 → 3 순서로 쌓고, 마우스를 올린 탭만 맨 앞으로 */
@@ -232,11 +235,15 @@ html { scroll-behavior: smooth; }
     .home .hero__stats,
     .home .seo-grid,
     .home .seo-result__list { grid-template-columns: 1fr; }
-    .home .skill-groups { grid-template-columns: 1fr; margin-top: 20px; }
-    .home .skill-group { grid-template-columns: 124px 1fr; gap: 4px 10px; padding: 11px 0; }
-    .home .skill-group__title { font-size: 0.78rem; letter-spacing: 0.02em; }
-    .home .skill-group__tags { gap: 4px; }
-    .home .skill-group__tags li { padding: 3px 9px; font-size: 0.76rem; }
+    .home .hero__label { margin-top: 32px; }
+    .home .skill-groups { grid-template-columns: repeat(2, 1fr); }
+    .home .skill-group { gap: 10px; padding: 16px 0 18px; }
+    .home .skill-group:nth-child(even) { padding-left: 16px; }
+    .home .skill-group + .skill-group { border-left: 0; }
+    .home .skill-group:nth-child(even) { border-left: 1px solid var(--line); }
+    .home .skill-group:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .home .skill-group__title { font-size: 0.74rem; }
+    .home .skill-group__tags li { font-size: 0.84rem; }
     .home .hero__stats { gap: 8px; margin-top: 28px; }
     .home .hero__stats li { grid-template-columns: 96px 1fr; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 16px; }
     .home .hero__stats strong { font-size: 1.3rem; }
@@ -277,7 +284,9 @@ html { scroll-behavior: smooth; }
 }
 @media (min-width: 641px) and (max-width: 980px) {
     .home .seo-grid { grid-template-columns: 1fr 1fr; }
-    .home .skill-groups { grid-template-columns: 1fr; }
+    .home .skill-groups { grid-template-columns: repeat(3, 1fr); }
+    .home .skill-group:nth-child(4) { padding-left: 0; border-left: 0; }
+    .home .skill-group:nth-child(n+4) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 360px) {
     .home .brand { display: none; }   /* 아주 좁은 화면은 메뉴 4개가 들어가도록 로고 점도 숨김 */
